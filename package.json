@@ -1,12 +1,16 @@
 {
-  "name": "marapp-ngkit",
-  "title": "NGkit",
-  "description": "NGkit is a lightweight and modular front-end framework",
-  "main": "dist/js/ngkit.js",
+  "name": "@natgeosociety/marapp-uikit",
+  "title": "Marapp UIkit",
+  "description": "Marapp UIkit is a lightweight and modular front-end framework",
   "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/natgeosociety/marapp-uikit"
+  },
   "engines": {
     "npm": ">=5.6.0"
   },
+  "homepage": "https://github.com/natgeosociety/marapp-uikit",
   "scripts": {
     "build:dist": "grunt"
   },

@@ -3,7 +3,7 @@
 @import "core/colors";
 @import "globals";
 @import "mixins";
-@import "ngfonts";
+@import "fonts";
 @import "core/icon";
 
 // Defaults
@@ -65,7 +65,6 @@
 
 
 @import "_button_overrides";
-@import "_ngFlag";
 @import "_ng-tool-tip-custom";
 
 
@@ -119,7 +118,6 @@
   display: block;
 }
 
-/* ng-tooltip caret positioning: https://nationalgeographicatlassianprod.atlassian.net/browse/AL-1029 */
 .ng-tooltip:after,
 .ng-tooltip:before {
     content: '';

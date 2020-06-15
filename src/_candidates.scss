@@ -1,6 +1,6 @@
 /********************************************/
 /*                                          */
-/* [NEW] NGKit candidate CSS rules          */
+/* [NEW] candidate CSS rules          */
 /*                                          */
 /********************************************/
 
@@ -37,7 +37,6 @@
 }
 
 /***** Tooltip *****/
-// to replace https://github.com/natgeosociety/ngkit/blob/master/src/components/_tooltip.scss later */
 .ng-c-tooltip {
     position: relative;
     display: inline-block;
@@ -385,7 +384,7 @@
 }//ng-c-main-heading
 
 .ng-c-search-item-title {//similar to ng-promo-title
-    font-family: "GeographEditWeb", Helvetica, Arial, sans-serif;
+    font-family: $base-body-font-family;
     font-size: 1.375rem;
     font-weight: 600;
     line-height: 1.75rem;
@@ -420,7 +419,7 @@
 }//ng-c-sub-kicker
 
 .ng-c-content-subtitle {
-    font-family: "GeographWeb", Helvetica, Arial, sans-serif;
+    font-family: $base-heading-font-family;
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 0.2rem;
@@ -582,7 +581,6 @@
             background: #F5F5F5;
         }
 
-        /* Has only hover state defined in current NGKit...? as part of ng-select-list */
         .ng-nav-item {
             font-size: 0.8125rem;
 
@@ -1085,7 +1083,7 @@
 
 .search-item-category {
     color: #666;
-    font-family: "GeographEditWeb", Helvetica, Arial, sans-serif;
+    font-family: $base-body-font-family;
     font-size: 1rem;
     font-weight: 400;
     font-style: italic;
@@ -1109,7 +1107,7 @@
 
 .item-grade {
     color: #333;
-    font-family: "GeographEditWeb", Helvetica, Arial, sans-serif;
+    font-family: $base-body-font-family;
     line-height: 1.625rem;
     margin: 0;
 }//item-grade
@@ -1448,7 +1446,6 @@
 .education-resource-search-container .search-submit-button .ng-icon {
     font-size: 2rem; }
 
-/* NGKit fix for pagination */
 .ng-pagination > li:last-child {
     border-right: none; }
 

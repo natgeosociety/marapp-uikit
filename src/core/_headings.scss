@@ -16,7 +16,7 @@
   word-spacing: 0;
   letter-spacing: 0.625rem;
   text-transform: uppercase;
-  font-family: "GeographWeb",Helvetica,Arial,sans-serif !important;
+  font-family: $base-heading-font-family;
 }
 
 .ng-text-display-l {
@@ -26,7 +26,7 @@
   font-weight: 600;
   word-spacing: 0;
   text-transform: uppercase;
-  font-family: "GeographWeb",Helvetica,Arial,sans-serif !important;
+  font-family: $base-heading-font-family;
 }
 
 .ng-text-display-m {
@@ -36,7 +36,7 @@
   font-weight: 500;
   word-spacing: 0;
   text-transform: uppercase;
-  font-family: "GeographWeb",Helvetica,Arial,sans-serif !important;
+  font-family: $base-heading-font-family;
 }
 
 .ng-text-display-s {
@@ -46,7 +46,7 @@
   font-weight: 600;
   word-spacing: 0;
   text-transform: uppercase;
-  font-family: "GeographWeb",Helvetica,Arial,sans-serif !important;
+  font-family: $base-heading-font-family;
 }
 
 // Editorial headings
@@ -58,7 +58,7 @@
   font-weight: 400;
   word-spacing: 0;
   text-transform: none;
-  font-family: "GeographEditWeb",Helvetica,Arial,sans-serif !important;
+  font-family: $base-body-font-family;
 }
 
 .ng-text-edit-m {
@@ -68,7 +68,7 @@
   word-spacing: 0;
   text-transform: none;
   letter-spacing: 0;
-  font-family: "GeographEditWeb",Helvetica,Arial,sans-serif !important;
+  font-family: $base-body-font-family;
 }
 
 .ng-text-edit-s {
@@ -78,7 +78,7 @@
   word-spacing: 0;
   letter-spacing: -0.01125rem;
   text-transform: none;
-  font-family: "GeographEditWeb",Helvetica,Arial,sans-serif !important;
+  font-family: $base-body-font-family;
 }
 
 @media (max-width: $breakpoint-medium-max) {

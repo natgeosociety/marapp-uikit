@@ -1061,102 +1061,102 @@ These are the fonts we use
 Styleguide Typography.Fonts
 */
 .ng-edit-thin {
-  font-family: "GeographEditWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 100;
   font-style: normal; }
 
 .ng-edit-thin-italic {
-  font-family: "GeographEditWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 100;
   font-style: italic; }
 
 .ng-edit-light {
-  font-family: "GeographEditWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-style: normal; }
 
 .ng-edit-light-italic {
-  font-family: "GeographEditWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-style: italic; }
 
 .ng-edit-regular {
-  font-family: "GeographEditWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: normal; }
 
 .ng-edit-regular-italic {
-  font-family: "GeographEditWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: italic; }
 
 .ng-edit-medium {
-  font-family: "GeographEditWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 500;
   font-style: normal; }
 
 .ng-edit-medium-italic {
-  font-family: "GeographEditWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 500;
   font-style: italic; }
 
 .ng-edit-bold {
-  font-family: "GeographEditWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 700;
   font-style: normal; }
 
 .ng-edit-bold-italic {
-  font-family: "GeographEditWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 700;
   font-style: italic; }
 
 .ng-brand-thin {
-  font-family: "GeographWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 100;
   font-style: normal; }
 
 .ng-brand-thin-italic {
-  font-family: "GeographWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 100;
   font-style: italic; }
 
 .ng-brand-light {
-  font-family: "GeographWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-style: normal; }
 
 .ng-brand-light-italic {
-  font-family: "GeographWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-style: italic; }
 
 .ng-brand-regular {
-  font-family: "GeographWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: normal; }
 
 .ng-brand-regular-italic {
-  font-family: "GeographWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: italic; }
 
 .ng-brand-medium {
-  font-family: "GeographWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 500;
   font-style: normal; }
 
 .ng-brand-medium-italic {
-  font-family: "GeographWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 500;
   font-style: italic; }
 
 .ng-brand-bold {
-  font-family: "GeographWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 700;
   font-style: normal; }
 
 .ng-brand-bold-italic {
-  font-family: "GeographWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 700;
   font-style: italic; }
 
@@ -1195,7 +1195,7 @@ Styleguide Typography.Fonts
  ========================================================================== */
 @font-face {
   font-family: "icon-font";
-  src: url("data:application/x-font-woff2;charset=utf-8;base64,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") format("woff2"), url("data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAw4AAsAAAAAFUQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAAQwAAAFY/uknsY21hcAAAAYAAAAFJAAADrDfm7nlnbHlmAAACzAAABnMAAAtQaHG2FGhlYWQAAAlAAAAALgAAADYXHMa7aGhlYQAACXAAAAAdAAAAJAPbAeBobXR4AAAJkAAAAA8AAAB8PAAAAGxvY2EAAAmgAAAAQAAAAEAprCymbWF4cAAACeAAAAAdAAAAIAEzAFhuYW1lAAAKAAAAAS0AAAIixND/MnBvc3QAAAswAAABBgAAAZEBVjGzeJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2BkfM84gYGVgYOBnzGNgYHBHUp/ZZBkaGFgYGJgZWbACgLSXFMYHD4wfJjBeOD/AQY9xgMMDkBhRpAcAMSHDCYAeJzl0rtOAkEYBeCzsFzFGyB4b6hQSIyxpDTGHpUaagpIqHkOHsRn8HlOrOzw/HM0VvoC7uQj7Mzmn9n9D4ASgKIMJAeyD2SI612zWZovop7mc7zp/hwHmmmwzha77HHIESeccc4lV1xzs90CBJvsaLWv1TGnWl38rP56Zap+g1vcaYw07vGg8ZgGUMG+niho/0O00MUFLlHVWXK9Qxk1nXIHDexiD03dff8/QgfHOMEpzlS9rU3Kf5zgv1yN+Mlev+560THTVwYz0/cGCxZZYNEQc7mpG2DJ1BewbOoQWDH1CqyaugbWTP0D64ZYb1rkkS2LTLJjkVV2DbFPzxD1+hZZ5ZUpA+C1xRtzYMoFODQlBBwZYv+xpZpPluo8W6rzYqnOxFKdqSlz4MwQZ5+bcgguTIkEl6ZsgitTSsG1Ka/gxtD+BNZEgBQAAAB4nIUWPW/bVvCdbJGWFCuWRIr6tinGokHKdERKpL8gqYaBxAlixwGkwvlwA6MOCgtBEKBtmqQDu3Voiy7KUiToUnTQVKAfQCd1bpcO8Ra06GgPRf+A3HskZcuK00rke+9499593z0CBH/wDJokRMi0xEsVqWJUDN6Atq3Y+HToYBMfIUcvoQvPSIJISMmLFatSNq1KXDfLMsPFdYvPQRbYQp7hBLNcyLPQ7dnq0lwgGQ0EosnA3NJef6nG44qtb4TZQDQRCCSiATa8odsNiqIkVKQRR64ufEzGCUdSuMbjOYblq76yBkK5IPNVmOYNIcKCqi0va8qqLK+GsolEtvdno9WCp8Xwxrsb4WLQXL+5bn6X0c51QtptuwXNFj161Dn/F6CaxcgkKSDECjIrSHhmRUBGpiVYssCxqIwGMnJnKVPBBDI7+016d7fRupVIqFIx3W2HpuLyqqItV7KJMkBrdvZBetdufXkryhaDWSRIZ9OicnvdDKJMOkoyV3bY+9GmRyjDJ0RACWRikEWUQoxzTF6OmHqcY8VC2dSFCJMvlKFimDlgWEPSoAqCUZF4NDLDo79EFv1VMWRo9/b7NgTFW/X+WAnwIf/Yb9tj/hAfWNlLXkjugXKgNJUG2JR0aFPve4XxR3i/n4/4GZWPJJMR/qVdrzeJGysqOSRhjABHTPS7WXHEI/QQPBvPOaRnRZPO4Pny6AD2MXbOkSRqSiAfBi4HehXQtCN5DcpV0NG9YYix6AILyOLOwsLO+3RY1DY0beM2HcqfW7lGB9oeBoee7aFwgMBnVq7ZoSJ6sbNGLRwAGR0J3SPyQe7tv0B1Z3Iq7kGmbJExehzauUeP+g9YAwCNGU+PEcKSKbJMiGVgxuBroUYYkDkfw6J7fHEhDJrPjFVxZNgcfinIYcSalgZhX/xQwR+POmavrS9yXDbLcYvr17IeJExMaNVqIlGtahMTwinIVvftA7TJ6Q0u1Ht+1g4P8vS1IUBtEkNNWfnFzk7Oxi/ORI7ttgZ1SjMtW2gTWHOw20M0TZemRm3L/jRI0ucTd/FoUNbl88jFBx18HfOO2jBEzmP2CSSNUSFhBpAYtSW+7P/MXVVtvPkBW1VVRaWD4k74Es9/h9BCvjyZJiXkZwErM1K+IGO6O1WMY3Gpx7ECyNRbUh5n9KChW7IGc8CoadhNrxRmNuxMXPt2PFUYH90MhhBKL+VmE6l7y3lRvPgpzgJXEkTf2hRcT/e+Sr91buvSwow4XkiNh4Kbo3e3Lq2qk5Mlsxac4r82a6MlnyisZfp17xDuol1yZAbXjlQnVdWptzoNMBS6CiiaTuXMM0CoMJRBf0ahMvYLOtxP3fvoXooOSDVAgfP9rUuXtuiLUtRMfN18fYkydFCGOXL1bBlYjPuqz8Lgz/kE9EjYx2IqaD4rhxFOJRvKBSDRC3okol+IevPvxaJ/7kpRKV6Z858sf+bC4RnL5DjTmgmHuVMQ8APb6bw1tNld7p+114NO5fAEKZKLNOYqUmywCI28QQVKiKnLn1Qk7axE9KAxRQGi9g4GKpR9Zr576fvK7tfKntNn/SSAvY9M01S1BPo4lfG51O1Kz7v4e/LkSflput1Or7bb7XfwN9g3615+kZjIH/8x7Xr28VtX60pdPd5D+9AI1ucs8oyIEdfnEcfpouP1SNk0/Ohj2maO24vXPZJRIPsqKIhpDPeUaLKjKJQFvUP8Ax34AvtHwqm6tA34dGzpBX/ZxGoRF+I8PH78OJFKlWortVIq1fs7Frt5kxsLAo+fayv1UjJZqq/U3pssxu5sxzhhclj+6f+SHyMVY9W95Zyth600m/i8UZcGxSr9/kH2KfdpsSK6p3UUV0/E/Yg1Lkny6AGvrggGerKC1eYkh/IUheCv2YUbGZGJ7E3tMbKRWdjMZjcXMjPz89fn5zFqcG3IDCIjjJi5sZBFgjBFXZ/3eNGaNkFEeocxMIClvMzGDWyvFUPEqDZ0wSpItENJGEHtRj2/JE1lJpUSBnC91x6Emg3gG9JS/vxkGsHjRaNBjvX6EHumz+0irByxfnj4UDmAscuXX/X2231f9HXX0DbDSst9c0hUc2oBa/DaefW0DVzDPHBNcUflVXzapyyR9czjGqRJCdRhOQr0biu7NxXLubg41yvdEnjsUHl6y8KvMoYGXH395L2pA5f/dqvVfk026jSXd4sn/wITFfUzAHicY2BkYGAA4jUqBhLx/DZfGbiZGEDgNqezPIL+f5XxNeNqIJeDASwNAOUeCMkAAHicY2BkYGA88P8Agx4TAwgwvmZgZEAF8gBiDAO+AAAAeJxjYGBgYBogDAAPBAA9AAAAAAAAFABMAHwAvgEWATIBagF8AZYB9AIGAhgCKAI4AnYCyAMKA3gDyAPoBAIENgRiBJwEqgTgBRYFKAVsBah4nGNgZGBgkGfwYeBiAAEmIOYCs/+D+QwAE+EBjAAAAHicbY9NbsIwEIVfIFAVpAq1UqXurC66qQg/CxYcAPYs2IfgBFASR45B4gI9Qc/QM/QEXfYMPUpfwiiLFlsef/PmjX8ADPAFD9XwcFvHarRww+zCbdJA2Cc/CXfQx7Nwl/pQuIdXzIT7eEDIEzy/Ou0eTriFO7wJt6m/C/vkD+EOHvEp3KX+LdzDGj/Cfbx4s31k8mFscrfSyTENbZM3sNa23JtcTYJxoy11rm3o9FZtzqo8JVPnYhVbk6kFqzpNjSqsOejIBTvnivloFIseRCbDHhEMcv46rneHFTQSHJHyx/ZK/b+yZodFyUqVK0wQYHzFt6Qvr70hM40tvRucGUuceOeUqqNbcVn2ZKSF9Gq+JyUrFHXtQCWiHmBXdxWYY8QZ//EH9SuyX24OYHIAAAB4nG2O61bCQAyEO0BbCxS83xVfoA+17KZlj9tNTXdRfHorcNQf5k/mS85kkoySQ6XJ/7XCCGNMkCJDjhMUmGKGOUossMQpznCOC1ziCte4wS3ucI8HPOIJz1jhJRkrYwrllLRrcq5Q0Vh2HM1BtTHQdM0fSoTfPWXr6ByFud6Qfq20Fe0o3UOqHfdUGuUbkuOmNFZIB8veDOZfclSHxQ+JbTZh9oOxK42optqSBKuVW9KOKq7rimNw1tNszwddNDT8qlWgmfU1H2Mzp3Yk/aQlHxet9bGv+reoZLDl3Cltw67s3J9pJtTylrKelOhN3nfWe5J0aw1x9sk83Mi/25CaJF9TdHLnAAA=") format("woff");
+  src: url("data:application/x-font-woff2;charset=utf-8;base64,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") format("woff2"), url("data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAw4AAsAAAAAFUQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAAQwAAAFY/uknsY21hcAAAAYAAAAFJAAADrDfm7nlnbHlmAAACzAAABnMAAAtQaHG2FGhlYWQAAAlAAAAALgAAADYXJANTaGhlYQAACXAAAAAdAAAAJAPbAeBobXR4AAAJkAAAAA8AAAB8PAAAAGxvY2EAAAmgAAAAQAAAAEAprCymbWF4cAAACeAAAAAdAAAAIAEzAFhuYW1lAAAKAAAAAS0AAAIixND/MnBvc3QAAAswAAABBgAAAZEBVjGzeJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2BkfM84gYGVgYOBnzGNgYHBHUp/ZZBkaGFgYGJgZWbACgLSXFMYHD4wfJjBeOD/AQY9xgMMDkBhRpAcAMSHDCYAeJzl0rtOAkEYBeCzsFzFGyB4b6hQSIyxpDTGHpUaagpIqHkOHsRn8HlOrOzw/HM0VvoC7uQj7Mzmn9n9D4ASgKIMJAeyD2SI612zWZovop7mc7zp/hwHmmmwzha77HHIESeccc4lV1xzs90CBJvsaLWv1TGnWl38rP56Zap+g1vcaYw07vGg8ZgGUMG+niho/0O00MUFLlHVWXK9Qxk1nXIHDexiD03dff8/QgfHOMEpzlS9rU3Kf5zgv1yN+Mlev+560THTVwYz0/cGCxZZYNEQc7mpG2DJ1BewbOoQWDH1CqyaugbWTP0D64ZYb1rkkS2LTLJjkVV2DbFPzxD1+hZZ5ZUpA+C1xRtzYMoFODQlBBwZYv+xpZpPluo8W6rzYqnOxFKdqSlz4MwQZ5+bcgguTIkEl6ZsgitTSsG1Ka/gxtD+BNZEgBQAAAB4nIUWPW/bVvCdbJGWFCuWRIr6tinGokHKdERKpL8gqYaBxAlixwGkwvlwA6MOCgtBEKBtmqQDu3Voiy7KUiToUnTQVKAfQCd1bpcO8Ra06GgPRf+A3HskZcuK00rke+9499593z0CBH/wDJokRMi0xEsVqWJUDN6Atq3Y+HToYBMfIUcvoQvPSIJISMmLFatSNq1KXDfLMsPFdYvPQRbYQp7hBLNcyLPQ7dnq0lwgGQ0EosnA3NJef6nG44qtb4TZQDQRCCSiATa8odsNiqIkVKQRR64ufEzGCUdSuMbjOYblq76yBkK5IPNVmOYNIcKCqi0va8qqLK+GsolEtvdno9WCp8Xwxrsb4WLQXL+5bn6X0c51QtptuwXNFj161Dn/F6CaxcgkKSDECjIrSHhmRUBGpiVYssCxqIwGMnJnKVPBBDI7+016d7fRupVIqFIx3W2HpuLyqqItV7KJMkBrdvZBetdufXkryhaDWSRIZ9OicnvdDKJMOkoyV3bY+9GmRyjDJ0RACWRikEWUQoxzTF6OmHqcY8VC2dSFCJMvlKFimDlgWEPSoAqCUZF4NDLDo79EFv1VMWRo9/b7NgTFW/X+WAnwIf/Yb9tj/hAfWNlLXkjugXKgNJUG2JR0aFPve4XxR3i/n4/4GZWPJJMR/qVdrzeJGysqOSRhjABHTPS7WXHEI/QQPBvPOaRnRZPO4Pny6AD2MXbOkSRqSiAfBi4HehXQtCN5DcpV0NG9YYix6AILyOLOwsLO+3RY1DY0beM2HcqfW7lGB9oeBoee7aFwgMBnVq7ZoSJ6sbNGLRwAGR0J3SPyQe7tv0B1Z3Iq7kGmbJExehzauUeP+g9YAwCNGU+PEcKSKbJMiGVgxuBroUYYkDkfw6J7fHEhDJrPjFVxZNgcfinIYcSalgZhX/xQwR+POmavrS9yXDbLcYvr17IeJExMaNVqIlGtahMTwinIVvftA7TJ6Q0u1Ht+1g4P8vS1IUBtEkNNWfnFzk7Oxi/ORI7ttgZ1SjMtW2gTWHOw20M0TZemRm3L/jRI0ucTd/FoUNbl88jFBx18HfOO2jBEzmP2CSSNUSFhBpAYtSW+7P/MXVVtvPkBW1VVRaWD4k74Es9/h9BCvjyZJiXkZwErM1K+IGO6O1WMY3Gpx7ECyNRbUh5n9KChW7IGc8CoadhNrxRmNuxMXPt2PFUYH90MhhBKL+VmE6l7y3lRvPgpzgJXEkTf2hRcT/e+Sr91buvSwow4XkiNh4Kbo3e3Lq2qk5Mlsxac4r82a6MlnyisZfp17xDuol1yZAbXjlQnVdWptzoNMBS6CiiaTuXMM0CoMJRBf0ahMvYLOtxP3fvoXooOSDVAgfP9rUuXtuiLUtRMfN18fYkydFCGOXL1bBlYjPuqz8Lgz/kE9EjYx2IqaD4rhxFOJRvKBSDRC3okol+IevPvxaJ/7kpRKV6Z858sf+bC4RnL5DjTmgmHuVMQ8APb6bw1tNld7p+114NO5fAEKZKLNOYqUmywCI28QQVKiKnLn1Qk7axE9KAxRQGi9g4GKpR9Zr576fvK7tfKntNn/SSAvY9M01S1BPo4lfG51O1Kz7v4e/LkSflput1Or7bb7XfwN9g3615+kZjIH/8x7Xr28VtX60pdPd5D+9AI1ucs8oyIEdfnEcfpouP1SNk0/Ohj2maO24vXPZJRIPsqKIhpDPeUaLKjKJQFvUP8Ax34AvtHwqm6tA34dGzpBX/ZxGoRF+I8PH78OJFKlWortVIq1fs7Frt5kxsLAo+fayv1UjJZqq/U3pssxu5sxzhhclj+6f+SHyMVY9W95Zyth600m/i8UZcGxSr9/kH2KfdpsSK6p3UUV0/E/Yg1Lkny6AGvrggGerKC1eYkh/IUheCv2YUbGZGJ7E3tMbKRWdjMZjcXMjPz89fn5zFqcG3IDCIjjJi5sZBFgjBFXZ/3eNGaNkFEeocxMIClvMzGDWyvFUPEqDZ0wSpItENJGEHtRj2/JE1lJpUSBnC91x6Emg3gG9JS/vxkGsHjRaNBjvX6EHumz+0irByxfnj4UDmAscuXX/X2231f9HXX0DbDSst9c0hUc2oBa/DaefW0DVzDPHBNcUflVXzapyyR9czjGqRJCdRhOQr0biu7NxXLubg41yvdEnjsUHl6y8KvMoYGXH395L2pA5f/dqvVfk026jSXd4sn/wITFfUzAHicY2BkYGAA4jWi217E89t8ZeBmYgCB2zwPsxH0/6uMrxlXA7kcDGBpAEhgC+oAAHicY2BkYGA88P8Agx4TAwgwvmZgZEAF8gBiDAO+AAAAeJxjYGBgYBogDAAPBAA9AAAAAAAAFABMAHwAvgEWATIBagF8AZYB9AIGAhgCKAI4AnYCyAMKA3gDyAPoBAIENgRiBJwEqgTgBRYFKAVsBah4nGNgZGBgkGfwYeBiAAEmIOYCs/+D+QwAE+EBjAAAAHicbY9NbsIwEIVfIFAVpAq1UqXurC66qQg/CxYcAPYs2IfgBFASR45B4gI9Qc/QM/QEXfYMPUpfwiiLFlsef/PmjX8ADPAFD9XwcFvHarRww+zCbdJA2Cc/CXfQx7Nwl/pQuIdXzIT7eEDIEzy/Ou0eTriFO7wJt6m/C/vkD+EOHvEp3KX+LdzDGj/Cfbx4s31k8mFscrfSyTENbZM3sNa23JtcTYJxoy11rm3o9FZtzqo8JVPnYhVbk6kFqzpNjSqsOejIBTvnivloFIseRCbDHhEMcv46rneHFTQSHJHyx/ZK/b+yZodFyUqVK0wQYHzFt6Qvr70hM40tvRucGUuceOeUqqNbcVn2ZKSF9Gq+JyUrFHXtQCWiHmBXdxWYY8QZ//EH9SuyX24OYHIAAAB4nG2O61bCQAyEO0BbCxS83xVfoA+17KZlj9tNTXdRfHorcNQf5k/mS85kkoySQ6XJ/7XCCGNMkCJDjhMUmGKGOUossMQpznCOC1ziCte4wS3ucI8HPOIJz1jhJRkrYwrllLRrcq5Q0Vh2HM1BtTHQdM0fSoTfPWXr6ByFud6Qfq20Fe0o3UOqHfdUGuUbkuOmNFZIB8veDOZfclSHxQ+JbTZh9oOxK42optqSBKuVW9KOKq7rimNw1tNszwddNDT8qlWgmfU1H2Mzp3Yk/aQlHxet9bGv+reoZLDl3Cltw67s3J9pJtTylrKelOhN3nfWe5J0aw1x9sk83Mi/25CaJF9TdHLnAAA=") format("woff");
   font-weight: normal;
   font-style: normal; }
 
@@ -1933,7 +1933,7 @@ th {
  */
 html {
   /* 1 */
-  font: 400 16px / 1.85 "GeographEditWeb", Helvetica, Arial, sans-serif;
+  font: 400 16px / 1.85 Helvetica, Arial, sans-serif;
   /* 2 */
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -2182,7 +2182,7 @@ figure {
  ========================================================================== */
 h1, .ng-h1, h2, .ng-h2, h4, .ng-h4, h5, .ng-h5, h6, .ng-h6 {
   margin: 0 0 25px 0;
-  font-family: "GeographWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 400;
   color: #000;
   text-transform: uppercase;
@@ -2228,7 +2228,7 @@ h3, .ng-h3 {
   font-size: 3.375rem;
   line-height: 1.2;
   margin: 0 0 20px 0;
-  font-family: "GeographEditWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 400;
   text-transform: none;
   word-spacing: .02em;
@@ -2240,7 +2240,7 @@ h3.label {
   margin: 0 0 20px 0;
   font-size: 0.875rem;
   font-weight: 500;
-  font-family: "GeographWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   color: #999;
   letter-spacing: .1em;
   text-transform: uppercase; }
@@ -2428,7 +2428,7 @@ blockquote {
   font-style: inherit;
   font-size: 1.25rem;
   color: #999;
-  font-family: "GeographWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   margin-bottom: 50px;
   margin-left: 35px;
@@ -2515,15 +2515,6 @@ Styleguide Typography.Base.PullQuote
 Body Copy Standard
 
 p tag with no class.
-
-Markup:
-<p>
-  The National Geographic Society is a global nonprofit organization committed to exploring and protecting our planet.
-  We are not just a magazine and a tv channel!
-  The interaction of animals with their environments is the engine that keeps the planet healthy for all of us.
-  But for many species, time is running out. That's why National Geographic,
-  along with photographer Joel Sartore, is dedicated to finding solutions to save them.
-</p>
 
 
 Weight: 4
@@ -3957,7 +3948,7 @@ a.ng-position-cover {
   border-radius: 0;
   text-shadow: none;
   margin: 0 4px;
-  font-family: "GeographEditWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.3;
@@ -5686,7 +5677,7 @@ Styleguide Controls.Forms.LayoutExample
   font-size: 13px;
   letter-spacing: 2.6px;
   font-weight: 400;
-  font-family: "GeographWeb",Helvetica,Arial,sans-serif; }
+  font-family: Helvetica, Arial, sans-serif; }
   .ng-index.ng-index__light {
     color: #ffffff; }
   .ng-index .ng-index-decorator {
@@ -5855,7 +5846,7 @@ Styleguide Controls.Forms.LayoutExample
   overflow: visible;
   /* 5 */
   font: inherit;
-  font-family: "GeographWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   color: #000;
   /* 6 */
   text-transform: uppercase;
@@ -6318,7 +6309,7 @@ input[type="file"] {
   .ng-labeled-icon .ng-user-initials {
     display: block;
     color: #FFF;
-    font-family: "GeographWeb", Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-weight: 900;
     font-size: 12px;
     line-height: 30px;
@@ -6337,7 +6328,7 @@ input[type="file"] {
       border-radius: 50%;
       border: 1px solid #cccccc; }
   .ng-labeled-icon .ng-icon-label {
-    font-family: "GeographWeb", Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-weight: 500;
     font-size: 10px;
     letter-spacing: 0.12em;
@@ -6832,7 +6823,7 @@ a.ng-thumbnail:focus {
   padding-top: 0;
   color: #333;
   text-align: left;
-  font-family: "GeographEditWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 0.9375rem;
   line-height: 1.8;
   margin-top: 20px;
@@ -6883,7 +6874,7 @@ a.ng-thumbnail:focus {
   width: 100%; }
 
 .ng-thumbnail-credit {
-  font-family: "GeographWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 0.75rem !important;
   font-weight: 400 !important;
   line-height: 1.8 !important;
@@ -8438,7 +8429,7 @@ Styleguide Media.Overlays.Gradient
   word-spacing: 0;
   letter-spacing: 0.625rem;
   text-transform: uppercase;
-  font-family: "GeographWeb",Helvetica,Arial,sans-serif !important; }
+  font-family: Helvetica, Arial, sans-serif; }
 
 .ng-text-display-l {
   font-size: 2.625rem;
@@ -8447,7 +8438,7 @@ Styleguide Media.Overlays.Gradient
   font-weight: 600;
   word-spacing: 0;
   text-transform: uppercase;
-  font-family: "GeographWeb",Helvetica,Arial,sans-serif !important; }
+  font-family: Helvetica, Arial, sans-serif; }
 
 .ng-text-display-m {
   font-size: 1.75rem;
@@ -8456,7 +8447,7 @@ Styleguide Media.Overlays.Gradient
   font-weight: 500;
   word-spacing: 0;
   text-transform: uppercase;
-  font-family: "GeographWeb",Helvetica,Arial,sans-serif !important; }
+  font-family: Helvetica, Arial, sans-serif; }
 
 .ng-text-display-s {
   font-size: 0.8125rem;
@@ -8465,7 +8456,7 @@ Styleguide Media.Overlays.Gradient
   font-weight: 600;
   word-spacing: 0;
   text-transform: uppercase;
-  font-family: "GeographWeb",Helvetica,Arial,sans-serif !important; }
+  font-family: Helvetica, Arial, sans-serif; }
 
 .ng-text-edit-l {
   font-size: 3.375rem;
@@ -8474,7 +8465,7 @@ Styleguide Media.Overlays.Gradient
   font-weight: 400;
   word-spacing: 0;
   text-transform: none;
-  font-family: "GeographEditWeb",Helvetica,Arial,sans-serif !important; }
+  font-family: Helvetica, Arial, sans-serif; }
 
 .ng-text-edit-m {
   font-size: 1.875rem;
@@ -8483,7 +8474,7 @@ Styleguide Media.Overlays.Gradient
   word-spacing: 0;
   text-transform: none;
   letter-spacing: 0;
-  font-family: "GeographEditWeb",Helvetica,Arial,sans-serif !important; }
+  font-family: Helvetica, Arial, sans-serif; }
 
 .ng-text-edit-s {
   font-size: 1.25rem;
@@ -8492,7 +8483,7 @@ Styleguide Media.Overlays.Gradient
   word-spacing: 0;
   letter-spacing: -0.01125rem;
   text-transform: none;
-  font-family: "GeographEditWeb",Helvetica,Arial,sans-serif !important; }
+  font-family: Helvetica, Arial, sans-serif; }
 
 @media (max-width: 959px) {
   .ng-text-display-xl {
@@ -8791,7 +8782,7 @@ header .ng-dropdown-close, .ng-header-container .ng-dropdown-close {
   background-color: #222222 !important; }
 
 .ng-give-btn {
-  font-family: "GeographEditWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 16px; }
 
 .ng-navbar-search-toggle-button {
@@ -8832,7 +8823,7 @@ header .ng-dropdown-close, .ng-header-container .ng-dropdown-close {
   min-height: inherit; }
 
 .ng-navbar-nav > li > a {
-  font-family: "GeographWeb", Helvetica, Arial, sans-serif !important;
+  font-family: Helvetica, Arial, sans-serif !important;
   font-weight: 400;
   letter-spacing: .12em !important;
   font-size: 15px !important;
@@ -8878,14 +8869,14 @@ header .ng-dropdown-close, .ng-header-container .ng-dropdown-close {
   border-left: 2px solid #ffcc00;
   padding-left: 15px;
   color: white;
-  font-family: "GeographWeb", Helvetica, Arial, sans-serif !important;
+  font-family: Helvetica, Arial, sans-serif !important;
   font-weight: 400;
   margin-top: 0;
   padding-top: 0; }
   .ng-dropdown-content-box .ng-dropdown:not(.ng-dropdown-stack) > .ng-dropdown-grid > [class*="ng-width-"]:nth-child(n+2) {
     border-left: none; }
   .ng-dropdown-content-box div.menu-label {
-    font-family: "GeographWeb", Helvetica, Arial, sans-serif !important;
+    font-family: Helvetica, Arial, sans-serif !important;
     font-weight: 400;
     padding-top: 0;
     color: #ffcc00;
@@ -8913,7 +8904,7 @@ header .ng-dropdown-close, .ng-header-container .ng-dropdown-close {
 .ng-mobile-dropdown-nav {
   border: none;
   color: white;
-  font-family: "GeographWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 400;
   margin-top: 0;
   padding-top: 0;
@@ -8922,7 +8913,7 @@ header .ng-dropdown-close, .ng-header-container .ng-dropdown-close {
     padding: 0 !important; }
   .ng-mobile-dropdown-nav .ng-nav > li > a {
     padding: 12px 5px;
-    font-family: "GeographWeb", Helvetica, Arial, sans-serif !important;
+    font-family: Helvetica, Arial, sans-serif !important;
     font-weight: 400;
     letter-spacing: .14em  !important; }
   .ng-mobile-dropdown-nav .ng-nav, .ng-mobile-dropdown-nav .ng-nav ul {
@@ -8937,7 +8928,7 @@ header .ng-dropdown-close, .ng-header-container .ng-dropdown-close {
     letter-spacing: .14em  !important;
     font-size: 1.125rem;
     text-transform: uppercase;
-    font-family: "GeographWeb", Helvetica, Arial, sans-serif !important;
+    font-family: Helvetica, Arial, sans-serif !important;
     font-weight: 400; }
   .ng-mobile-dropdown-nav .ng-nav-side > li.ng-active > a {
     background: inherit;
@@ -8961,13 +8952,13 @@ header .ng-dropdown-close, .ng-header-container .ng-dropdown-close {
     letter-spacing: .17em !important;
     font-size: 0.8125rem;
     text-transform: uppercase;
-    font-family: "GeographWeb", Helvetica, Arial, sans-serif !important;
+    font-family: Helvetica, Arial, sans-serif !important;
     font-weight: 400; }
 
 .ng-search-dropdown {
   background-color: #222222 !important; }
   .ng-search-dropdown div.search-label {
-    font-family: "GeographWeb", Helvetica, Arial, sans-serif !important;
+    font-family: Helvetica, Arial, sans-serif !important;
     font-weight: 400;
     padding-top: 0;
     color: #ffcc00;
@@ -8979,7 +8970,7 @@ header .ng-dropdown-close, .ng-header-container .ng-dropdown-close {
     padding-bottom: 10px !important;
     padding-left: 10px !important; }
   .ng-search-dropdown .header-search {
-    font-family: "GeographWeb", Helvetica, Arial, sans-serif !important;
+    font-family: Helvetica, Arial, sans-serif !important;
     font-weight: 400;
     border: none !important;
     color: #999999 !important;
@@ -8992,7 +8983,7 @@ header .ng-dropdown-close, .ng-header-container .ng-dropdown-close {
 .ng-search-mobile-dropdown {
   background-color: #222222 !important; }
   .ng-search-mobile-dropdown div.search-label {
-    font-family: "GeographWeb", Helvetica, Arial, sans-serif !important;
+    font-family: Helvetica, Arial, sans-serif !important;
     font-weight: 400;
     padding-top: 0;
     color: #ffcc00;
@@ -9008,7 +8999,7 @@ header .ng-dropdown-close, .ng-header-container .ng-dropdown-close {
     padding: 0 !important;
     margin: 0 !important; }
   .ng-search-mobile-dropdown .header-search {
-    font-family: "GeographWeb", Helvetica, Arial, sans-serif !important;
+    font-family: Helvetica, Arial, sans-serif !important;
     weight: 400;
     border: none !important;
     color: #999999 !important;
@@ -11774,7 +11765,6 @@ label input[type="checkbox"].ng-checkbox-input, label input[type="radio"].ng-rad
  * 1. Behave like form elements
  * 2. Create position context for dropdowns
  * 3. Clip content
- * 4. Add ngkit icon for arrow
  */
 .ng-form-select {
   /* 1 */
@@ -11816,7 +11806,7 @@ label input[type="checkbox"].ng-checkbox-input, label input[type="radio"].ng-rad
     background: #222222;
     border-radius: 100%;
     color: #ffffff;
-    font-family: 'GeographEditWeb';
+    font-family: Helvetica, Arial, sans-serif;
     font-size: 12px;
     padding: 12px 0;
     width: 36px; }
@@ -11827,7 +11817,7 @@ label input[type="checkbox"].ng-checkbox-input, label input[type="radio"].ng-rad
 
 .ng-icon-label {
   display: block;
-  font-family: 'GeographWeb';
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 10px;
   font-weight: 500;
   line-height: 14px;
@@ -12797,37 +12787,6 @@ Styleguide Components.ContentCarousel.1
     [data-ng-button-radio] .ng-button + .ng-button, [data-ng-button-radio] .ng-pill-button + .ng-button, [data-ng-button-radio] .ng-button + .ng-pill-button, [data-ng-button-radio] .ng-pill-button + .ng-pill-button {
       margin-top: 0; } }
 
-/*
-Protected Flag
-
-.ng-flag class.
-
-Markup:
-<div class="ng-flag">Protected Area</div>
-
-
-Weight: 4
-
-Styleguide Typography.Base.Flag
-*/
-.ng-flag {
-  background-color: black;
-  padding: 4px !important;
-  text-align: center;
-  font-family: "GeographWeb", Helvetica, Arial, sans-serif !important;
-  color: #ffffff;
-  font-size: 12px !important;
-  letter-spacing: 0.18em !important;
-  width: 100%;
-  height: 30px !important;
-  text-transform: uppercase !important;
-  line-height: 2.4em !important;
-  font-weight: 600 !important; }
-  @media only screen and (min-width: 768px) {
-    .ng-flag {
-      width: 330px;
-      height: 30px; } }
-
 /**************
 tooltip
 Sample Markup:
@@ -12843,7 +12802,7 @@ Note the a tag is positioned relative.
   position: absolute;
   content: "";
   display: block;
-  font: 600 16px/1.85 "GeographEditWeb", Helvetica, Arial, sans-serif;
+  font: 600 16px/1.85 Helvetica, Arial, sans-serif;
   width: 110px;
   text-align: center;
   background: #000;
@@ -12922,7 +12881,7 @@ Note the a tag is positioned relative.
 
 /********************************************/
 /*                                          */
-/* [NEW] NGKit candidate CSS rules          */
+/* [NEW] candidate CSS rules          */
 /*                                          */
 /********************************************/
 /* KICKER (article, online course) */
@@ -13244,7 +13203,7 @@ Note the a tag is positioned relative.
   margin: 0; }
 
 .ng-c-search-item-title {
-  font-family: "GeographEditWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 1.375rem;
   font-weight: 600;
   line-height: 1.75rem;
@@ -13274,7 +13233,7 @@ Note the a tag is positioned relative.
     background: #FC0; }
 
 .ng-c-content-subtitle {
-  font-family: "GeographWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.2rem;
@@ -13412,7 +13371,6 @@ Note the a tag is positioned relative.
     margin: 0 -50px;
     padding-left: 0 !important;
     /* Used only as part of ng-select-list ng-nav */
-    /* Has only hover state defined in current NGKit...? as part of ng-select-list */
     /* Only as part of ng-select-list */ }
     .ng-c-dropdown .ng-c-nav .ng-nav-active {
       position: relative;
@@ -13764,7 +13722,7 @@ Note the a tag is positioned relative.
 
 .search-item-category {
   color: #666;
-  font-family: "GeographEditWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 1rem;
   font-weight: 400;
   font-style: italic;
@@ -13785,7 +13743,7 @@ Note the a tag is positioned relative.
 
 .item-grade {
   color: #333;
-  font-family: "GeographEditWeb", Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   line-height: 1.625rem;
   margin: 0; }
 
@@ -14056,7 +14014,6 @@ Note the a tag is positioned relative.
 .education-resource-search-container .search-submit-button .ng-icon {
   font-size: 2rem; }
 
-/* NGKit fix for pagination */
 .ng-pagination > li:last-child {
   border-right: none; }
 
@@ -14542,7 +14499,6 @@ Note the a tag is positioned relative.
 .ng-tooltip.ng-open {
   display: block; }
 
-/* ng-tooltip caret positioning: https://nationalgeographicatlassianprod.atlassian.net/browse/AL-1029 */
 .ng-tooltip:after,
 .ng-tooltip:before {
   content: '';
@@ -14680,4 +14636,4 @@ Note the a tag is positioned relative.
 [ng-tooltip*="bottom-left"]:before {
   left: 0px; }
 
-/*# sourceMappingURL=ngkit.css.map */
+/*# sourceMappingURL=main.css.map */

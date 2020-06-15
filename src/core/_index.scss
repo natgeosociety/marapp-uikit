@@ -20,22 +20,22 @@
 //
 // ========================================================================
 
-.ng-index { 
-    color: $black; 
-    text-transform: uppercase;  
-    font-size: 13px; 
-    letter-spacing: 2.6px; 
-    font-weight: 400; 
-    font-family: "GeographWeb",Helvetica,Arial,sans-serif;
+.ng-index {
+    color: $black;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 2.6px;
+    font-weight: 400;
+    font-family: $base-heading-font-family;
 
     &.ng-index__light {
         color: $white;
     }
 
     .ng-index-decorator {
-        padding-right: 10px; 
-        margin-right: 13px; 
-        font-weight: 700; 
+        padding-right: 10px;
+        margin-right: 13px;
+        font-weight: 700;
         border-right: 2px solid $ng-gold;
 
         &.ng-index-decorator__light {

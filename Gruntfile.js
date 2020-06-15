@@ -12,8 +12,8 @@ module.exports = function (grunt) {
       },
       dev: {
         files: {
-          'dist/css/ngkit.css': 'src/ngkit.scss',
-          'dist/css/ngkit.min.css': 'src/ngkit.scss'
+          'dist/css/main.css': 'src/main.scss',
+          'dist/css/main.min.css': 'src/main.scss'
         }
       },
       dist: {
@@ -21,7 +21,7 @@ module.exports = function (grunt) {
           outputStyle: 'compressed'
         },
         files: {
-          'dist/css/ngkit.min.css': 'src/ngkit.scss',
+          'dist/css/main.min.css': 'src/main.scss',
         }
       }
     },
