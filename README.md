@@ -1,4 +1,4 @@
-# ngkit
+# Marapp-uikit
 
 A fork of Uikit that includes conversion to scss and additional components
 
