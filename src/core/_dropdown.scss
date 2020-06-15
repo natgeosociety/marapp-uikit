@@ -1,0 +1,675 @@
+// Name:            Dropdown
+// Description:     Defines styles for a toggleable dropdown
+//
+// Component:       `ng-dropdown`
+//
+// Sub-objects:     `ng-dropdown-overlay`
+//
+// Modifiers:       `ng-dropdown-blank`
+//                  `ng-dropdown-top`
+//                  `ng-dropdown-bottom`
+//                  `ng-dropdown-left`
+//                  `ng-dropdown-right`
+//                  `ng-dropdown-justify`
+//                  `ng-dropdown-grid`
+//                  `ng-dropdown-width-2`
+//                  `ng-dropdown-width-3`
+//                  `ng-dropdown-width-4`
+//                  `ng-dropdown-width-5`
+//                  `ng-dropdown-stack`
+//                  `ng-dropdown-small`
+//                  `ng-dropdown-navbar`
+//                  `ng-dropdown-scrollable`
+//
+// States:          `ng-open`
+//
+// Uses:            Animation
+//                  Grid: `ng-width-*`
+//                  Panel: `ng-panel`
+//                  Nav: `ng-nav`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$dropdown-z-index:                               ($global-z-index + 20) !default;
+$dropdown-width:                                 250px !default;
+$dropdown-margin-top:                            0 !default;
+$dropdown-padding:                               0 !default;
+$dropdown-background:                            #fff !default;
+$dropdown-color:                                 $theme-color !default;
+
+$dropdown-font-size:                             1rem !default;
+$dropdown-animation:                             ng-fade !default;
+
+$dropdown-divider-border-width:                  1px !default;
+$dropdown-divider-border:                        $theme-border !default;
+
+$dropdown-small-padding:                         5px !default;
+
+$dropdown-navbar-margin:                         0 !default;
+$dropdown-navbar-background:                     #fff !default;;
+$dropdown-navbar-color:                          $theme-color !default;
+$dropdown-navbar-animation:                      ng-slide-top-fixed !default;
+
+$dropdown-scrollable-height:                     500px !default;
+
+$dropdown-divider-border:                        $theme-border !default;
+
+$dropdown-border:                                darken($theme-border, 7%) !default;
+$dropdown-box-shadow:                            rgba(0,0,0,0.1) !default;
+
+.ng-dropdown-background {background: $dropdown-background;}
+.ng-dropdown-color {background: $dropdown-color;color: #fff}
+
+.ng-dropdown-divider-border {background: $dropdown-divider-border;}
+
+.ng-dropdown-navbar-background {background: $dropdown-navbar-background;}
+.ng-dropdown-navbar-color {background: $dropdown-navbar-color;color: #fff}
+
+.ng-dropdown-divider-border {background: $dropdown-divider-border;color: #fff}
+
+.ng-dropdown-border {background: $dropdown-border;color: #fff}
+.ng-dropdown-box-shadow {background: $dropdown-box-shadow;color: #fff}
+
+
+/* ========================================================================
+   Component: Dropdown
+ ========================================================================== */
+
+/*
+ * 1. Hide by default
+ * 2. Set position
+ * 3. Box-sizing is needed for `ng-dropdown-justify`
+ * 4. Set width
+ */
+
+.ng-dropdown,
+.ng-dropdown-blank {
+    /* 1 */
+    display: none;
+    /* 2 */
+    position: absolute;
+    z-index: $dropdown-z-index;
+    /* 3 */
+    box-sizing: border-box;
+    /* 4 */
+    width: $dropdown-width;
+}
+
+/*
+ * Dropdown style
+ * 1. Reset button group whitespace hack
+ */
+
+.ng-dropdown {
+    padding: $dropdown-padding;
+    background: $dropdown-background;
+    color: $dropdown-color;
+    /* 1 */
+    font-size: $dropdown-font-size;
+    vertical-align: top;
+    border: 1px solid $dropdown-border;
+    box-shadow: 0 2px 5px $dropdown-box-shadow;
+    padding-top: 30px;
+    padding-bottom: 35px;
+    @include hook-dropdown();
+}
+
+/*
+ * 1. Show dropdown
+ * 2. Set animation
+ * 3. Needed for scale animation
+ */
+
+.ng-open > .ng-dropdown,
+.ng-open > .ng-dropdown-blank {
+    /* 1 */
+    display: block;
+    /* 2 */
+    -webkit-animation: $dropdown-animation 0.2s ease-in-out;
+    animation: $dropdown-animation 0.2s ease-in-out;
+    /* 3 */
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+/* Alignment modifiers
+ ========================================================================== */
+
+/*
+ * Modifier
+ */
+
+.ng-dropdown-top { margin-top: (-1 * $dropdown-margin-top); }
+.ng-dropdown-bottom { margin-top: $dropdown-margin-top; }
+.ng-dropdown-left { margin-left: (-1 * $dropdown-margin-top); }
+.ng-dropdown-right { margin-left: $dropdown-margin-top; }
+
+
+/* Nav in dropdown
+ ========================================================================== */
+
+.ng-dropdown .ng-nav { margin: 0 $dropdown-padding * -1; }
+
+
+/* Grid and panel in dropdown
+ ========================================================================== */
+
+/*
+* Vertical gutter
+*/
+
+/*
+ * Grid
+ * Higher specificity to override large gutter
+ */
+
+.ng-grid .ng-dropdown-grid + .ng-dropdown-grid { margin-top: $dropdown-padding; }
+
+/* Panels */
+.ng-dropdown-grid > [class*='ng-width-'] > .ng-panel + .ng-panel { margin-top: $dropdown-padding; }
+
+/* Tablet and bigger */
+@media (min-width: $breakpoint-medium) {
+
+    /*
+     * Horizontal gutter
+     */
+
+    .ng-dropdown:not(.ng-dropdown-stack) > .ng-dropdown-grid {
+        margin-left: $dropdown-padding * -1 ;
+        margin-right: $dropdown-padding * -1;
+    }
+
+    .ng-dropdown:not(.ng-dropdown-stack) > .ng-dropdown-grid > [class*='ng-width-'] {
+        padding-left: $dropdown-padding;
+        padding-right: $dropdown-padding;
+    }
+
+    /*
+     * Column divider
+     */
+
+    .ng-dropdown:not(.ng-dropdown-stack) > .ng-dropdown-grid > [class*='ng-width-']:nth-child(n+2) { border-left: $dropdown-divider-border-width solid $dropdown-divider-border; }
+
+    /*
+     * Width multiplier for dropdown columns
+     */
+
+    .ng-dropdown-width-2:not(.ng-dropdown-stack) { width: $dropdown-width * 2; }
+    .ng-dropdown-width-3:not(.ng-dropdown-stack) { width: $dropdown-width * 3; }
+    .ng-dropdown-width-4:not(.ng-dropdown-stack) { width: $dropdown-width * 4; }
+    .ng-dropdown-width-5:not(.ng-dropdown-stack) { width: $dropdown-width * 5; }
+
+}
+
+/* Phone landscape and smaller */
+@media (max-width: $breakpoint-small-max) {
+
+    /*
+     * Stack columns and take full width
+     */
+
+    .ng-dropdown-grid > [class*='ng-width-'] { width: 100%; }
+
+    /*
+     * Vertical gutter
+     */
+
+    .ng-dropdown-grid > [class*='ng-width-']:nth-child(n+2) { margin-top: $dropdown-padding; }
+
+}
+
+/*
+* Stack grid columns
+*/
+
+.ng-dropdown-stack > .ng-dropdown-grid > [class*='ng-width-'] { width: 100%; }
+
+.ng-dropdown-stack > .ng-dropdown-grid > [class*='ng-width-']:nth-child(n+2) { margin-top: $dropdown-padding; }
+
+
+
+/* Modifier `ng-dropdown-small`
+ ========================================================================== */
+
+/*
+ * Set min-width and text expands dropdown if needed
+ */
+
+.ng-dropdown-small {
+    min-width: 150px;
+    width: auto;
+    padding: $dropdown-small-padding;
+    white-space: nowrap;
+}
+
+/*
+ * Nav in dropdown
+ */
+
+.ng-dropdown-small .ng-nav { margin: 0 -$dropdown-small-padding; }
+
+
+/* Modifier: `ng-dropdown-navbar`
+ ========================================================================== */
+
+.ng-dropdown-navbar {
+    margin-top: $dropdown-navbar-margin;
+    background: $dropdown-navbar-background;
+    color: $dropdown-navbar-color;
+    left: -1px;
+    border: 1px solid $dropdown-border;
+    box-shadow: 0 2px 5px $dropdown-box-shadow;
+    @include hook-dropdown-navbar();
+}
+
+.ng-open > .ng-dropdown-navbar {
+    -webkit-animation: $dropdown-navbar-animation 0.2s ease-in-out;
+    animation: $dropdown-navbar-animation 0.2s ease-in-out;
+}
+
+
+/* Modifier `ng-dropdown-scrollable`
+ ========================================================================== */
+
+/*
+ * Usefull for long lists
+ */
+
+.ng-dropdown-scrollable {
+    overflow-y: auto;
+    max-height: $dropdown-scrollable-height;
+}
+
+
+/* Sub-object: `ng-dropdown-overlay`
+ ========================================================================== */
+
+.ng-dropdown-overlay {
+    @include hook-dropdown-overlay();
+}
+
+.ng-has-subnav {position:relative}
+.ng-dropdown .ng-has-subnav .ng-nav { padding-left: 0; }
+.ng-dropdown .ng-has-subnav:hover .ng-dropdown {
+    z-index:1;
+    display:block;
+}
+.ng-dropdown .ng-dropdown {
+    position: absolute;
+    top:-1 * $dropdown-padding;
+    left:101%;
+    z-index: -1;
+    transition:display linear 0.15s;
+    margin-top: 0
+}
+
+/**
+  New Nav Bar menu over-rides
+**/
+
+header, .ng-header-container {
+
+    .ng-dropdown-navbar{
+        background-color: #222222;
+    }
+
+    .ng-close::after {
+        font-size: 28px;
+    }
+
+    .ng-dropdown-close {
+        position: absolute;
+        right: 25px;
+        top: 15px;
+        height: 21px;
+        width: 21px;
+        color: #999999 !important;
+    }
+
+}
+
+.ng-global-mobile-nav{
+    background-color: #222222 !important;
+}
+
+.ng-give-btn{
+    font-family: $base-body-font-family;
+    font-size:16px;
+}
+
+.ng-navbar-search-toggle-button{
+    margin-left:-50px !important;
+    margin-top:15px !important;
+
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){
+    .ng-navbar-search-toggle-button{
+        margin-left:-50px !important;
+        margin-top:-12px !important;
+    }
+}
+
+.ng-navbar-search-toggle{
+    box-sizing: border-box;
+    display: block;
+    height: 44px;
+    padding: 5px 25px;
+    float: left;
+    border-bottom:none !important;
+    .ng-search-icon, .ng-search-icon svg {
+        fill: #000000;
+    }
+}
+
+.ng-form .ng-navbar-search-toggle{
+    .ng-search-icon, .ng-search-icon svg {
+        fill: #ffffff;
+    }
+}
+
+.ng-search-dropdown, .ng-search-mobile-dropdown{
+  background-color: #222222 !important;
+  color: white;
+
+  form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.ng-dropdown-navbar, .ng-search-dropdown{
+  border: none;
+  .ng-dropdown-grid {
+
+  }
+}
+
+.ng-search-mobile-dropdown{
+  border: none;
+  min-height: inherit;
+}
+
+.ng-navbar-nav > li > a{
+    font-family: $base-heading-font-family !important;
+    font-weight: $base-body-font-weight;
+    letter-spacing: .12em !important;
+    font-size: 15px !important;
+    outline: currentcolor none medium;
+}
+
+.ng-navbar-nav>li>a.master-desk-link:active {
+    background-color: inherit !important;
+    border-left-color: transparent !important;
+    border-right-color: transparent !important;
+    border-top-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.ng-navbar-nav>li>a.master-desk-link:hover {
+    background-color: inherit !important;
+    border-left-color: transparent !important;
+    border-right-color: transparent !important;
+    border-top-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.ng-navbar-nav > li:hover > a, .ng-navbar-nav > li > a:focus, .ng-navbar-nav > li.ng-open > a {
+    background-color: white;
+    border-color:transparent !important;
+    box-shadow: none;
+    color: black;
+    outline: currentcolor none medium;
+    position: relative;
+    z-index: 1;
+    letter-spacing: .12em !important;
+    font-size: 15px !important;
+}
+
+
+.ng-flex-drop-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ng-dropdown-content-box-max-width-500{
+    max-width:96%;
+
+    @media only screen and (min-width :$breakpoint-large) {
+        max-width:600px;
+    }
+}
+
+.ng-dropdown-content-box{
+  .ng-dropdown:not(.ng-dropdown-stack) > .ng-dropdown-grid > [class*="ng-width-"]:nth-child(n+2){
+    border-left: none;
+  }
+
+
+  border-left:2px solid #ffcc00;
+  padding-left:15px;
+  color: white;
+  font-family: $base-heading-font-family !important;
+    font-weight: $base-body-font-weight;
+  margin-top:0;
+  padding-top:0;
+
+
+
+  div.menu-label {
+    font-family: $base-heading-font-family !important;
+    font-weight: $base-body-font-weight;
+    padding-top: 0;
+    color: #ffcc00;
+    letter-spacing: .14em  !important;
+    font-size: calculateRem(28px);
+    margin-bottom:15px;
+    margin-left: 15px;
+    margin-top: -10px;
+    text-transform: uppercase;
+
+    > a:only-child {
+      color: #ffcc00;
+      border: none;
+    }
+  }
+
+
+  a.ng-dropdown-content-link{
+    color:white;
+    display: inline-block;
+    margin-left: 15px;
+    margin-right:15px;
+    border: none !important;
+    text-transform: uppercase;
+    font-size: calculateRem(14px);
+    letter-spacing: .17em;
+
+      &:hover{
+          color: #ffcc00;
+      }
+  }
+
+}
+
+.ng-mobile-dropdown-nav{
+  border:none;
+  color: white;
+  font-family: $base-heading-font-family;
+    font-weight: $base-body-font-weight;
+  margin-top:0;
+  padding-top:0;
+  overflow-y: hidden;
+
+  ul.ng-nav-sub{
+    padding: 0 !important;
+  }
+
+  .ng-nav > li > a {
+    padding: 12px 5px;
+      font-family: $base-heading-font-family !important;
+      font-weight: $base-body-font-weight;
+      letter-spacing: .14em  !important;
+  }
+
+  .ng-nav, .ng-nav ul {
+    padding: 12px 25px;
+  }
+
+  .ng-nav-side > li > a{
+    color:#ffcc00 !important;
+      letter-spacing: .14em  !important;
+    font-size: calculateRem(18px) !important;
+    text-transform: uppercase !important;
+  }
+
+  .ng-parent > a{
+    color:#ffcc00;
+      letter-spacing: .14em  !important;
+    font-size: calculateRem(18px);
+    text-transform: uppercase;
+      font-family: $base-heading-font-family !important;
+      font-weight: $base-body-font-weight;
+  }
+
+  .ng-nav-side > li.ng-active > a {
+    background: inherit;
+    color: inherit;
+  }
+
+  .ng-nav-side > li > a:hover, .ng-nav-side > li > a:focus {
+    background: inherit;
+    color: inherit;
+    outline: none;
+    border-bottom: none;
+  }
+
+  ul.ng-nav-sub li a:hover {
+    color: inherit;
+    background-color: inherit;
+  }
+  .ng-nav-side ul a:hover {
+    color: inherit;
+  }
+
+  .ng-nav-side .ng-nav-divider {
+    border-top: 1px solid #999999 !important;
+    box-shadow: none;
+    width:200%
+  }
+
+  .ng-nav-sub a.ng-dropdown-content-link{
+    color:#ffffff;
+    letter-spacing: .17em !important;
+    font-size: calculateRem(13px);
+    text-transform: uppercase;
+      font-family: $base-heading-font-family !important;
+      font-weight: $base-body-font-weight;
+  }
+
+
+
+
+
+}
+
+
+.ng-search-dropdown{
+  background-color: #222222 !important;
+
+  div.search-label{
+    font-family: $base-heading-font-family !important;
+      font-weight: $base-body-font-weight;
+    padding-top:0;
+    color:#ffcc00;
+    letter-spacing: .12em;
+    font-size: calculateRem(28px);
+    text-transform: uppercase;
+  }
+
+  input{
+    font-size: 24px !important;
+    padding-bottom: 10px !important;
+    padding-left:10px !important;
+  }
+
+  .header-search{
+    font-family: $base-heading-font-family !important;
+      font-weight: $base-body-font-weight;
+    border: none !important;
+    color: #999999 !important;
+    border-bottom: 1px solid #999999 !important;
+    background-color: #222222 !important;
+  }
+}
+
+.header-search::-ms-clear {
+    display: none;
+    //margin-right:15px;
+}
+
+
+.ng-search-mobile-dropdown{
+  background-color: #222222 !important;
+
+  div.search-label{
+    font-family: $base-heading-font-family !important;
+      font-weight: $base-body-font-weight;
+    padding-top:0;
+    color:#ffcc00;
+      letter-spacing: .14em  !important;
+    font-size: calculateRem(18px);
+    text-transform: uppercase;
+  }
+
+  input{
+    font-size: 16px !important;
+    padding-bottom: 10px !important;
+    padding-left:10px !important;
+    width:250px !important;
+  }
+
+  button{
+    padding:0 !important;
+    margin:0 !important;
+  }
+
+  .header-search{
+    font-family: $base-heading-font-family !important;
+      weight:400;
+    border: none !important;
+    color: #999999 !important;
+    border-bottom: 1px solid #999999 !important;
+    background-color: #222222 !important;
+  }
+}
+
+.ng-open>.ng-dropdown-navbar {
+    -webkit-animation: ng-animation-fade 1.2s ease-in-out;
+    animation: ng-animation-fade 1.2s ease-in-out;
+}
+
+.ng-button-primary-enforce:active, .ng-button-primary-enforce:hover{
+    background-color: #e6b800 !important;
+    color: #000 !important;
+    background-image: none !important;
+    border-color: #e6b800 !important;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2) !important;
+}
+
+// Hooks
+// ========================================================================
+
+@include hook-dropdown-misc();
+
+// @mixin hook-dropdown(){}
+// @mixin hook-dropdown-navbar(){}
+// @mixin hook-dropdown-overlay(){}
+// @mixin hook-dropdown-misc(){}

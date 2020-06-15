@@ -1,0 +1,380 @@
+// Name:            Modal
+// Description:     Defines styles for modal dialogs
+//
+// Component:       `ng-modal`
+//
+// Sub-objects:     `ng-modal-dialog`
+//                  `ng-modal-close`
+//                  `ng-modal-header`
+//                  `ng-modal-footer`
+//                  `ng-modal-caption`
+//                  `ng-modal-spinner`
+//
+// Modifiers:       `ng-modal-dialog-lightbox`
+//                  `ng-modal-dialog-blank`
+//                  `ng-modal-dialog-large`
+//
+// States:          `ng-open`
+//
+// Uses:            Close: `ng-close`
+//
+// Markup:
+//
+// <!-- ng-modal -->
+// <a href="#modal" data-ng-modal=""></a>
+// <div id="modal" class="ng-modal">
+//     <div class="ng-modal-dialog">
+//         <a href="" class="ng-modal-close ng-close"></a>
+//         <p></p>
+//     </div>
+// </div>
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$modal-z-index:                                 ($global-z-index + 10) !default;
+$modal-background:                              rgba(0,0,0,0.6) !default;
+
+$modal-dialog-margin-vertical:                  50px !default;
+$modal-dialog-padding:                          20px !default;
+$modal-dialog-width:                            600px !default;
+$modal-dialog-background:                       $global-background !default;
+
+$modal-dialog-large-width:                      930px !default;
+$modal-dialog-large-width-large:                1130px !default;
+
+$modal-header-margin-bottom:                    0 !default;
+$modal-body-margin-bottom:                      10px !default;
+$modal-footer-margin-top:                       0 !default;
+
+$modal-caption-margin-bottom:                   -10px !default;
+$modal-caption-color:                           $global-contrast-color;
+
+.ng-modal-dialog-background {background: $modal-dialog-background;}
+.ng-modal-background {background: $modal-background;color: #fff}
+.ng-modal-caption-color {background: $modal-caption-color}
+
+/* ========================================================================
+   Component: Modal
+ ========================================================================== */
+
+/*
+ * This is the modal overlay and modal dialog container
+ * 1. Hide by default
+ * 2. Set fixed position
+ * 3. Allow scrolling for the modal dialog
+ * 4. Mask the background page
+ * 5. Fade-in transition
+ * 6. Deactivate browser history navigation in IE11
+ * 7. force hardware acceleration to prevent browser rendering hiccups
+ */
+
+.ng-modal {
+    /* 1 */
+    display: none;
+    /* 2 */
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $modal-z-index;
+    /* 3 */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    /* 4 */
+    background: $modal-background;
+    /* 5 */
+    opacity: 0;
+    -webkit-transition: opacity 0.15s linear;
+    transition: opacity 0.15s linear;
+    /* 6 */
+    touch-action: cross-slide-y pinch-zoom double-tap-zoom;
+    /* 7 */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    @include hook-modal();
+}
+
+/*
+ * Open state
+ */
+
+.ng-modal.ng-open { opacity: 1; }
+
+/*
+ * Prevents duplicated scrollbar caused by 4.
+ */
+
+.ng-modal-page,
+.ng-modal-page body { overflow: hidden; }
+
+
+/* Sub-object: `ng-modal-dialog`
+ ========================================================================== */
+
+/*
+ * 1. Create position context for `ng-modal-dialog-lightbox`
+ * 2. Set box sizing
+ * 3. Set style
+ * 4. Slide-in transition
+ */
+
+.ng-modal-dialog {
+    /* 1 */
+    position: relative;
+    /* 2 */
+    box-sizing: border-box;
+    margin: $modal-dialog-margin-vertical auto;
+    padding: $modal-dialog-padding;
+    width: $modal-dialog-width;
+    max-width: 100%;
+    max-width: calc(100% - 20px);
+    /* 3 */
+    background: $modal-dialog-background;
+    /* 4 */
+    opacity: 0;
+    -webkit-transform: translateY(-100px);
+    transform: translateY(-100px);
+    -webkit-transition: opacity 0.3s linear, -webkit-transform 0.3s ease-out;
+    transition: opacity 0.3s linear, transform 0.3s ease-out;
+    border-radius: $global-border-radius;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    @include hook-modal-dialog();
+}
+
+/* Phone landscape and smaller */
+@media (max-width: $breakpoint-small-max) {
+
+    /*
+     * Fit in small screen
+     */
+
+    .ng-modal-dialog {
+        width: auto;
+        margin: 10px auto;
+    }
+
+}
+
+/*
+ * Open state
+ */
+
+.ng-open .ng-modal-dialog {
+    /* 4 */
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+}
+
+/*
+ * Remove margin from the last-child
+ */
+
+.ng-modal-dialog > :not([class*='ng-modal-']):last-child { margin-bottom: 0; }
+
+
+/* Close in modal
+ ========================================================================== */
+
+.ng-modal-dialog > .ng-close:first-child {
+    margin: -10px -10px 0 0;
+    float: right;
+}
+
+/*
+ * Remove margin from adjacent element
+ */
+
+ .ng-modal-dialog > .ng-close:first-child + *:not([class*='ng-modal-']) { margin-top: 0; }
+
+
+/* Modifier: `ng-modal-dialog-lightbox`
+ ========================================================================== */
+
+.ng-modal-dialog-lightbox {
+    margin: 15px auto;
+    padding: 0;
+    max-width: 95%;
+    max-width: calc(100% - 30px);
+    min-height: 50px;
+    border-radius: 0;
+    @include hook-modal-dialog-lightbox();
+}
+
+/*
+ * Close button
+ */
+
+.ng-modal-dialog-lightbox > .ng-close:first-child {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    margin: 0;
+    float: none;
+}
+
+/* Phone landscape and smaller */
+@media (max-width: $breakpoint-small-max) {
+
+    .ng-modal-dialog-lightbox > .ng-close:first-child {
+        top: -7px;
+        right: -7px;
+    }
+
+}
+
+/* Modifier: `ng-modal-dialog-blank`
+ ========================================================================== */
+
+.ng-modal-dialog-blank {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    -webkit-transition: opacity 0.3s linear;
+    transition: opacity 0.3s linear;
+}
+
+/*
+* Close button
+*/
+
+.ng-modal-dialog-blank > .ng-close:first-child {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+    margin: 0;
+    float: none;
+}
+
+
+/* Modifier: `ng-modal-dialog-large`
+ ========================================================================== */
+
+/* Tablet and bigger */
+@media (min-width: $breakpoint-medium) {
+
+    .ng-modal-dialog-large { width: $modal-dialog-large-width; }
+
+}
+
+/* Large screen and bigger */
+@media (min-width: $breakpoint-xlarge) {
+
+    .ng-modal-dialog-large { width: $modal-dialog-large-width-large; }
+
+}
+
+
+/* Sub-Object: `ng-modal-header` and `ng-modal-footer`
+ ========================================================================== */
+
+.ng-modal-header {
+    margin: (-10px) (-$modal-dialog-padding) $modal-header-margin-bottom (-$modal-dialog-padding);
+    padding: $modal-dialog-padding;
+    border-radius: $global-border-radius $global-border-radius 0 0;
+    @include hook-modal-header();
+}
+
+.ng-modal-footer {
+    margin: $modal-footer-margin-top (-$modal-dialog-padding) (-$modal-dialog-padding) (-$modal-dialog-padding);
+    padding: $modal-dialog-padding;
+    border-radius: 0 0 $global-border-radius $global-border-radius;
+    @include hook-modal-footer();
+}
+
+/*
+ * Remove margin from the last-child
+ */
+
+.ng-modal-header  > :last-child,
+.ng-modal-footer  > :last-child { margin-bottom: 0; }
+
+
+/* Sub-Object: `ng-modal-caption`
+ ========================================================================== */
+
+.ng-modal-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: (-$modal-dialog-padding);
+    margin-bottom: $modal-caption-margin-bottom;
+    color: $modal-caption-color;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    @include hook-modal-caption();
+}
+
+
+/* Sub-Object: `ng-modal-spinner`
+ ========================================================================== */
+
+.ng-modal-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    font-size: 25px;
+    color: #ddd;
+    @include hook-modal-spinner();
+}
+
+.ng-modal-spinner:after {
+    content: $icn-spinner;
+    display: block;
+    font-family: $icon-font-family;
+    -webkit-animation: ng-rotate 2s infinite linear;
+    animation: ng-rotate 2s infinite linear;
+}
+
+.ng-modal-dialog > .ng-close:first-child {
+    margin: -6px -3px 0 0;
+}
+.ng-modal-body {
+    margin-bottom: $modal-body-margin-bottom;
+}
+.ng-modal-footer a {
+    margin-left: 20px;
+}
+@media (max-width: $breakpoint-small-max) {
+    .ng-modal-dialog {
+        border-radius: 0;
+        margin: 0;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: $breakpoint-mini-max) {
+    .ng-modal-footer {
+        text-align: center;
+    }
+    .ng-modal-footer a {
+        width: 83.333%;
+        float: none;
+        margin-left: 0;
+    }
+}
+
+// Hooks
+// ========================================================================
+
+@include hook-modal-misc();
+
+// @mixin hook-modal(){}
+// @mixin hook-modal-dialog(){}
+// @mixin hook-modal-dialog-lightbox(){}
+// @mixin hook-modal-header(){}
+// @mixin hook-modal-footer(){}
+// @mixin hook-modal-caption(){}
+// @mixin hook-modal-spinner(){}
+// @mixin hook-modal-misc(){}

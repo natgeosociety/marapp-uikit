@@ -1,0 +1,49 @@
+// Name:            Index
+// Description:     Defines styles for Index
+//
+// Component:       `ng-index`
+//
+// Sub-objects:     none
+//
+// Modifiers:       `dark`
+//                  `neutral`
+//
+// Uses:            none
+//
+// Markup:
+//
+// <!-- ng-index -->
+// <section class="ng-index">
+//   <span class="ng-index-decorator">Resource Library</span>
+//   50 Resources
+// </section>
+//
+// ========================================================================
+
+.ng-index { 
+    color: $black; 
+    text-transform: uppercase;  
+    font-size: 13px; 
+    letter-spacing: 2.6px; 
+    font-weight: 400; 
+    font-family: "GeographWeb",Helvetica,Arial,sans-serif;
+
+    &.ng-index__light {
+        color: $white;
+    }
+
+    .ng-index-decorator {
+        padding-right: 10px; 
+        margin-right: 13px; 
+        font-weight: 700; 
+        border-right: 2px solid $ng-gold;
+
+        &.ng-index-decorator__light {
+            color: $white;
+        }
+
+        &.ng-index-decorator__dark {
+            border-right-color: $black;
+        }
+    }
+}

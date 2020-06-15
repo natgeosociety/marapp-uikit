@@ -1,0 +1,287 @@
+// Name:            Pagination
+// Description:     Defines styles for a navigation between pages
+//
+// Component:       `ng-pagination`
+//
+// Sub-objects:     `ng-pagination-previous`
+//                  `ng-pagination-next`
+//
+// Modifiers:       `ng-pagination-left`
+//                  `ng-pagination-right`
+//
+// States:          `ng-active`
+//                  `ng-disabled`
+//
+// Markup:
+//
+// <!-- ng-pagination -->
+// <ul class="ng-pagination">
+//     <li class="ng-active"><span></span></li>
+//     <li><a href=""></a></li>
+// </ul>
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$pagination-font-size:                          1rem !default;
+$pagination-line-height:                        $global-line-height !default;
+
+$pagination-margin-left:                        5px !default;
+$pagination-padding-vertical:                   0px !default;
+$pagination-padding-horizontal:                 6px !default;
+
+$pagination-background:                         transparent !default;
+$pagination-color:                              $global-color !default;
+$pagination-hover-background:                   transparent !default;
+$pagination-hover-color:                        $global-color !default;
+$pagination-onclick-background:                 inherit !default;
+$pagination-onclick-color:                      $global-color !default;
+
+$pagination-active-background:                  transparent !default;
+$pagination-active-color:                       #666 !default;
+
+$pagination-disabled-background:                transparent !default;
+$pagination-disabled-color:                     $global-muted-color !default;
+
+$pagination-border:                             $global-border !default;
+$pagination-border-bottom:                      rgba(0,0,0,0.3) !default;
+$pagination-active-border:                      rgba(0,0,0,0.2) !default;
+$pagination-active-border-bottom:               rgba(0,0,0,0.4) !default;
+$pagination-text-shadow:                        $global-text-shadow !default;
+
+$pagination-contrast-text-shadow:               $global-contrast-text-shadow !default;
+
+.ng-pagination-background {background: $pagination-background; }
+.ng-pagination-color {background: $pagination-color; color: #fff}
+.ng-pagination-hover-background {background: $pagination-hover-background;}
+.ng-pagination-hover-color {background: $pagination-hover-color; color: #fff}
+.ng-pagination-onclick-background {background: $pagination-onclick-background;}
+.ng-pagination-onclick-color {background: $pagination-onclick-color; color: #fff}
+.ng-pagination-active-background {background: $pagination-active-background; color: #fff}
+.ng-pagination-active-color {background: $pagination-active-color;}
+.ng-pagination-disabled-color {background: $pagination-disabled-color; color: #fff}.ng-pagination-border { background: $pagination-border}
+.ng-pagination-border-bottom { background: $pagination-border-bottom}
+.ng-pagination-active-border { background: $pagination-active-border}
+.ng-pagination-active-border-bottom { background: $pagination-active-border-bottom}
+.ng-pagination-disabled-background {background: $pagination-disabled-background}
+
+
+
+/* ========================================================================
+   Component: Pagination
+ ========================================================================== */
+
+/*
+ * 1. Remove default list style
+ * 2. Center pagination by default
+ * 3. Remove whitespace between child elements when using `inline-block`
+ */
+
+.ng-pagination {
+    /* 1 */
+    padding: 0;
+    list-style: none;
+    /* 2 */
+    text-align: center;
+    /* 3 */
+    font-size: 0;
+}
+
+/*
+ * Micro clearfix
+ * Needed if `ng-pagination-previous` or `ng-pagination-next` sub-objects are used
+ */
+
+.ng-pagination:before,
+.ng-pagination:after {
+    content: " ";
+    display: table;
+}
+
+.ng-pagination:after { clear: both; }
+
+
+/* Items
+ ========================================================================== */
+
+/*
+ * 1. Reset whitespace hack
+ * 2. Remove the gap at the bottom of it container
+ */
+
+.ng-pagination > li {
+    display: inline-block;
+    /* 1 */
+    font-size: 1rem;
+    /* 2 */
+    vertical-align: top;
+    border-right: 1px solid $pagination-border;
+}
+
+.ng-pagination > li:nth-child(n+2) { margin-left: $pagination-margin-left; }
+
+/*
+ * 1. Makes pagination more robust against different box-sizing use
+ * 2. Reset text-align to center if alignment modifier is used
+ */
+
+.ng-pagination > li > a,
+.ng-pagination > li > span {
+    display: inline-block;
+    min-width: $pagination-line-height + (2 * $pagination-padding-vertical) - (2 * $pagination-padding-horizontal);
+    padding: $pagination-padding-vertical $pagination-padding-horizontal;
+    line-height: $pagination-line-height;
+    text-decoration: none;
+    /* 1 */
+    box-sizing: content-box;
+    /* 2 */
+    text-align: center;
+    border-radius: $global-border-radius;
+    color: $pagination-color;
+    border:none;
+    border-right: none;
+    border-bottom: 1px solid transparent;
+    border-radius: 0;
+    text-shadow: none;
+    margin:0 4px;
+    font-family: $base-body-font-family;
+    font-size: 1rem;
+    font-weight: $base-body-font-weight;
+    line-height: 1.3;
+    word-spacing: .05em;
+    @include hook-pagination-item();
+}
+
+/*
+ * Links
+ */
+
+.ng-pagination > li > a {
+    background: $pagination-background;
+    color: $pagination-color;
+    background-origin: border-box; // 1
+    @include hook-pagination-link();
+}
+
+.ng-pagination > li > a > i {
+    color: #999;
+}
+
+.ng-pagination > li > a > i:hover {
+    color: $pagination-hover-color;
+}
+
+/*
+ * Hover
+ * 1. Apply hover style also to focus state
+ * 2. Remove default focus style
+ */
+
+.ng-pagination > li > a:hover,
+.ng-pagination > li > a:focus { // 1
+    background-color: $pagination-hover-background;
+    color: $pagination-hover-color;
+    /* 2 */
+    outline: none;
+    background-image: none;
+    border-bottom: 1px solid $theme-primary-color;
+    @include hook-pagination-link-hover();
+}
+
+/* OnClick */
+.ng-pagination > li > a:active {
+    background-color: $pagination-onclick-background;
+    color: $pagination-onclick-color;
+    border-color: transparent;
+    border-top-color: transparent;
+    background-image: none;
+    box-shadow: none;
+    @include hook-pagination-link-active();
+}
+
+/*
+ * Active
+ */
+
+.ng-pagination > .ng-active > span {
+    background: $pagination-active-background;
+    color: $pagination-active-color;
+    border: none;
+    border-bottom-color: $pagination-active-border-bottom;
+    background-origin: border-box; // 1
+    text-shadow: none;
+    @include hook-pagination-active();
+}
+
+/*
+ * Disabled
+ */
+
+.ng-pagination > .ng-disabled > span {
+    background-color: $pagination-disabled-background;
+    color: $pagination-disabled-color;
+    border: none;
+    text-shadow: none;
+    @include hook-pagination-disabled();
+}
+
+
+/* Previous and next navigation
+ ========================================================================== */
+
+.ng-pagination-previous { float: left; border: none !important}
+.ng-pagination-previous a { border: none !important}
+.ng-pagination-next { float: right; border: none !important}
+.ng-pagination-next a { border: none !important}
+
+
+/* Alignment modifiers
+ ========================================================================== */
+
+.ng-pagination-left { text-align: left; }
+.ng-pagination-right { text-align: right; }
+
+.ng-pagination > li:nth-child(n+2) {
+    margin-left: 0;
+}
+
+li.li-pagination-arrows{
+    border-right:none !important;
+}
+
+.ng-pagination > li .pagination-arrows{
+    padding: 0 2px;
+    margin: 0;
+    font-size: 30px;
+    margin-top: -6px;
+    border-right: none !important;
+}
+
+.ng-pagination > li .pagination-arrows:hover{
+    border-bottom: 1px solid transparent;
+}
+
+.ng-pagination > li .pagination-arrows:last-of-type{
+    margin-left: 6px;
+}
+
+.ng-pagination > li:last-child {
+    border-right: none;
+}
+
+
+// Hooks
+// ========================================================================
+
+@include hook-pagination-misc();
+
+// @mixin hook-pagination-item(){}
+// @mixin hook-pagination-link(){}
+// @mixin hook-pagination-link-hover(){}
+// @mixin hook-pagination-link-active(){}
+// @mixin hook-pagination-active(){}
+// @mixin hook-pagination-disabled(){}
+// @mixin hook-pagination-misc(){}

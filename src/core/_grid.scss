@@ -1,0 +1,862 @@
+// Name:            Grid
+// Description:     Provides a responsive, fluid and nestable grid
+//
+// Component:       `ng-grid`
+//                  `ng-width-*`
+//                  `ng-push-*`
+//                  `ng-pull-*`
+//
+// Modifiers:       `ng-grid-collapse`
+//                  `ng-grid-small`
+//                  `ng-grid-medium`
+//                  `ng-grid-large`
+//                  `ng-grid-divider`
+//                  `ng-grid-margin`
+//                  `ng-grid-match`
+//                  `ng-grid-width-*`
+//
+// Uses:            Panel: `ng-panel`
+//
+// Used by:         Dropdown
+//
+// Markup:
+//
+// <!-- ng-grid -->
+// <div class="ng-grid">
+//     <div class="ng-width-1-2"></div>
+//     <div class="ng-width-1-2"></div>
+// </div>
+//
+// <!-- ng-grid-divider -->
+// <div class="ng-grid ng-grid-divider">
+//     <div class="ng-width-1-2"></div>
+//     <div class="ng-width-1-2"></div>
+// </div>
+// <hr class="ng-grid-divider">
+// <div class="ng-grid ng-grid-divider">
+//     <div class="ng-width-1-2"></div>
+//     <div class="ng-width-1-2"></div>
+// </div>
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$grid-gutter-horizontal:                        $global-grid-gutter !default;
+$grid-gutter-vertical:                          35px !default;
+
+$grid-large-gutter-horizontal:                  $global-grid-large-gutter !default;
+$grid-large-gutter-vertical:                    35px !default;
+
+$grid-gutter-xlarge-horizontal:                  50px !default;
+$grid-gutter-xlarge-vertical:                    50px !default;
+
+$grid-gutter-small-horizontal:                  10px !default;
+$grid-gutter-small-vertical:                    25px !default;
+
+$grid-divider-border:                           $global-border !default;
+$grid-divider-border-width:                     1px !default;
+
+/* ========================================================================
+   Component: Grid
+ ========================================================================== */
+
+/*
+ * 1. Needed for the gutter
+ */
+
+.ng-grid {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    /* 1 */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/*
+ * DEPRECATED
+ * Micro clearfix
+ * Can't use `table` because it creates a 1px gap when it becomes a flex item, only in Webkit
+ */
+
+.ng-grid:before,
+.ng-grid:after {
+    content: "";
+    display: block;
+    overflow: hidden;
+}
+
+.ng-grid:after { clear: both; }
+
+/*
+ * Grid cell
+ * 1. Space is allocated solely based on content dimensions
+ * 2. Makes grid more robust so that it can be used with other block elements
+ * 4. DEPRECATED Using `float` to support IE9
+ */
+
+.ng-grid > * {
+    /* 1 */
+    -ms-flex: none;
+    -webkit-flex: none;
+    flex: none;
+    /* 2 */
+    margin: 0;
+    /* 4 */
+    float: left;
+}
+
+/*
+ * Remove margin from the last-child
+ */
+
+.ng-grid > * > :last-child { margin-bottom: 0; }
+
+
+/* Grid gutter
+ ========================================================================== */
+
+/*
+ * Default gutter
+ */
+
+/* Horizontal */
+.ng-grid { margin-left: -$grid-gutter-horizontal; }
+.ng-grid > * { padding-left: $grid-gutter-horizontal; }
+
+/* Vertical */
+.ng-grid + .ng-grid,
+.ng-grid-margin,
+.ng-grid > * > .ng-panel + .ng-panel { margin-top: $grid-gutter-vertical; }
+
+/* Large screen and bigger */
+@media (min-width: $breakpoint-xlarge) {
+
+    /* Horizontal */
+    .ng-grid { margin-left: -$grid-gutter-large-horizontal; }
+    .ng-grid > * { padding-left: $grid-gutter-large-horizontal; }
+
+    /* Vertical */
+    .ng-grid + .ng-grid,
+    .ng-grid-margin,
+    .ng-grid > * > .ng-panel + .ng-panel { margin-top: $grid-gutter-large-vertical; }
+
+}
+
+/*
+ * Collapse gutter
+ */
+
+/* Horizontal */
+.ng-grid-collapse { margin-left: 0; }
+.ng-grid-collapse > * { padding-left: 0; }
+
+/* Vertical */
+.ng-grid-collapse + .ng-grid-collapse,
+.ng-grid-collapse > .ng-grid-margin,
+.ng-grid-collapse > * > .ng-panel + .ng-panel { margin-top: 0; }
+
+/*
+ * Small gutter
+ */
+
+/* Horizontal */
+.ng-grid-small { margin-left: -$grid-gutter-small-horizontal; }
+.ng-grid-small > * { padding-left: $grid-gutter-small-horizontal; }
+
+/* Vertical */
+.ng-grid-small + .ng-grid-small,
+.ng-grid-small > .ng-grid-margin,
+.ng-grid-small > * > .ng-panel + .ng-panel { margin-top: $grid-gutter-small-vertical; }
+
+/*
+ * Medium gutter
+ */
+
+/* Horizontal */
+.ng-grid-medium { margin-left: -$grid-gutter-horizontal; }
+.ng-grid-medium > * { padding-left: $grid-gutter-horizontal; }
+
+/* Vertical */
+.ng-grid-medium + .ng-grid-medium,
+.ng-grid-medium > .ng-grid-margin,
+.ng-grid-medium > * > .ng-panel + .ng-panel { margin-top: $grid-gutter-vertical; }
+
+
+/*
+ * Large gutter
+ */
+
+/* Large screen and bigger */
+@media (min-width: $breakpoint-large) {
+
+    /* Horizontal */
+    .ng-grid-large { margin-left: -$grid-gutter-large-horizontal; }
+    .ng-grid-large > * { padding-left: $grid-gutter-large-horizontal; }
+
+    /* Vertical */
+    .ng-grid-large + .ng-grid-large,
+    .ng-grid-large-margin,
+    .ng-grid-large > * > .ng-panel + .ng-panel { margin-top: $grid-gutter-large-vertical; }
+
+}
+
+/* Extra Large screens */
+@media (min-width: $breakpoint-xlarge) {
+
+    /* Horizontal */
+    .ng-grid-large { margin-left: -$grid-gutter-xlarge-horizontal; }
+    .ng-grid-large > * { padding-left: $grid-gutter-xlarge-horizontal; }
+
+    /* Vertical */
+    .ng-grid-large + .ng-grid-large,
+    .ng-grid-large-margin,
+    .ng-grid-large > * > .ng-panel + .ng-panel { margin-top: $grid-gutter-xlarge-vertical; }
+
+}
+
+
+/* Modifier: `ng-grid-divider`
+ ========================================================================== */
+
+/*
+ * Horizontal divider
+ * Only works with the default gutter. Does not work with gutter collapse, small or large.
+ * Does not work with `ng-push-*`, `ng-pull-*` and not if the columns float into the next row.
+ */
+
+.ng-grid-divider:not(:empty) {
+    margin-left: $grid-gutter-horizontal * -1;
+    margin-right: $grid-gutter-horizontal * -1;
+}
+
+.ng-grid-divider > * {
+    padding-left: $grid-gutter-horizontal;
+    padding-right: $grid-gutter-horizontal;
+}
+
+.ng-grid-divider > [class*='ng-width-1-']:not(.ng-width-1-1):nth-child(n+2),
+.ng-grid-divider > [class*='ng-width-2-']:nth-child(n+2),
+.ng-grid-divider > [class*='ng-width-3-']:nth-child(n+2),
+.ng-grid-divider > [class*='ng-width-4-']:nth-child(n+2),
+.ng-grid-divider > [class*='ng-width-5-']:nth-child(n+2),
+.ng-grid-divider > [class*='ng-width-6-']:nth-child(n+2),
+.ng-grid-divider > [class*='ng-width-7-']:nth-child(n+2),
+.ng-grid-divider > [class*='ng-width-8-']:nth-child(n+2),
+.ng-grid-divider > [class*='ng-width-9-']:nth-child(n+2) { border-left: $grid-divider-border-width solid $grid-divider-border; }
+
+/* Tablet and bigger */
+@media (min-width: $breakpoint-medium) {
+
+    .ng-grid-divider > [class*='ng-width-medium-']:not(.ng-width-medium-1-1):nth-child(n+2) { border-left: $grid-divider-border-width solid $grid-divider-border; }
+
+}
+
+/* Desktop and bigger */
+@media (min-width: $breakpoint-large) {
+
+    .ng-grid-divider > [class*='ng-width-large-']:not(.ng-width-large-1-1):nth-child(n+2) { border-left: $grid-divider-border-width solid $grid-divider-border; }
+
+}
+
+/* Large screen and bigger */
+@media (min-width: $breakpoint-xlarge) {
+
+    /*
+     * Large gutter
+     */
+
+    .ng-grid-divider:not(.ng-grid-preserve):not(:empty) {
+        margin-left: $grid-gutter-large-horizontal * -1;
+        margin-right: $grid-gutter-large-horizontal * -1;
+    }
+
+    .ng-grid-divider:not(.ng-grid-preserve) > * {
+        padding-left: $grid-gutter-large-horizontal;
+        padding-right: $grid-gutter-large-horizontal;
+    }
+
+    .ng-grid-divider:not(.ng-grid-preserve):empty {
+        margin-top: $grid-gutter-large-vertical;
+        margin-bottom: $grid-gutter-large-vertical
+    }
+
+}
+
+/*
+ * Vertical divider
+ */
+
+.ng-grid-divider:empty {
+    margin-top: $grid-gutter-vertical;
+    margin-bottom: $grid-gutter-vertical;
+    border-top: $grid-divider-border-width solid $grid-divider-border;
+}
+
+.ng-grid-divider-border {
+    background-color: $grid-divider-border;
+}
+
+/* Match panels in grids
+ ========================================================================== */
+
+/*
+ * 1. Behave like a block element
+ */
+
+.ng-grid-match > * {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    /* 1 */
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.ng-grid-match > * > * {
+    /* 1 */
+    -ms-flex: none;
+    -webkit-flex: none;
+    flex: none;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+
+/* Even grid cell widths
+ ========================================================================== */
+
+[class*='ng-grid-width'] > * {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.ng-grid-width-1-2 > * { width: 50%; }
+.ng-grid-width-1-3 > * { width: 33.333%; }
+.ng-grid-width-1-4 > * { width: 25%; }
+.ng-grid-width-1-5 > * { width: 20%; }
+.ng-grid-width-1-6 > * { width: 16.666%; }
+.ng-grid-width-1-10 > * { width: 10%; }
+
+.ng-grid-width-auto > * { width: auto; }
+
+/* Phone landscape and bigger */
+@media (min-width: $breakpoint-small) {
+
+    .ng-grid-width-small-1-1 > * { width: 100%; }
+    .ng-grid-width-small-1-2 > * { width: 50%; }
+    .ng-grid-width-small-1-3 > * { width: 33.333%; }
+    .ng-grid-width-small-1-4 > * { width: 25%; }
+    .ng-grid-width-small-1-5 > * { width: 20%; }
+    .ng-grid-width-small-1-6 > * { width: 16.666%; }
+    .ng-grid-width-small-1-10 > * { width: 10%; }
+
+}
+
+/* Tablet and bigger */
+@media (min-width: $breakpoint-medium) {
+
+    .ng-grid-width-medium-1-1 > * { width: 100%; }
+    .ng-grid-width-medium-1-2 > * { width: 50%; }
+    .ng-grid-width-medium-1-3 > * { width: 33.333%; }
+    .ng-grid-width-medium-1-4 > * { width: 25%; }
+    .ng-grid-width-medium-1-5 > * { width: 20%; }
+    .ng-grid-width-medium-1-6 > * { width: 16.666%; }
+    .ng-grid-width-medium-1-10 > * { width: 10%; }
+
+}
+
+/* Desktop and bigger */
+@media (min-width: $breakpoint-large) {
+
+    .ng-grid-width-large-1-1 > * { width: 100%; }
+    .ng-grid-width-large-1-2 > * { width: 50%; }
+    .ng-grid-width-large-1-3 > * { width: 33.333%; }
+    .ng-grid-width-large-1-4 > * { width: 25%; }
+    .ng-grid-width-large-1-5 > * { width: 20%; }
+    .ng-grid-width-large-1-6 > * { width: 16.666%; }
+    .ng-grid-width-large-1-10 > * { width: 10%; }
+
+}
+
+/* Large screen and bigger */
+@media (min-width: $breakpoint-xlarge) {
+
+    .ng-grid-width-xlarge-1-1 > * { width: 100%; }
+    .ng-grid-width-xlarge-1-2 > * { width: 50%; }
+    .ng-grid-width-xlarge-1-3 > * { width: 33.333%; }
+    .ng-grid-width-xlarge-1-4 > * { width: 25%; }
+    .ng-grid-width-xlarge-1-5 > * { width: 20%; }
+    .ng-grid-width-xlarge-1-6 > * { width: 16.666%; }
+    .ng-grid-width-xlarge-1-10 > * { width: 10%; }
+
+}
+
+
+/* Sub-objects: `ng-width-*`
+ ========================================================================== */
+
+[class*='ng-width'] {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/*
+ * Widths
+ */
+
+/* Whole */
+.ng-width-1-1 { width: 100%; }
+
+/* Halves */
+.ng-width-1-2,
+.ng-width-2-4,
+.ng-width-3-6,
+.ng-width-5-10 { width: 50%; }
+
+/* Thirds */
+.ng-width-1-3,
+.ng-width-2-6 { width: 33.333%; }
+.ng-width-2-3,
+.ng-width-4-6 { width: 66.666%; }
+
+/* Quarters */
+.ng-width-1-4 { width: 25%; }
+.ng-width-3-4 { width: 75%; }
+
+/* Fifths */
+.ng-width-1-5,
+.ng-width-2-10 { width: 20%; }
+.ng-width-2-5,
+.ng-width-4-10 { width: 40%; }
+.ng-width-3-5,
+.ng-width-6-10 { width: 60%; }
+.ng-width-4-5,
+.ng-width-8-10 { width: 80%; }
+
+/* Sixths */
+.ng-width-1-6 { width: 16.666%; }
+.ng-width-5-6 { width: 83.333%; }
+
+/* Tenths */
+.ng-width-1-10 { width: 10%; }
+.ng-width-3-10 { width: 30%; }
+.ng-width-7-10 { width: 70%; }
+.ng-width-9-10 { width: 90%; }
+
+/* Phone landscape and bigger */
+@media (min-width: $breakpoint-small) {
+
+    /* Whole */
+    .ng-width-small-1-1 { width: 100%; }
+
+    /* Halves */
+    .ng-width-small-1-2,
+    .ng-width-small-2-4,
+    .ng-width-small-3-6,
+    .ng-width-small-5-10 { width: 50%; }
+
+    /* Thirds */
+    .ng-width-small-1-3,
+    .ng-width-small-2-6 { width: 33.333%; }
+    .ng-width-small-2-3,
+    .ng-width-small-4-6 { width: 66.666%; }
+
+    /* Quarters */
+    .ng-width-small-1-4 { width: 25%; }
+    .ng-width-small-3-4 { width: 75%; }
+
+    /* Fifths */
+    .ng-width-small-1-5,
+    .ng-width-small-2-10 { width: 20%; }
+    .ng-width-small-2-5,
+    .ng-width-small-4-10 { width: 40%; }
+    .ng-width-small-3-5,
+    .ng-width-small-6-10 { width: 60%; }
+    .ng-width-small-4-5,
+    .ng-width-small-8-10 { width: 80%; }
+
+    /* Sixths */
+    .ng-width-small-1-6 { width: 16.666%; }
+    .ng-width-small-5-6 { width: 83.333%; }
+
+    /* Tenths */
+    .ng-width-small-1-10 { width: 10%; }
+    .ng-width-small-3-10 { width: 30%; }
+    .ng-width-small-7-10 { width: 70%; }
+    .ng-width-small-9-10 { width: 90%; }
+
+}
+
+/* Tablet and bigger */
+@media (min-width: $breakpoint-medium) {
+
+    /* Whole */
+    .ng-width-medium-1-1 { width: 100%; }
+
+    /* Halves */
+    .ng-width-medium-1-2,
+    .ng-width-medium-2-4,
+    .ng-width-medium-3-6,
+    .ng-width-medium-5-10 { width: 50%; }
+
+    /* Thirds */
+    .ng-width-medium-1-3,
+    .ng-width-medium-2-6 { width: 33.333%; }
+    .ng-width-medium-2-3,
+    .ng-width-medium-4-6 { width: 66.666%; }
+
+    /* Quarters */
+    .ng-width-medium-1-4 { width: 25%; }
+    .ng-width-medium-3-4 { width: 75%; }
+
+    /* Fifths */
+    .ng-width-medium-1-5,
+    .ng-width-medium-2-10 { width: 20%; }
+    .ng-width-medium-2-5,
+    .ng-width-medium-4-10 { width: 40%; }
+    .ng-width-medium-3-5,
+    .ng-width-medium-6-10 { width: 60%; }
+    .ng-width-medium-4-5,
+    .ng-width-medium-8-10 { width: 80%; }
+
+    /* Sixths */
+    .ng-width-medium-1-6 { width: 16.666%; }
+    .ng-width-medium-5-6 { width: 83.333%; }
+
+    /* Tenths */
+    .ng-width-medium-1-10 { width: 10%; }
+    .ng-width-medium-3-10 { width: 30%; }
+    .ng-width-medium-7-10 { width: 70%; }
+    .ng-width-medium-9-10 { width: 90%; }
+
+}
+
+/* Desktop and bigger */
+@media (min-width: $breakpoint-large) {
+
+    /* Whole */
+    .ng-width-large-1-1 { width: 100%; }
+
+    /* Halves */
+    .ng-width-large-1-2,
+    .ng-width-large-2-4,
+    .ng-width-large-3-6,
+    .ng-width-large-5-10 { width: 50%; }
+
+    /* Thirds */
+    .ng-width-large-1-3,
+    .ng-width-large-2-6 { width: 33.333%; }
+    .ng-width-large-2-3,
+    .ng-width-large-4-6 { width: 66.666%; }
+
+    /* Quarters */
+    .ng-width-large-1-4 { width: 25%; }
+    .ng-width-large-3-4 { width: 75%; }
+
+    /* Fifths */
+    .ng-width-large-1-5,
+    .ng-width-large-2-10 { width: 20%; }
+    .ng-width-large-2-5,
+    .ng-width-large-4-10 { width: 40%; }
+    .ng-width-large-3-5,
+    .ng-width-large-6-10 { width: 60%; }
+    .ng-width-large-4-5,
+    .ng-width-large-8-10 { width: 80%; }
+
+    /* Sixths */
+    .ng-width-large-1-6 { width: 16.666%; }
+    .ng-width-large-5-6 { width: 83.333%; }
+
+    /* Tenths */
+    .ng-width-large-1-10 { width: 10%; }
+    .ng-width-large-3-10 { width: 30%; }
+    .ng-width-large-7-10 { width: 70%; }
+    .ng-width-large-9-10 { width: 90%; }
+
+}
+
+/* Large screen and bigger */
+@media (min-width: $breakpoint-xlarge) {
+
+    /* Whole */
+    .ng-width-xlarge-1-1 { width: 100%; }
+
+    /* Halves */
+    .ng-width-xlarge-1-2,
+    .ng-width-xlarge-2-4,
+    .ng-width-xlarge-3-6,
+    .ng-width-xlarge-5-10 { width: 50%; }
+
+    /* Thirds */
+    .ng-width-xlarge-1-3,
+    .ng-width-xlarge-2-6 { width: 33.333%; }
+    .ng-width-xlarge-2-3,
+    .ng-width-xlarge-4-6 { width: 66.666%; }
+
+    /* Quarters */
+    .ng-width-xlarge-1-4 { width: 25%; }
+    .ng-width-xlarge-3-4 { width: 75%; }
+
+    /* Fifths */
+    .ng-width-xlarge-1-5,
+    .ng-width-xlarge-2-10 { width: 20%; }
+    .ng-width-xlarge-2-5,
+    .ng-width-xlarge-4-10 { width: 40%; }
+    .ng-width-xlarge-3-5,
+    .ng-width-xlarge-6-10 { width: 60%; }
+    .ng-width-xlarge-4-5,
+    .ng-width-xlarge-8-10 { width: 80%; }
+
+    /* Sixths */
+    .ng-width-xlarge-1-6 { width: 16.666%; }
+    .ng-width-xlarge-5-6 { width: 83.333%; }
+
+    /* Tenths */
+    .ng-width-xlarge-1-10 { width: 10%; }
+    .ng-width-xlarge-3-10 { width: 30%; }
+    .ng-width-xlarge-7-10 { width: 70%; }
+    .ng-width-xlarge-9-10 { width: 90%; }
+
+}
+
+
+/* Sub-object: `ng-push-*` and `ng-pull-*`
+ ========================================================================== */
+
+/*
+ * Source ordering
+ * Works only with `ng-width-medium-*`
+ */
+
+/* Tablet and bigger */
+@media (min-width: $breakpoint-medium) {
+
+    [class*='ng-push-'],
+    [class*='ng-pull-'] { position: relative; }
+
+    /*
+     * Push
+     */
+
+    /* Halves */
+    .ng-push-1-2,
+    .ng-push-2-4,
+    .ng-push-3-6,
+    .ng-push-5-10 { left: 50%; }
+
+    /* Thirds */
+    .ng-push-1-3,
+    .ng-push-2-6 { left: 33.333%; }
+    .ng-push-2-3,
+    .ng-push-4-6 { left: 66.666%; }
+
+    /* Quarters */
+    .ng-push-1-4 { left: 25%; }
+    .ng-push-3-4 { left: 75%; }
+
+    /* Fifths */
+    .ng-push-1-5,
+    .ng-push-2-10 { left: 20%; }
+    .ng-push-2-5,
+    .ng-push-4-10 { left: 40%; }
+    .ng-push-3-5,
+    .ng-push-6-10 { left: 60%; }
+    .ng-push-4-5,
+    .ng-push-8-10 { left: 80%; }
+
+    /* Sixths */
+    .ng-push-1-6 { left: 16.666%; }
+    .ng-push-5-6 { left: 83.333%; }
+
+    /* Tenths */
+    .ng-push-1-10 { left: 10%; }
+    .ng-push-3-10 { left: 30%; }
+    .ng-push-7-10 { left: 70%; }
+    .ng-push-9-10 { left: 90%; }
+
+    /*
+     * Pull
+     */
+
+     /* Halves */
+     .ng-pull-1-2,
+     .ng-pull-2-4,
+     .ng-pull-3-6,
+     .ng-pull-5-10 { left: -50%; }
+
+     /* Thirds */
+     .ng-pull-1-3,
+     .ng-pull-2-6 { left: -33.333%; }
+     .ng-pull-2-3,
+     .ng-pull-4-6 { left: -66.666%; }
+
+     /* Quarters */
+     .ng-pull-1-4 { left: -25%; }
+     .ng-pull-3-4 { left: -75%; }
+
+     /* Fifths */
+     .ng-pull-1-5,
+     .ng-pull-2-10 { left: -20%; }
+     .ng-pull-2-5,
+     .ng-pull-4-10 { left: -40%; }
+     .ng-pull-3-5,
+     .ng-pull-6-10 { left: -60%; }
+     .ng-pull-4-5,
+     .ng-pull-8-10 { left: -80%; }
+
+     /* Sixths */
+     .ng-pull-1-6 { left: -16.666%; }
+     .ng-pull-5-6 { left: -83.333%; }
+
+     /* Tenths */
+     .ng-pull-1-10 { left: -10%; }
+     .ng-pull-3-10 { left: -30%; }
+     .ng-pull-7-10 { left: -70%; }
+     .ng-pull-9-10 { left: -90%; }
+
+}
+
+@mixin grid-extras($selector-prefix: 'ng-width') {
+    /* Halves */
+    .#{$selector-prefix}-6-12,
+    .#{$selector-prefix}-4-8,
+    .#{$selector-prefix}-8-16 { width: 50%; }
+
+    /* Thirds */
+    .#{$selector-prefix}-4-12 { width: 33.333%; }
+    .#{$selector-prefix}-8-12 { width: 66.666%; }
+
+    /* Quarters */
+    .#{$selector-prefix}-3-12,
+    .#{$selector-prefix}-2-8,
+    .#{$selector-prefix}-4-16 { width: 25%; }
+    .#{$selector-prefix}-9-12,
+    .#{$selector-prefix}-6-8,
+    .#{$selector-prefix}-12-16 { width: 75%; }
+
+    /* Sixths */
+    .#{$selector-prefix}-2-12 { width: 16.666%; }
+    .#{$selector-prefix}-10-12 { width: 83.333%; }
+
+    /* Twelveth, for compatibility with bootstrap */
+    .#{$selector-prefix}-1-12 { width: 8.333% }
+    .#{$selector-prefix}-5-12 { width: 41.666% }
+    .#{$selector-prefix}-7-12 { width: 58.333% }
+    .#{$selector-prefix}-11-12 { width: 91.666% }
+
+    /* Eighths */
+    .#{$selector-prefix}-1-8,
+    .#{$selector-prefix}-2-16 { width: 12.5%; }
+    .#{$selector-prefix}-3-8,
+    .#{$selector-prefix}-6-16 { width: 37.5%; }
+    .#{$selector-prefix}-5-8,
+    .#{$selector-prefix}-10-16 { width: 62.5%; }
+    .#{$selector-prefix}-7-8,
+    .#{$selector-prefix}-14-16 { width: 87.5%; }
+
+    /* Sixteenths */
+    .#{$selector-prefix}-1-16 { width: 6.25%; }
+    .#{$selector-prefix}-3-16 { width: 18.75%; }
+    .#{$selector-prefix}-5-16 { width: 31.25%; }
+    .#{$selector-prefix}-7-16 { width: 43.75%; }
+    .#{$selector-prefix}-9-16 { width: 56.25%; }
+    .#{$selector-prefix}-11-16 { width: 68.75%; }
+    .#{$selector-prefix}-13-16 { width: 81.25%; }
+    .#{$selector-prefix}-15-16 { width: 93.75%; }
+}
+
+//for tabs panel only on tablet portrait mode-picks up grid at small-max
+
+@media (min-width: $breakpoint-small-max) {
+    .ng-panel-tab-content{
+        div[class*="ng-width-medium-"]  {
+            width: 100% !important;
+        }
+        [class*='ng-width-medium'] > * {
+            box-sizing: border-box;
+            width: 100%;
+        }
+    }
+}
+
+
+
+
+@mixin hook-grid-misc(){
+    .ng-grid.ng-grid-micro { margin-left: -2px; }
+    .ng-grid.ng-grid-micro > * { padding-left: 2px; }
+
+    .ng-grid.ng-grid-micro + .ng-grid-micro { margin-top: 2px; }
+    .ng-grid.ng-grid-micro > .ng-grid-margin { margin-top: 2px; }
+
+    .ng-grid.ng-grid-micro > * > .ng-panel + .ng-panel { margin-top: 2px; }
+
+    .ng-grid-divider > [class='ng-width']:nth-child(n+2) { border-left: $grid-divider-border-width solid $grid-divider-border; }
+
+    /* Add divisions of 12 and 16 to the grid */
+    @include grid-extras();
+
+    @media (min-width: $breakpoint-small) {
+        @include grid-extras('ng-width-small');
+    }
+
+
+    @media (min-width: $breakpoint-medium) {
+        @include grid-extras('ng-width-medium');
+    }
+
+
+    @media (min-width: $breakpoint-large) {
+        @include grid-extras('ng-width-large');
+    }
+
+    @media (min-width: $breakpoint-xlarge) {
+        @include grid-extras('ng-width-xlarge');
+    }
+
+    .ng-grid-wrapper {
+        padding-left: $grid-gutter-horizontal;
+        padding-right: $grid-gutter-horizontal;
+    }
+
+    /* Full Width of Viewport Container */
+    .ng-width-full {
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+    }
+
+    /* Mobile Screen Size */
+    @media (max-width: $breakpoint-small-max) {
+        .ng-grid-margin { margin-top: $grid-gutter-small-vertical !important; }
+    }
+}
+
+@mixin ng-width-full() {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+
+// Hooks
+// ========================================================================
+
+@include hook-grid-misc();
+
+// @mixin hook-grid-misc(){}

@@ -1,0 +1,263 @@
+// Name:            List
+// Description:     Defines styles for ordered and unordered lists
+//
+// Component:       `ng-list`
+//
+// Modifiers:       `ng-list-line`
+//                  `ng-list-striped`
+//                  `ng-list-space`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$list-nested-padding-left:                      20px !default;
+
+$list-line-margin-top:                          5px !default;
+$list-line-border:                              $global-border !default;
+$list-line-border-width:                        1px !default;
+
+$list-striped-padding-vertical:                 5px !default;
+$list-striped-padding-horizontal:               5px !default;
+$list-striped-background:                       $global-default-muted-background !default;
+$list-striped-border:                           $global-border !default;
+
+$list-space-margin-top:                         10px !default;
+
+.ng-list-line-border {background: $list-line-border}
+.ng-list-striped-background {background: $list-striped-background}
+.ng-list-striped-border {background: $list-striped-border}
+
+/* ========================================================================
+   Component: List
+ ========================================================================== */
+
+.ng-list, .ng-list-striped, .ng-list-line, .ng-list-bullet {
+    padding: 0;
+    list-style: none;
+}    // margin: 0;
+
+/*
+ * Micro clearfix to make list more robust
+ */
+
+.uk-list > li:before,
+.uk-list > li:after {
+    content: "";
+    display: table;
+}
+
+.uk-list > li:after { clear: both; }
+
+/*
+ * Remove margin from the last-child
+ */
+
+.uk-list > li > :last-child { margin-bottom: 0; }
+
+/*
+ * Nested lists
+ */
+
+.ng-list ul {
+    margin: 0;
+    padding-left: $list-nested-padding-left;
+    list-style: none;
+}
+
+
+/* Modifier: `ng-list-line`
+ ========================================================================== */
+
+.ng-list-line > li:nth-child(n+2) {
+    margin-top: $list-line-margin-top;
+    padding-top: $list-line-margin-top;
+    border-top: $list-line-border-width solid $list-line-border;
+    @extend .ng-list;
+    @include hook-list-line();
+}
+
+.ng-list-line.ng-list-line-last {
+    border-bottom: $list-line-border-width solid $list-line-border;
+}
+
+
+/* Modifier: `ng-list-striped`
+ ========================================================================== */
+
+.ng-list-striped > li {
+    padding: $list-striped-padding-vertical $list-striped-padding-horizontal;
+    @extend .ng-list;
+    border-bottom: 1px solid $list-striped-border;
+    background: #fff;
+    @include hook-list-striped();
+}
+
+.ng-list-striped > li:nth-of-type(odd) { background: $list-striped-background; }
+
+.ng-list-striped > li:first-child { border-top: 1px solid $list-striped-border; }
+
+/* Modifier: `ng-list-space`
+ ========================================================================== */
+
+.ng-list-space > li:nth-child(n+2) { margin-top: $list-space-margin-top; }
+
+
+/* Modifier: `ng-icon-bullet`
+ ========================================================================== */
+
+.ng-icon-fw { @extend .ng-icon-justify; }
+
+
+/* Modifier: `ng-list-bullet`
+ ========================================================================== */
+
+.ng-list-bullet {
+    list-style: disc;
+    list-style-position: outside;
+    margin-left: $global-margin * 2;
+    /*
+     * Nested lists
+     */
+    ul {
+        list-style: disc;
+        list-style-position: outside;
+        // margin-left: $global-margin;
+    }
+}
+
+
+/* Modifier: `ng-icon-inline`
+ ========================================================================== */
+
+.ng-list-inline {
+    padding-left: 0;
+    margin-left: -5px;
+    list-style: none;
+    li {
+        display: inline-block;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+}
+
+/* Modifier: `ng-list-icons`
+ ========================================================================== */
+
+.ng-list-icons {
+    position: relative;
+
+    li, >li:nth-child(n+2) {
+        padding-left: 25px;
+        position: relative;
+    }
+
+    .ng-icon {
+        font-size: 16px;
+        left: 0;
+        position: absolute;
+        margin-top: 3px;
+    }
+}
+
+.ng-list-extra-space {
+    li, >li:nth-child(n+2) {
+        margin: 0;
+        padding: 15px 0;
+    }
+
+    &.ng-list-icons {
+        li, >li:nth-child(n+2) {
+            padding-left: 50px;
+        }
+
+        .ng-icon {
+            font-size: 24px;
+            margin-top: 0;
+        }
+    }
+}
+
+/* Modifier: `ng-list-tree`
+ ========================================================================== */
+
+.ng-list-tree {
+    @extend .ng-list;
+}
+li.ng-list-treebranch {
+    font-weight: $base-body-bold-weight;
+    list-style: none;
+    li.ng-list-treebranch {
+    }
+}
+li.ng-list-treeleaf {
+    font-weight: $base-body-font-weight;
+    list-style: disc;
+}
+
+
+/* Modifier: `ng-list-collapsible`
+ ========================================================================== */
+
+/* Special thanks to onetrickpony for this:
+http://stackoverflow.com/questions/14922247/how-to-get-a-tree-in-html-using-pure-css
+*/
+
+$list-collapsible-open-icon:    '.ng-icon-minus-square-o' !default;
+$list-collapsible-closed-icon:  '.ng-icon-plus-square-o' !default;
+$list-collapsible-leaf-icon:    '.ng-icon-bullet' !default;
+$list-collapsible-padding-left: (20em / 14) !default;
+
+.ng-icon-list-collapsible {
+    position: absolute;
+    left: $list-collapsible-padding-left * -1;
+    width: $list-collapsible-padding-left;
+    top: (2em / 14);
+}
+
+.ng-list-collapsible {
+    @extend .ng-list;
+    padding-left: 0;
+    margin-left: $list-collapsible-padding-left;
+    list-style-type: none;
+    > li { position: relative; }
+
+    position: relative;
+
+    /* Nested lists */
+    ul, ol {
+        list-style: none;
+        padding: 0;
+        position: relative;
+        margin-left: $list-collapsible-padding-left;
+        list-style-type: none;
+        > li { position: relative; }
+    }
+
+    li > .ng-icon-list-collapsible {
+        @extend #{$list-collapsible-leaf-icon};
+        cursor:auto;
+    }
+    li.ng-open {
+    }
+    li.ng-open > .ng-icon-list-collapsible {
+        @extend #{$list-collapsible-open-icon};
+        cursor:pointer;
+    }
+
+    li.ng-closed > .ng-icon-list-collapsible {
+        @extend #{$list-collapsible-closed-icon};
+        cursor:pointer;
+    }
+}
+
+// Hooks
+// ========================================================================
+
+@include hook-list-misc();
+
+// @mixin hook-list-line(){}
+// @mixin hook-list-striped(){}
+// @mixin hook-list-misc(){}

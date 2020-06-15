@@ -1,0 +1,469 @@
+// Name:            Tooltip
+// Description:     Defines styles for popovers
+//
+// Component:       `ng-popover`
+//
+// Modifiers        `ng-popover-top`
+//                  `ng-popover-top-left`
+//                  `ng-popover-top-right`
+//                  `ng-popover-bottom`
+//                  `ng-popover-bottom-left`
+//                  `ng-popover-bottom-right`
+//                  `ng-popover-left`
+//                  `ng-popover-right`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$popover-padding-vertical:                      20px !default;
+$popover-padding-horizontal:                    20px !default;
+$popover-background:                            $global-default-background !default;
+$popover-font-size:                             $tooltip-font-size !default;
+$popover-line-height:                           $tooltip-line-height !default;
+$popover-z-index:                               $tooltip-z-index + 1 !default;
+$popover-max-width:                             276px !default;
+$popover-border-color:                          $global-border !default;
+$popover-title-background:                      darken($popover-background, 3%) !default;
+$popover-arrow-width:                           10px !default;
+$popover-arrow-color:                           $popover-background !default;
+$popover-arrow-outer-width:                     $popover-arrow-width + 1 !default;
+$popover-arrow-outer-color:                     $popover-border-color !default;
+$popover-border-radius:                         $global-border-radius !default;
+
+$popover-animation:                             fade !default;
+
+$popover-menu-width:                            200px !default;
+$popover-menu-padding:                          15px !default;
+
+
+
+.ng-popover-background {background: $popover-background}
+.ng-popover-border-color {background: $popover-border-color}
+.ng-popover-title-background {background: $popover-title-background}
+.ng-popover-arrow-color {background: $popover-arrow-color}
+.ng-popover-arrow-outer-color {background: $popover-arrow-outer-color}
+
+/**
+Popovers
+
+Popovers add small overlays of content, like those on the iPad, to any element
+for housing secondary information.
+
+Styleguide Callouts.Popovers
+*/
+
+/**
+Configuration
+
+<table class="settings">
+<tr><td>`$popover-padding-vertical`</td><td class="ng-popover-padding-vertical">#{$popover-padding-vertical}</td></tr>
+<tr><td>`$popover-padding-horizontal`</td><td class="ng-popover-padding-horizontal">#{$popover-padding-horizontal}</td></tr>
+<tr><td>`$popover-background`</td><td class="ng-popover-background">#{$popover-background}</td></tr>
+<tr><td>`$popover-font-size`</td><td class="ng-popover-font-size">#{$popover-font-size}</td></tr>
+<tr><td>`$popover-line-height`</td><td class="ng-popover-line-height">#{$popover-line-height}</td></tr>
+<tr><td>`$popover-z-index`</td><td class="ng-popover-z-index">#{$popover-z-index}</td></tr>
+<tr><td>`$popover-max-width`</td><td class="ng-popover-max-width">#{$popover-max-width}</td></tr>
+<tr><td>`$popover-border-color`</td><td class="ng-popover-border-color">#{$popover-border-color}</td></tr>
+<tr><td>`$popover-title-background`</td><td class="ng-popover-title-background">#{$popover-title-background}</td></tr>
+<tr><td>`$popover-arrow-width`</td><td class="ng-popover-arrow-width">#{$popover-arrow-width}</td></tr>
+<tr><td>`$popover-arrow-color`</td><td class="ng-popover-arrow-color">#{$popover-arrow-color}</td></tr>
+<tr><td>`$popover-arrow-outer-width`</td><td class="ng-popover-arrow-outer-width">#{$popover-arrow-outer-width}</td></tr>
+<tr><td>`$popover-arrow-outer-color`</td><td class="ng-popover-arrow-outer-color">#{$popover-arrow-outer-color}</td></tr>
+<tr><td>`$popover-border-radius`</td><td class="ng-popover-border-radius">#{$popover-border-radius}</td></tr>
+<tr><td>`$popover-animation`</td><td class="ng-popover-animation">#{$popover-animation}</td></tr>
+<tr><td>`$popover-menu-width`</td><td class="ng-popover-menu-width">#{$popover-menu-width}</td></tr>
+<tr><td>`$popover-menu-padding`</td><td class="ng-popover-menu-padding">#{$popover-menu-padding}</td></tr></table>
+
+Weight: 1
+
+Styleguide Callouts.Popovers.Configuration
+*/
+/**
+Javascript
+
+
+<table class="configuration">
+<tr><thead><th>Variable</th><th>Default</th><th>Meaning</th></thead></tr>
+<tr><td>`animation`</td><td>`true`</td><td>Display the popover with animation.</td></tr>
+<tr><td>`placement`</td><td>`'auto right'`</td><td>How to position the popover - `top` | `bottom` | `left` | `right` | `auto`.
+
+When "auto" is specified, it will dynamically reorient the popover. For example, if placement is "auto left", the popover will display to the left when possible, otherwise it will display right.</td></tr>
+<tr><td>`markup`</td><td><pre>'&lt;div class="ng-popover"&gt;
+   &lt;div class="ng-arrow"&gt;&lt;/div&gt;
+   &lt;div class="ng-popover-content"&gt;&lt;/div&gt;
+&lt;/div&gt;'</code></pre></td><td>The markup of the shell of the popover.</td></tr>
+<tr><td>`contentTarget`</td><td>`'.ng-popover-content'`</td><td>The jQuery selector for the container within the markup in which the content is placed.</td></tr>
+<tr><td>`template`</td><td>`'{{value}}'`</td><td>The template to use which formats the `value` attribute. If you wish to put the template in a `<script>` tag. Give the tag an ID like `mytemplate` and set the `template` to `#mytemplate`.</td></tr>
+<tr><td>`source`</td><td>`''`</td><td>`Array` | `URL string` | `function`
+
+If it is a function, it is called with the callback function that the function should call with the data. `this` will be the Popover object.
+
+If it is an Array, It expects an array of objects with a `value` attribute.
+
+If it is a string, it makes an AJAX connection using `param`, `value`, and `datatype` configuration options.
+</td></tr>
+<tr><td>`param`</td><td>`''`</td><td>Sent with the AJAX request</td></tr>
+<tr><td>`value`</td><td>`''`</td><td>Sent with the AJAX request</td></tr>
+<tr><td>`datatype`</td><td>`'json'`</td><td>Used with AJAX requests, set to `jsonp` for cross-domain requests.</td></tr>
+<tr><td>`trigger`</td><td>`'hover focus'`</td><td>A space-delimited string indicating how popover is triggered - `click` | `hover` | `focus` | `manual`<td></td></tr>
+<tr><td>`delay`</td><td>`0`</td><td>The delay in showing and hiding the popover in milliseconds. Does not apply to manual trigger type.
+
+If a number is supplied, delay is applied to both hide/show.
+
+Object structure is: `delay: { show: 500, hide: 100 }`</td></tr>
+<tr><td>`container`</td><td>`false`</td><td></td></tr>
+<tr><td>`renderer`</td><td>`false`</td><td></td></tr>
+<tr><td>`viewport`</td><td>`{selector: 'body',padding: 0}`</td><td></td></tr>
+</table>
+
+Weight: 4
+
+Styleguide Callouts.Popovers.Javascript
+*/
+
+/**
+Usage
+
+Markup:
+<script type="text/popover" id="popovertemplate">
+<img src="\{\{data.current_condition[0].weatherIconUrl[0].value\}\}">
+</script>
+<p>This is a basic <a data-ng-popover="{value: 'hello'}">Popover test</a></p>
+<p>This is a more advanced <a data-ng-popover="{value: {greeting: 'hello', name: 'Pat'}, template: '{{greeting}}, {{name}}!'}">Popover test</a></p>
+<p>You can look at <a data-ng-popover="{value: 'Washington', source: 'http://api.worldweatheronline.com/free/v1/weather.ashx?format=json&key=gxxksbzrmwjbr39ht8smnedq', param: 'q', datatype: 'jsonp', template: '#popovertemplate'}">Washington, DC's weather.</a></p>
+<p>This requires a click <a data-ng-popover="{value: 'hello', trigger:'click'}">Popover test</a></p>
+
+Weight: 2
+
+Styleguide Callouts.Popovers.usage
+*/
+
+/**
+Popover menu
+
+Markup:
+<div class="ng-margin">
+    <div class="ng-button-dropdown" data-ng-popovermenu="">
+        <button class="ng-button">Hover me <i class="ng-icon-caret-down"></i></button>
+        <div class="ng-popovermenu">
+            <div class="ng-arrow"></div>
+            <h4 class="ng-popover-title">Menu Title<a href="#" class="ng-close ng-float-right"></a></h4>
+            <div class="ng-popover-content">
+                <ul class="ng-nav ng-nav-popover">
+                    <li><a href="#">Item</a></li>
+                    <li><a href="#">Another item</a></li>
+                    <li class="ng-nav-header">Header</li>
+                    <li><a href="#">Item</a></li>
+                    <li><a href="#">Another item</a></li>
+                    <li class="ng-nav-divider"></li>
+                    <li><a href="#">Separated item</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="ng-button-dropdown" data-ng-popovermenu="{mode:'click'}">
+        <button class="ng-button">Click me <i class="ng-icon-caret-down"></i></button>
+        <div class="ng-popovermenu">
+            <div class="ng-arrow"></div>
+            <ul class="ng-nav ng-nav-popover">
+                <li><a href="#">Item</a></li>
+                <li><a href="#">Another item</a></li>
+                <li class="ng-nav-header">Header</li>
+                <li><a href="#">Item</a></li>
+                <li><a href="#">Another item</a></li>
+                <li class="ng-nav-divider"></li>
+                <li><a href="#">Separated item</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+Weight: 3
+
+Styleguide Callouts.Popovers.menu
+*/
+
+.ng-popover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: $popover-z-index;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: none;
+    max-width: $popover-max-width;
+    // padding: 1px;
+    text-align: left; // Reset given new insertion method
+    background-color: $popover-background;
+    background-clip: padding-box;
+    border: 1px solid $popover-border-color;
+    border-radius: $popover-border-radius;
+    -webkit-box-shadow: 0px 5px 10px 0 rgba(0,0,0,0.2);
+    box-shadow: 0px 5px 10px 0 rgba(0,0,0,0.2);
+
+    // Overrides for proper insertion
+    white-space: normal;
+    font-style: normal;
+    font-weight: $base-body-font-weight;
+
+    // Offset the popover to account for the popover arrow
+    &.top     { margin-top: -1 * $popover-arrow-width; }
+    &.right   { margin-left: $popover-arrow-width; }
+    &.bottom  { margin-top: $popover-arrow-width; }
+    &.left    { margin-left: -1 * $popover-arrow-width; }
+}
+
+.ng-popover-title {
+    margin: 0; // reset heading margin
+    padding: 8px 14px;
+    font-size: $popover-font-size;
+    font-weight: $base-body-font-weight;
+    line-height: $popover-line-height;
+    background-color: $popover-title-background;
+    border-bottom: 1px solid darken($popover-title-background, 5%);
+    border-radius: ($popover-border-radius - 1) ($popover-border-radius - 1) 0 0;
+}
+
+.ng-popover-content {
+    padding: $popover-padding-vertical $popover-padding-horizontal;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+// Arrows
+//
+// .ng-arrow is outer, .ng-arrow:after is inner
+
+.ng-popover > .ng-arrow {
+    &,
+    &:after {
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+    }
+}
+.ng-popover > .ng-arrow {
+    border-width: $popover-arrow-outer-width;
+}
+.ng-popover > .ng-arrow:after {
+    border-width: $popover-arrow-width;
+    content: "";
+}
+
+.ng-popover {
+  &.top > .ng-arrow {
+    left: 50%;
+    margin-left: -1 * $popover-arrow-outer-width;
+    border-bottom-width: 0;
+    border-top-color: $popover-arrow-outer-color;
+    bottom: -1 * $popover-arrow-outer-width;
+    &:after {
+      content: " ";
+      bottom: 1px;
+      margin-left: -1 * $popover-arrow-width;
+      border-bottom-width: 0;
+      border-top-color: $popover-arrow-color;
+    }
+  }
+  &.right > .ng-arrow {
+    top: 50%;
+    left: -1 * $popover-arrow-outer-width;
+    margin-top: -1 * $popover-arrow-outer-width;
+    border-left-width: 0;
+    border-right-color: $popover-arrow-outer-color;
+    &:after {
+      content: " ";
+      left: 1px;
+      bottom: -1 * $popover-arrow-width;
+      border-left-width: 0;
+      border-right-color: $popover-arrow-color;
+    }
+  }
+  &.bottom > .ng-arrow {
+    left: 50%;
+    margin-left: -1 * $popover-arrow-outer-width;
+    border-top-width: 0;
+    border-bottom-color: $popover-arrow-outer-color; // IE8 fallback
+    top: -1 * $popover-arrow-outer-width;
+    &:after {
+      content: " ";
+      top: 1px;
+      margin-left: -1 * $popover-arrow-width;
+      border-top-width: 0;
+      border-bottom-color: $popover-arrow-color;
+    }
+  }
+
+  &.left > .ng-arrow {
+    top: 50%;
+    right: -1 * $popover-arrow-outer-width;
+    margin-top: -1 * $popover-arrow-outer-width;
+    border-right-width: 0;
+    border-left-color: $popover-arrow-outer-color; // IE8 fallback
+    &:after {
+      content: " ";
+      right: 1px;
+      border-right-width: 0;
+      border-left-color: $popover-arrow-color;
+      bottom: -1 * $popover-arrow-width;
+    }
+  }
+}
+
+.ng-popover .ng-popover-teaser {
+    margin: $popover-padding-vertical * -1 $popover-padding-horizontal * -1 10px $popover-padding-horizontal * -1;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  > * {
+    border-top-left-radius: $popover-border-radius;
+    border-top-right-radius: $popover-border-radius;
+  }
+}
+
+.ng-open > .ng-popover {
+    /* 1 */
+    display: block;
+    /* 2 */
+    -webkit-animation: $dropdown-animation 0.2s ease-in-out;
+    animation: $dropdown-animation 0.2s ease-in-out;
+    /* 3 */
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+.ng-popovermenu {
+    @extend .ng-popover;
+    width: $popover-menu-width;
+    top: auto;
+    bottom: 100%;
+    padding: $popover-menu-padding;
+    margin-top: auto;
+    margin-bottom: $popover-arrow-width;
+    > .ng-arrow {
+        left: 50%;
+        margin-left: -1 * $popover-arrow-outer-width;
+        border-bottom-width: 0;
+        border-top-color: $popover-arrow-outer-color;
+        bottom: -1 * $popover-arrow-outer-width;
+        &:after {
+          content: " ";
+          bottom: 1px;
+          margin-left: -1 * $popover-arrow-width;
+          border-bottom-width: 0;
+          border-top-color: $popover-arrow-color;
+        }
+    }
+}
+
+.ng-popovermenu .ng-nav { margin: 0 $popover-menu-padding * -1; }
+
+.ng-popovermenu .ng-popover-title {
+    margin-top: $popover-menu-padding * -1;
+    margin-left: $popover-menu-padding * -1;
+    margin-right: $popover-menu-padding * -1;
+    font-size: $global-font-size;
+    font-weight: $base-body-bold-weight;
+    text-transform: uppercase;
+}
+.ng-popover .ng-close,
+.ng-popover .ng-close-alt {
+      position:absolute;
+    top:9px;
+    right:9px;
+}
+.ng-popover-map{
+  z-index:100;
+  -webkit-transition:opacity 0.2s linear;
+  -moz-transition:opacity 0.2s linear;
+  -o-transition:opacity 0.2s linear;
+  transition:opacity 0.2s linear;
+  position:absolute;
+  display: none;
+  .ng-popover-teaser {
+    margin: $popover-padding-vertical * -1 $popover-padding-horizontal * -1 10px $popover-padding-horizontal * -1;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+        border-top-left-radius: $popover-border-radius;
+        border-top-right-radius: $popover-border-radius;
+    > *{
+        border-top-left-radius: $popover-border-radius;
+        border-top-right-radius: $popover-border-radius;
+      }
+  }
+  .ng-popover-content, .ng-arrow{
+    background:white;
+    box-shadow:0 1px 10px #888;
+    -moz-box-shadow:0 1px 10px #888;
+    -webkit-box-shadow:0 1px 14px #999;
+  }
+  .ng-close{
+    background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAMAAAC67D+PAAAAk1BMVEX////Ny8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8vNy8sw0horAAAAMHRSTlMA/bGBFK1LgjellwUx2+VZo73SE6z5fQYOtzLRpxI22CC4g6ieV+yAEc8/ZocEHTzU+GNbAAAAV0lEQVQI1wXBBQKDMADAwLRl7szdgCks/3/d7hh0ehl0W21IwZgNR44nTNVZribmC1WXqzVstmpIALu9Gg5HOJ1VNV64arjd1YKy8sEz+nrD51tD0//xB/w6CnrIHetcAAAAAElFTkSuQmCC);
+    position:absolute;
+    top:9px;
+    right:9px;
+    width:10px;
+    height:10px;
+    overflow:hidden;
+  }
+  .ng-popover-content{
+    display:inline-block;
+    // font:12px/1.4 "Helvetica Neue",Arial,Helvetica,sans-serif;
+    border-radius: $popover-border-radius;
+  }
+  .ng-arrow-cont{
+    margin:0 auto;
+    width:40px;
+    height:16px;
+    position:relative;
+    overflow:hidden;
+  }
+  .ng-arrow{
+    width:15px;
+    height:15px;
+    padding:1px;
+    margin:-8px auto 0;
+    -moz-transform:rotate(45deg);
+    -webkit-transform:rotate(45deg);
+    -o-transform:rotate(45deg);
+    transform:rotate(45deg);
+  }
+}
+.ng-popover-map.left {
+    .ng-arrow-cont, .ng-arrow-cont:after {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    }
+    .ng-arrow-cont:after {
+      border-width: 10px;
+      content: "";
+      right: 1px;
+      border-right-width: 0;
+      border-left-color: $white;
+      bottom: -10px;
+    }
+  .ng-arrow-cont {
+    top: 50%;
+    right: -11px;
+    margin-top: -11px;
+    border-right-width: 0;
+    border-left-color: #999;
+    border-left-color: rgba(0, 0, 0, 0.25);
+    border-width: 11px;
+  }
+  .ng-arrow {
+    margin-top: 3px;
+    margin-left: -8px;
+    margin-right: 0;
+    margin-bottom: auto;
+  }
+}

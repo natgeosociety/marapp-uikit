@@ -1,0 +1,718 @@
+// Name:            Toolbar
+// Description:     Defines styles for a toolbar
+//
+// Component:       `ng-toolbar`
+//
+// Sub-objects:     `ng-toolbar-nav`
+//                  `ng-toolbar-nav-subtitle`
+//                  `ng-toolbar-content`
+//                  `ng-toolbar-brand`
+//                  `ng-toolbar-toggle`
+//                  `ng-toolbar-toggle-alt`
+//                  `ng-toolbar-center`
+//                  `ng-toolbar-flip`
+//
+// Modifiers:       `ng-toolbar-attached`
+//
+// States:          `ng-active`
+//                  `ng-parent`
+//                  `ng-open`
+//
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$toolbar-background:                             $global-default-background !default;
+$toolbar-color:                                  $global-color !default;
+$toolbar-link-color:                             $global-link-color !default;
+$toolbar-link-hover-color:                       $global-link-hover-color !default;
+$toolbar-border:                                 rgba(0,0,0,0.1) !default;
+$toolbar-border-bottom:                          rgba(0,0,0,0.3) !default;
+$toolbar-text-shadow:                            $global-text-shadow !default;
+
+$toolbar-nav-height:                             30px !default;
+$toolbar-nav-line-height:                        $toolbar-nav-height !default;
+$toolbar-nav-padding-horizontal:                 10px !default;
+$toolbar-nav-color:                              $global-color !default;
+$toolbar-nav-font-size:                          $global-font-size !default;
+$toolbar-nav-font-weight:                        $base-body-font-weight !default;
+$toolbar-nav-font-family:                        $base-heading-font-family !default;
+$toolbar-nav-hover-background:                   transparent !default;
+$toolbar-nav-hover-color:                        $global-color !default;
+$toolbar-nav-onclick-background:                 $global-default-active-background !default;
+$toolbar-nav-onclick-color:                      $global-color !default;
+$toolbar-nav-active-background:                  $global-default-muted-background !default;
+$toolbar-nav-active-color:                       $global-color !default;
+$toolbar-nav-subtitle-font-size:                 10px !default;
+$toolbar-nav-subtitle-offset:                    2px !default;
+$toolbar-nav-hover-border:                       rgba(0,0,0,0.1) !default;
+$toolbar-nav-hover-border-top:                   rgba(0,0,0,0.1) !default;
+$toolbar-nav-onclick-border-top:                 rgba(0,0,0,0.2) !default;
+$toolbar-nav-hover-box-shadow:                   rgba(0,0,0,0.1) !default;
+$toolbar-nav-onclick-box-shadow:                 rgba(0,0,0,0.1) !default;
+
+$toolbar-brand-font-size:                        round($global-font-size * 1.28) !default; // 18px
+$toolbar-brand-color:                            $global-color !default;
+$toolbar-brand-hover-color:                      $global-color !default;
+
+$toolbar-toggle-font-size:                       round($global-font-size * 1.28) !default; // 18px
+$toolbar-toggle-color:                           $global-color !default;
+$toolbar-toggle-hover-color:                     $global-color !default;
+$toolbar-toggle-icon:                            "\f0c9" !default;
+$toolbar-toggle-icon-alt:                        "\f002" !default;
+
+
+.ng-toolbar-background {background: $toolbar-background}
+.ng-toolbar-color {background: $toolbar-color;color: #fff}
+.ng-toolbar-link-color {background: $toolbar-link-color;color: #fff}
+.ng-toolbar-link-hover-color {background: $toolbar-link-hover-color;color: #fff}
+.ng-toolbar-border {background: $toolbar-border}
+.ng-toolbar-border-bottom {background: $toolbar-border-bottom}
+.ng-toolbar-text-shadow {background: $toolbar-text-shadow}
+
+.ng-toolbar-nav-color {background: $toolbar-nav-color;color: #fff}
+.ng-toolbar-nav-hover-background {background: $toolbar-nav-hover-background}
+.ng-toolbar-nav-hover-color {background: $toolbar-nav-hover-color;color: #fff}
+.ng-toolbar-nav-onclick-background {background: $toolbar-nav-onclick-background}
+.ng-toolbar-nav-onclick-color {background: $toolbar-nav-onclick-color;color:#fff}
+.ng-toolbar-nav-active-background {background: $toolbar-nav-active-background}
+.ng-toolbar-nav-active-color {background: $toolbar-nav-active-color;color: #fff}
+.ng-toolbar-nav-hover-border {background: $toolbar-nav-hover-border}
+.ng-toolbar-nav-hover-border-top {background: $toolbar-nav-hover-border-top}
+.ng-toolbar-nav-onclick-border-top {background: $toolbar-nav-onclick-border-top}
+.ng-toolbar-nav-hover-box-shadow {background: $toolbar-nav-hover-box-shadow}
+.ng-toolbar-nav-onclick-box-shadow {background: $toolbar-nav-onclick-box-shadow}
+
+.ng-toolbar-brand-color {background: $toolbar-brand-color;color: #fff}
+.ng-toolbar-brand-hover-color {background: $toolbar-brand-hover-color;color: #fff}
+
+.ng-toolbar-toggle-color {background: $toolbar-toggle-color;color: #fff}
+.ng-toolbar-toggle-hover-color {background: $toolbar-toggle-hover-color;color: #fff}
+
+
+
+/**
+Toolbar
+
+Defines different styles for a Toolbar.
+
+Styleguide Controls.Toolbars
+*/
+/**
+Configuration
+
+<table class="settings">
+<tr><td>`$toolbar-background`</td>
+    <td class="ng-toolbar-background">#{$toolbar-background}</td></tr>
+<tr><td>`$toolbar-color`</td>
+    <td class="ng-toolbar-color">#{$toolbar-color}</td></tr>
+<tr><td>`$toolbar-link-color`</td>
+    <td class="ng-toolbar-link-color">#{$toolbar-link-color}</td></tr>
+<tr><td>`$toolbar-link-hover-color`</td>
+    <td class="ng-toolbar-link-hover-color">#{$toolbar-link-hover-color}</td></tr>
+<tr><td>`$toolbar-border`</td>
+    <td class="ng-toolbar-border">#{$toolbar-border}</td></tr>
+<tr><td>`$toolbar-border-bottom`</td>
+    <td class="ng-toolbar-border-bottom">#{$toolbar-border-bottom}</td></tr>
+<tr><td>`$toolbar-text-shadow`</td>
+    <td class="ng-toolbar-text-shadow">#{$toolbar-text-shadow}</td></tr>
+</table>
+
+Weight: 1
+
+Styleguide Controls.Toolbars.Configuration
+*/
+/**
+Nav Configurations
+
+<table class="settings">
+<tr><td>`$toolbar-nav-height`</td>
+    <td>#{$toolbar-nav-height}</td></tr>
+<tr><td>`$toolbar-nav-line-height`</td>
+    <td>#{$toolbar-nav-line-height}</td></tr>
+<tr><td>`$toolbar-nav-padding-horizontal`</td>
+    <td>#{$toolbar-nav-padding-horizontal}</td></tr>
+<tr><td>`$toolbar-nav-color`</td>
+    <td class="ng-toolbar-nav-color">#{$toolbar-nav-color}</td></tr>
+<tr><td>`$toolbar-nav-font-size`</td>
+    <td>#{$toolbar-nav-font-size}</td></tr>
+<tr><td>`$toolbar-nav-font-weight`</td>
+    <td>#{$toolbar-nav-font-weight}</td></tr>
+<tr><td>`$toolbar-nav-font-family`</td>
+    <td>#{$toolbar-nav-font-family}</td></tr>
+<tr><td>`$toolbar-nav-hover-background`</td>
+    <td class="ng-toolbar-nav-hover-background">#{$toolbar-nav-hover-background}</td></tr>
+<tr><td>`$toolbar-nav-hover-color`</td>
+    <td class="ng-toolbar-nav-hover-color">#{$toolbar-nav-hover-color}</td></tr>
+<tr><td>`$toolbar-nav-onclick-background`</td>
+    <td class="ng-toolbar-nav-onclick-background">#{$toolbar-nav-onclick-background}</td></tr>
+<tr><td>`$toolbar-nav-onclick-color`</td>
+    <td class="ng-toolbar-nav-onclick-color">#{$toolbar-nav-onclick-color}</td></tr>
+<tr><td>`$toolbar-nav-active-background`</td>
+    <td class="ng-toolbar-nav-active-background">#{$toolbar-nav-active-background}</td></tr>
+<tr><td>`$toolbar-nav-active-color`</td>
+    <td class="ng-toolbar-nav-active-color">#{$toolbar-nav-active-color}</td></tr>
+<tr><td>`$toolbar-nav-subtitle-font-size`</td>
+    <td>#{$toolbar-nav-subtitle-font-size}</td></tr>
+<tr><td>`$toolbar-nav-subtitle-offset`</td>
+    <td>#{$toolbar-nav-subtitle-offset}</td></tr>
+<tr><td>`$toolbar-nav-hover-border`</td>
+    <td class="ng-toolbar-nav-hover-border">#{$toolbar-nav-hover-border}</td></tr>
+<tr><td>`$toolbar-nav-hover-border-top`</td>
+    <td class="ng-toolbar-nav-hover-border-top">#{$toolbar-nav-hover-border-top}</td></tr>
+<tr><td>`$toolbar-nav-onclick-border-top`</td>
+    <td class="ng-toolbar-nav-onclick-border-top">#{$toolbar-nav-onclick-border-top}</td></tr>
+<tr><td>`$toolbar-nav-hover-box-shadow`</td>
+    <td class="ng-toolbar-nav-hover-box-shadow">#{$toolbar-nav-hover-box-shadow}</td></tr>
+<tr><td>`$toolbar-nav-onclick-box-shadow`</td>
+    <td class="ng-toolbar-nav-onclick-box-shadow">#{$toolbar-nav-onclick-box-shadow}</td></tr>
+</table>
+
+Styleguide Controls.Toolbars.Configuration.Nav
+*/
+/**
+Brand Configurations
+
+<table class="settings">
+<tr><td>`$toolbar-brand-font-size`</td>
+    <td>#{$toolbar-brand-font-size}</td></tr>
+<tr><td>`$toolbar-brand-color`</td>
+    <td class="ng-toolbar-brand-color">#{$toolbar-brand-color}</td></tr>
+<tr><td>`$toolbar-brand-hover-color`</td>
+    <td class="ng-toolbar-brand-hover-color">#{$toolbar-brand-hover-color}</td></tr>
+</table>
+
+Styleguide Controls.Toolbars.Configuration.Brand
+*/
+/**
+Toggle Configurations
+
+<table class="settings">
+<tr><th colspan="2">Toolbar Toggle Configurations</th></tr>
+<tr><td>`$toolbar-toggle-font-size`</td>
+    <td>#{$toolbar-toggle-font-size}</td></tr>
+<tr><td>`$toolbar-toggle-color`</td>
+    <td class="ng-toolbar-toggle-color">#{$toolbar-toggle-color}</td></tr>
+<tr><td>`$toolbar-toggle-hover-color`</td>
+    <td class="ng-toolbar-toggle-hover-color">#{$toolbar-toggle-hover-color}</td></tr>
+<tr><td>`$toolbar-toggle-icon`</td>
+    <td>#{$toolbar-toggle-icon}</td></tr>
+<tr><td>`$toolbar-toggle-icon-alt`</td>
+    <td>#{$toolbar-toggle-icon-alt}</td></tr>
+</table>
+
+Styleguide Controls.Toolbars.Configuration.Toggle
+*/
+
+/**
+Usage
+
+The Toolbar component consists of the toolbar itself and one or more navigations.
+
+<table class="configuration">
+    <thead>
+        <tr>
+            <th>Class</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>.ng-toolbar</code></td>
+            <td>Add this class to a <code>&lt;nav&gt;</code> element to define the Toolbar component.</td>
+        </tr>
+        <tr>
+            <td><code>.ng-toolbar-nav</code></td>
+            <td>Add this class to a <code>&lt;ul&gt;</code> element to create a navigation. Use <code>&lt;a&gt;</code> elements as menu items within the list.</td>
+        </tr>
+        <tr>
+            <td><code>.ng-active</code></td>
+            <td>Add this class to a list item to apply an active state.</td>
+        </tr>
+    </tbody>
+</table>
+
+Markup:
+<div class="ng-toolbar" data-ng-toolbar>
+    <ul class="ng-toolbar-nav">
+        <li><a href=""><i class="ng-icon-minus ng-icon-fw"></i></a></li>
+        <li><span style="width: 150px"><input type="range" min="0" max="12" step="0.1" data-ng-slider></span></li>
+        <li><a href=""><i class="ng-icon-plus ng-icon-fw"></i></a></li>
+    </ul>
+</div>
+<br/>
+<div class="ng-toolbar" data-ng-toolbar="{mode: 'radio'}">
+    <ul class="ng-toolbar-nav">
+        <li><a href=""><i class="ng-icon-arrows ng-icon-fw"></i></a></li>
+        <li><a href=""><i class="ng-icon-eraser ng-icon-fw"></i></a></li>
+        <li><a href=""><i class="ng-icon-map-marker ng-icon-fw"></i></a></li>
+    </ul>
+</div>
+
+Weight: 2
+
+Styleguide Controls.Toolbars.Usage
+*/
+//
+// 1. `background-origin` is needed to prevent the background-image gradients from repeating under the border
+//
+
+.ng-toolbar {
+    display: inline-block;
+    background: $toolbar-background;
+    color: $toolbar-color;
+    border: 1px solid $toolbar-border;
+    background-origin: border-box; // 1 */
+    @include hook-toolbar();
+}
+
+/*
+ * Micro clearfix
+ */
+
+.ng-toolbar:before,
+.ng-toolbar:after {
+    content: " ";
+    display: table;
+}
+
+.ng-toolbar:after { clear: both; }
+
+
+/* Sub-object: `ng-toolbar-nav`
+ ========================================================================== */
+
+.ng-toolbar-nav {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    float: left;
+}
+
+/*
+ * 1. Create position context for dropdowns
+ */
+
+.ng-toolbar-nav > li {
+    float: left;
+    /* 1 */
+    position: relative;
+}
+
+/*
+ * 1. Dimensions
+ * 2. Style
+ */
+
+.ng-toolbar-nav > li > a,
+.ng-toolbar-nav > li > span {
+    display: block;
+    box-sizing: border-box;
+    text-decoration: none;
+    /* 1 */
+    height: $toolbar-nav-height;
+    padding: 0 $toolbar-nav-padding-horizontal;
+    line-height: $toolbar-nav-line-height;
+    /* 2 */
+    color: $toolbar-nav-color;
+    font-size: $toolbar-nav-font-size;
+    font-family: $toolbar-nav-font-family;
+    font-weight: $toolbar-nav-font-weight;
+    [class*='ng-icon'] {
+        line-height: 30px;
+    }
+    @include hook-toolbar-nav();
+}
+
+/* Appear not as link */
+.ng-toolbar-nav > li > a[href='#'] { cursor: text; }
+
+/*
+ * Hover
+ * 1. Apply hover style also to focus state
+ * 2. Also apply if dropdown is opened
+ * 3. Remove default focus style
+ */
+
+.ng-toolbar-nav > li:hover > a,
+.ng-toolbar-nav > li > a:focus, // 1
+.ng-toolbar-nav > li.ng-open > a { // 2
+    background-color: $toolbar-nav-hover-background;
+    color: $toolbar-nav-hover-color;
+    /* 3 */
+    outline: none;
+    @include hook-toolbar-nav-hover();
+}
+
+/* OnClick */
+.ng-toolbar-nav > li > a:active {
+    background-color: $toolbar-nav-onclick-background;
+    color: $toolbar-nav-onclick-color;
+    @include hook-toolbar-nav-onclick();
+}
+
+/* Active */
+.ng-toolbar-nav > li.ng-active > a {
+    background-color: $toolbar-nav-active-background;
+    color: $toolbar-nav-active-color;
+    @include hook-toolbar-nav-active();
+}
+
+
+/**
+Toolbar subtitle
+
+Add the <code>.ng-toolbar-nav-subtitle</code> class to an <code>&lt;a&gt;</code>
+element in the list item to indicate that it has a subtitle. Use a
+<code>&lt;div&gt;</code> element for the subtitle itself.
+
+Markup:
+<div class="ng-toolbar">
+    <ul class="ng-toolbar-nav">
+        <li class="ng-active"><a href="" class="ng-toolbar-nav-subtitle">Active<div>Subtitle</div></a></li>
+        <li><a href="" class="ng-toolbar-nav-subtitle">Item<div>Subtitle</div></a></li>
+        <li>
+            <a href="" class="ng-toolbar-nav-subtitle">Parent<div>Subtitle</div></a>
+        </li>
+    </ul>
+</div>
+
+Weight: 3
+
+Styleguide Controls.Toolbars.subtitle
+*/
+
+.ng-toolbar-nav .ng-toolbar-nav-subtitle { line-height: ($toolbar-nav-line-height - $toolbar-nav-subtitle-font-size - $toolbar-nav-subtitle-offset); }
+
+.ng-toolbar-nav-subtitle > div {
+    margin-top: (($toolbar-nav-line-height - $toolbar-nav-subtitle-font-size - $toolbar-nav-font-size) / -2) + $toolbar-nav-subtitle-offset;
+    font-size: $toolbar-nav-subtitle-font-size;
+    line-height: $toolbar-nav-subtitle-font-size + $toolbar-nav-subtitle-offset;
+}
+
+
+/**
+Content
+
+You can also add custom content to the toolbar, like text, icons, buttons, forms
+or even a toggle. By default, there is no JavaScript attached to the toggle.
+As an example, you can add an off-canvas navigation from the Off-canvas component.
+
+Weight: 4
+
+Styleguide Controls.Toolbars.content
+*/
+
+/*
+ * Imitate toolbar items
+ */
+
+.ng-toolbar-content,
+.ng-toolbar-brand,
+.ng-toolbar-toggle {
+    box-sizing: border-box;
+    display: block;
+    height: $toolbar-nav-height;
+    padding: 0 $toolbar-nav-padding-horizontal;
+    float: left;
+    @include hook-toolbar-content();
+}
+
+/*
+ * Helper to center all child elements vertically
+ */
+
+.ng-toolbar-content:before,
+.ng-toolbar-brand:before,
+.ng-toolbar-toggle:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+
+/**
+Custom Content
+
+Add the `.ng-toolbar-content` class to a <code>&lt;div&gt;</code> element, which serves as a container for your custom content. The content will be centered vertically.
+
+Markup:
+<div class="ng-toolbar">
+    <ul class="ng-toolbar-nav">
+        <li class="ng-active">
+            <a href=""><i class="ng-icon-home"></i> Level1</a>
+        </li>
+    </ul>
+    <div class="ng-toolbar-content">Some <a href="#">link</a>.</div>
+    <div class="ng-toolbar-content ng-hidden-small">
+        <form class="ng-form ng-margin-remove ng-display-inline-block">
+            <input type="text" placeholder="Search">
+            <button class="ng-button ng-button-mini ng-button-primary">Submit</button>
+        </form>
+    </div>
+    <div class="ng-toolbar-content ng-toolbar-flip  ng-hidden-small">
+        <div class="ng-button-group">
+            <a class="ng-button ng-button-mini ng-button-danger" href="#">Link</a>
+            <button class="ng-button ng-button-mini ng-button-danger">Button</button>
+        </div>
+    </div>
+</div>
+
+Styleguide Controls.Toolbars.content.custom
+*/
+
+/*
+ * Better sibling spacing
+ */
+
+.ng-toolbar-content + .ng-toolbar-content:not(.ng-toolbar-center) { padding-left: 0; }
+
+/*
+ * Link colors
+ */
+
+.ng-toolbar-content > a:not([class]) { color: $toolbar-link-color; }
+.ng-toolbar-content > a:not([class]):hover { color: $toolbar-link-hover-color; }
+
+
+/**
+Brand content
+
+Add the `.ng-toolbar-brand` class to an <code>&lt;a&gt;</code> or
+            <code>&lt;div&gt;</code> element to indicate your brand.
+
+Markup:
+<div class="ng-toolbar">
+    <a class="ng-toolbar-brand" href="#">Brand</a>
+    <ul class="ng-toolbar-nav">
+        <li class="ng-active">
+            <a href=""><i class="ng-icon-home"></i> Level1</a>
+        </li>
+    </ul>
+</div>
+
+Styleguide Controls.Toolbars.content.brand
+*/
+
+.ng-toolbar-brand {
+    font-size: $toolbar-brand-font-size;
+    color: $toolbar-brand-color;
+    text-decoration: none;
+}
+
+/*
+ * 1. Apply hover style also to focus state
+ * 2. Remove default focus style
+ */
+
+.ng-toolbar-brand:hover,
+.ng-toolbar-brand:focus { // 1
+    color: $toolbar-brand-hover-color;
+    text-decoration: none;
+    /* 2 */
+    outline: none;
+}
+
+
+/**
+Toggles
+
+Add the `.ng-toolbar-toggle` class to an <code>&lt;a&gt;</code> or
+<code>&lt;div&gt;</code> element to create an icon as a toggle.
+
+Add the `.ng-toolbar-toggle-alt` class to create an alternative icon as a toggle.
+
+Markup:
+<div class="ng-toolbar">
+    <a href="#" class="ng-toolbar-toggle"></a>
+    <div class="ng-toolbar-flip">
+        <a href="" class="ng-toolbar-toggle ng-toolbar-toggle-alt"></a>
+    </div>
+</div>
+
+Styleguide Controls.Toolbars.content.toggle
+*/
+
+.ng-toolbar-toggle {
+    font-size: $toolbar-toggle-font-size;
+    color: $toolbar-toggle-color;
+    text-decoration: none;
+}
+
+/*
+ * 1. Apply hover style also to focus state
+ * 2. Remove default focus style
+ */
+
+.ng-toolbar-toggle:hover,
+.ng-toolbar-toggle:focus { // 1
+    color: $toolbar-toggle-hover-color;
+    text-decoration: none;
+    /* 2 */
+    outline: none;
+}
+
+/*
+ * 1. Center icon vertically
+ */
+
+.ng-toolbar-toggle:after {
+    content: $toolbar-toggle-icon;
+    font-family: FontAwesome;
+    /* 1 */
+    vertical-align: middle;
+}
+
+.ng-toolbar-toggle-alt:after { content: $toolbar-toggle-icon-alt; }
+
+
+/**
+Centered content
+
+Add the `.ng-toolbar-center` class to center your toolbar content or brand.
+The element needs to be the **last child** in the toolbar.
+
+Markup:
+<div class="ng-toolbar">
+    <ul class="ng-toolbar-nav">
+        <li class="ng-active"><a href="">Active</a></li>
+        <li class="ng-hidden-small"><a href="">Item</a></li>
+        <li>
+            <a href="">Parent</a>
+        </li>
+    </ul>
+    <div class="ng-toolbar-flip">
+        <ul class="ng-toolbar-nav">
+            <li><a href="">Parent</a></li>
+            <li class="ng-hidden-small"><a href="">Item</a></li>
+            <li class="ng-active"><a href="">Active</a></li>
+        </ul>
+    </div>
+    <div class="ng-toolbar-content ng-toolbar-center">Center</div>
+</div>
+
+Styleguide Controls.Toolbars.content.centered
+*/
+
+/*
+ * The element with this class needs to be last child in the toolbar
+ * 1. This hack is needed because other float elements shift centered text
+ */
+
+.ng-toolbar-center {
+    float: none;
+    text-align: center;
+    /* 1 */
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/**
+Toolbar flip
+
+Add the <code>.ng-toolbar-flip</code> class to a <code>&lt;div&gt;</code>
+element to group and align navigations and items to the right.
+
+Markup:
+<div class="ng-toolbar">
+    <ul class="ng-toolbar-nav">
+        <li class="ng-active"><a href="">Active</a></li>
+        <li><a href="">Item</a></li>
+        <li><a href="">Parent</a></li>
+    </ul>
+    <div class="ng-toolbar-flip">
+        <ul class="ng-toolbar-nav">
+            <li><a href="">Parent</a></li>
+            <li><a href="">Item</a></li>
+            <li class="ng-active"><a href="">Active</a></li>
+        </ul>
+    </div>
+</div>
+
+Weight: 5
+
+Styleguide Controls.Toolbars.flip
+*/
+
+.ng-toolbar-flip { float: right; }
+
+/**
+Toolbar attached modifier
+
+Add the <code>.ng-toolbar-attached</code> class to optimize the toolbar's styling
+to be attached to the top of the viewport. For example, rounded corners will be
+removed.
+
+Markup:
+<div class="ng-toolbar ng-toolbar-attached">
+    <ul class="ng-toolbar-nav">
+        <li class="ng-active"><a href="">Active</a></li>
+        <li><a href="">Item</a></li>
+        <li><a href="">Parent</a></li>
+    </ul>
+</div>
+
+Weight: 6
+
+Styleguide Controls.Toolbars.attached
+*/
+.ng-toolbar:not(.ng-toolbar-attached) { border-radius: $global-border-radius; }
+
+/*
+ * Apply same `border-radius` as `ng-toolbar`
+ */
+
+.ng-toolbar:not(.ng-toolbar-attached) .ng-toolbar-nav:first-child > li:first-child > a {
+    border-top-left-radius: $global-border-radius;
+    border-bottom-left-radius: $global-border-radius;
+}
+
+/**
+Toolbar with dropdowns
+
+A toolbar can contain a dropdown from the Dropdown component. Just add the
+<code>.ng-dropdown-toolbar</code> modifier to the dropdown, so it fits perfectly
+into the toolbar's styling.
+
+Markup:
+<div class="ng-toolbar">
+    <ul class="ng-toolbar-nav">
+        <li class="ng-active"><a href="">Active</a></li>
+        <li><a href="">Item</a></li>
+        <li class="ng-parent" data-ng-dropdown>
+            <a href="">Parent <i class="ng-icon-caret-down"></i></a>
+            <div class="ng-dropdown ng-dropdown-toolbar">
+                <ul class="ng-nav ng-nav-toolbar">
+                    <li><a href="#">Item</a></li>
+                    <li><a href="#">Another item</a></li>
+                    <li class="ng-nav-header">Header</li>
+                    <li><a href="#">Item</a></li>
+                    <li><a href="#">Another item</a></li>
+                    <li class="ng-nav-divider"></li>
+                    <li><a href="#">Separated item</a></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+
+Weight: 7
+
+Styleguide Controls.Toolbars.dropdowns
+*/
+
+@include hook-toolbar-misc();
+
+// @mixin hook-toolbar(){}
+// @mixin hook-toolbar-nav(){}
+// @mixin hook-toolbar-nav-hover(){}
+// @mixin hook-toolbar-nav-onclick(){}
+// @mixin hook-toolbar-nav-active(){}
+// @mixin hook-toolbar-content(){}
+// @mixin hook-toolbar-misc(){}

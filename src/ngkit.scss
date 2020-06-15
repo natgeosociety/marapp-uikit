@@ -1,0 +1,265 @@
+@import "variables";
+@import "utils";
+@import "core/colors";
+@import "globals";
+@import "mixins";
+@import "ngfonts";
+@import "core/icon";
+
+// Defaults
+@import "normalize";
+@import "core/base";
+
+// Layout
+@import "core/grid";
+@import "core/cover";
+
+// Navs
+@import "core/pagination";
+@import "core/tab";
+@import "core/tab-new";
+
+// Elements
+@import "core/list";
+@import "core/table";
+@import "core/form";
+@import "core/index";
+
+// Common
+@import "core/button";
+@import "core/close";
+@import "core/badge";
+@import "core/alert";
+@import "core/thumbnail";
+@import "core/overlay";
+@import "core/column";
+@import "core/animation";
+@import "core/headings";
+
+// Javascript
+@import "core/dropdown";
+@import "core/modal";
+@import "core/switcher";
+
+// Need to be loaded last
+@import "core/text";
+@import "core/utility";
+@import "core/flex";
+@import "core/print";
+
+@import "components/accordion";
+@import "components/autocomplete";
+@import "components/datepicker";
+@import "components/form-advanced";
+@import "components/form-password";
+@import "components/form-select";
+@import "components/icon_with_label";
+@import "components/select";
+@import "components/progress";
+@import "components/tooltip";
+@import "components/range-slider";
+
+@import "customcomponents/popover";
+@import "components/popover";
+@import "components/slider";
+
+
+@import "_button_overrides";
+@import "_ngFlag";
+@import "_ng-tool-tip-custom";
+
+
+@import "_candidates";
+
+
+
+
+/* this CS forms the triangles */
+// .ng-tooltip:after,
+// .ng-tooltip:before {
+//     content: '';
+//     display: block;
+//     position: absolute;
+//     left: 100%;
+//     width: 0;
+//     height: 0;
+//     border-style: solid;
+//     top: calc(50% - 10px - 1px);
+// }
+
+// .ng-tooltip:after {
+//     border-color: transparent transparent transparent $white;
+//     border-width: 10px;
+// }
+
+// .ng-tooltip:before {
+//     border-color: transparent transparent transparent #696969;
+//     border-width: 11px;
+// }
+
+
+
+.ng-tooltip {
+  display: none;
+  position: absolute;
+  z-index: 1020;
+  box-sizing: border-box;
+  width: auto;
+  padding: 15px 20px;
+  border: 1px solid #999999;
+  background-color: #FFFFFF;
+  box-shadow: -2px 2px 10px 0 rgba(153,153,153,0.5);
+  z-index: 1000;
+  background: white;
+  color: black;
+  min-width: 200px;
+}
+
+.ng-tooltip.ng-open {
+  display: block;
+}
+
+/* ng-tooltip caret positioning: https://nationalgeographicatlassianprod.atlassian.net/browse/AL-1029 */
+.ng-tooltip:after,
+.ng-tooltip:before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+/* LEFT ALIGNMENT */
+[ng-tooltip*="pos: left"]:after {
+  border-color: transparent transparent transparent white;
+  border-width: 10px;
+  left: 100%;
+}
+[ng-tooltip*="pos: left"]:before {
+  border-color: transparent transparent transparent #696969;
+  border-width: 11px;
+  left: 100%;
+}
+/* left-top */
+[ng-tooltip*="left-top"]:after {
+    top: 1px;
+}
+[ng-tooltip*="left-top"]:before {
+    top: 0px;
+}
+/* left-center */
+[ng-tooltip*="left-center"]:after {
+  top: calc(50% - 10px);
+}
+[ng-tooltip*="left-center"]:before {
+  top: calc(50% - 10px - 1px);
+}
+/* left-bottom */
+[ng-tooltip*="left-bottom"]:after {
+  bottom: 1px;
+}
+[ng-tooltip*="left-bottom"]:before {
+  bottom: 0px;
+}
+
+/* RIGHT ALIGNMENT */
+[ng-tooltip*="pos: right"]:after {
+  border-color: transparent white transparent transparent;
+  border-width: 10px;
+  right: 100%;
+}
+[ng-tooltip*="pos: right"]:before {
+  border-color: transparent #696969 transparent transparent;
+  border-width: 11px;
+  right: 100%;
+}
+/* right-top */
+[ng-tooltip*="right-top"]:after {
+    top: 1px;
+}
+[ng-tooltip*="right-top"]:before {
+    top: 0px;
+}
+/* right-center */
+[ng-tooltip*="right-center"]:after {
+  top: calc(50% - 10px);
+}
+[ng-tooltip*="right-center"]:before {
+  top: calc(50% - 10px - 1px);
+}
+/* right-bottom */
+[ng-tooltip*="right-bottom"]:after {
+  bottom: 1px;
+}
+[ng-tooltip*="right-bottom"]:before {
+  bottom: 0px;
+}
+
+
+/* TOP ALIGNMENT */
+[ng-tooltip*="pos: top"]:after {
+  border-color: white transparent transparent transparent;
+  border-width: 10px;
+  top: 100%;
+}
+[ng-tooltip*="pos: top"]:before {
+  border-color: #696969 transparent transparent transparent;
+  border-width: 11px;
+  top: 100%;
+}
+/* top-right */
+[ng-tooltip*="top-right"]:after {
+  right: 1px;
+}
+[ng-tooltip*="top-right"]:before {
+  right: 0px;
+}
+/* top-center */
+[ng-tooltip*="top-center"]:after {
+  right: calc(50% - 10px);
+}
+[ng-tooltip*="top-center"]:before {
+  right: calc(50% - 10px - 1px);
+}
+/* top-left */
+[ng-tooltip*="top-left"]:after {
+  left: 1px;
+}
+[ng-tooltip*="top-left"]:before {
+  left: 0px;
+}
+
+
+/* BOTTOM ALIGNMENT */
+[ng-tooltip*="pos: bottom"]:after {
+  border-color: transparent transparent white transparent;
+  border-width: 10px;
+  bottom: 100%;
+}
+[ng-tooltip*="pos: bottom"]:before {
+  border-color: transparent transparent #696969 transparent;
+  border-width: 11px;
+  bottom: 100%;
+}
+/* bottom-right */
+[ng-tooltip*="bottom-right"]:after {
+  right: 1px;
+}
+[ng-tooltip*="bottom-right"]:before {
+  right: 0px;
+}
+/* bottom-center */
+[ng-tooltip*="bottom-center"]:after {
+  right: calc(50% - 10px);
+}
+[ng-tooltip*="bottom-center"]:before {
+  right: calc(50% - 10px - 1px);
+}
+/* bottom-left */
+[ng-tooltip*="bottom-left"]:after {
+  left: 1px;
+}
+[ng-tooltip*="bottom-left"]:before {
+  left: 0px;
+}

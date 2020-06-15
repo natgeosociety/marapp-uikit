@@ -1,0 +1,209 @@
+// Name:            Table Components
+// Description:     Defines styles for custom tables
+//
+// Component:       `ng-table`
+//
+// Modifiers:       `ng-table-middle`
+//                  `ng-table-striped`
+//                  `ng-table-condensed`
+//                  `ng-table-hover`
+//
+// States:          `uk-active`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$table-margin-vertical:                         $global-margin !default;
+$table-padding-vertical:                        8px !default;
+$table-padding-horizontal:                      8px !default;
+$table-border:                                  $global-border !default;
+
+$table-caption-color:                           $global-muted-color !default;
+$table-caption-font-size:                       round($global-font-size * 0.85) !default;
+
+$table-active-background:                       #f0f0f0 !default;
+$table-striped-background:                      $global-default-muted-background !default;
+
+$table-condensed-padding-vertical:              4px !default;
+$table-condensed-padding-horizontal:            8px !default;
+
+$table-hover-background:                        darken($table-striped-background, 4%) !default;
+
+.ng-table-border {background: $table-border}
+.ng-table-caption-color {background: $table-caption-color}
+.ng-table-striped-background {background: $table-striped-background}
+.ng-table-hover-background { background: $table-hover-background; }
+
+/* ========================================================================
+   Component: Table
+ ========================================================================== */
+
+/*
+ * 1. Remove most spacing between table cells.
+ * 2. Block element behavior
+ * 3. Style
+ */
+
+.ng-table {
+    /* 1 */
+    border-collapse: collapse;
+    border-spacing: 0;
+    /* 2 */
+    width: 100%;
+    /* 3 */
+    margin-bottom: $table-margin-vertical;
+}
+
+/*
+ * Add margin if adjacent element
+ */
+
+* + .ng-table { margin-top: $table-margin-vertical; }
+
+.ng-table th,
+.ng-table td {
+    padding: $table-padding-vertical $table-padding-horizontal;
+    border-bottom: 1px solid $table-border;
+    @include hook-table();
+}
+
+/*
+ * Set alignment
+ */
+
+.ng-table th { text-align: left; }
+.ng-table td { vertical-align: top; }
+
+.ng-table thead th { vertical-align: bottom; }
+
+/*
+ * Caption and footer
+ */
+
+.ng-table caption,
+.ng-table tfoot {
+    font-size: $table-caption-font-size;
+    font-style: italic;
+}
+
+.ng-table caption {
+    text-align: left;
+    color: $table-caption-color;
+}
+
+/*
+ * Active State
+ */
+
+.ng-table tbody tr.ng-active {
+    background: $table-active-background;
+    @include hook-table-active();
+}
+
+
+/* Sub-modifier: `ng-table-middle`
+ ========================================================================== */
+
+.ng-table-middle,
+.ng-table-middle td { vertical-align: middle !important; }
+
+
+/* Modifier: `ng-table-striped`
+ ========================================================================== */
+
+.ng-table-striped tbody tr:nth-of-type(odd) {
+    background: $table-striped-background;
+    @include hook-table-striped();
+}
+
+
+/* Modifier: `ng-table-condensed`
+ ========================================================================== */
+
+.ng-table-condensed td {
+    padding: $table-condensed-padding-vertical $table-condensed-padding-horizontal;
+    @include hook-table-condensed();
+}
+
+
+/* Modifier: `ng-table-hover`
+ ========================================================================== */
+
+.ng-table-hover tbody tr:hover {
+    background: $table-hover-background;
+    @include hook-table-hover();
+}
+
+.ng-table th {
+    border-bottom: 2px solid $table-border;
+}
+
+$fa-var-sort: "\00a0\f073";
+$fa-var-sort-asc: "\00a0\f01d";
+$fa-var-sort-desc: "\00a0\f01b";
+
+.ng-table-sortable {
+    .ng-sortable:hover {
+        cursor: pointer;
+    }
+
+    .ng-sortable:after,
+    .ng-sortable.ng-sorted-asc:after,
+    .ng-sortable.ng-sorted-desc:after {
+        font-family: $icon-font-family;
+        font-style: normal;
+        font-weight: $base-body-font-weight;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        content: $fa-var-sort;
+    }
+
+    .ng-sortable.ng-sorted-asc:after {
+        content: $fa-var-sort-asc;
+    }
+
+    .ng-sortable.ng-sorted-desc:after {
+        content: $fa-var-sort-desc;
+    }
+
+    .ng-sorted {
+        background: $table-hover-background;
+    }
+}
+
+//Specific styles for pristine seas partners table.
+//TODO: Is there any need in doing this generically for
+//all mobile screen tables?
+@media screen and (max-width: 479px) {
+    #ng-project-pristine-seas {
+        .ng-table td {
+            padding: 8px 8px;
+            font-size: 13px;
+        }
+    }
+}
+
+@media screen and (max-width: 350px) {
+    #ng-project-pristine-seas {
+        .ng-table {
+            margin-left: -12px;
+        }
+    }
+}
+
+
+// Hooks
+// ========================================================================
+
+@include hook-table-misc();
+
+// @mixin hook-table(){}
+// @mixin hook-table-active() {}
+// @mixin hook-table-striped() {}
+// @mixin hook-table-condensed() {}
+// @mixin hook-table-hover() {}
+// @mixin hook-table-misc(){}

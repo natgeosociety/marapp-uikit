@@ -1,0 +1,103 @@
+// Name:            Accordion
+// Description:     Defines styles for the accodion
+//
+// Component:       `ng-accodion`
+//
+// Sub-objects:     `ng-accodion-title`
+//                  `ng-accodion-content`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$accordion-title-font-size:                      1.25rem !default;
+$accordion-title-font-weight:                    600 !default;
+$accordion-title-line-height:                    1.6 !default;
+$accordion-border-style:                         1px solid $theme-border;
+
+
+/* ========================================================================
+   Component: Accordion
+ ========================================================================== */
+
+.ng-accordion {
+    padding: 0!important; //TODO: fix this important statement, this is a host fix because in base.scss ul has a padding-left with important value
+    list-style: none;
+    border: $accordion-border-style;
+    border-bottom: none;
+    @include hook-accordion();
+}
+
+
+/* Accordion children
+ ========================================================================== */
+
+.ng-accordion {
+    li {
+        padding: 0 12px;
+        border-bottom: $accordion-border-style;
+
+        &:hover {
+            background-color: $theme-default-muted-background;
+            -webkit-transition-duration: 400ms;
+            transition-duration: 400ms;
+        }
+    }
+    &.ng-accordion-large li{
+        padding: 35px 25px;
+    }
+}
+
+
+/* Sub-object: `ng-accordion-title`
+ ========================================================================== */
+
+.ng-accordion-title {
+    margin-top: 0;
+    font-weight: $accordion-title-font-weight;
+    font-size: $accordion-title-font-size;
+    line-height: $accordion-title-line-height;
+    border-bottom: none;
+    cursor: pointer;
+    width: 100%;
+    display: inline-block;
+    @include hook-accordion-title();
+    &:hover{
+        border-bottom: none;
+    }
+}
+
+
+/* Sub-object: `ng-accordion-content`
+ ========================================================================== */
+
+/*
+ * Micro clearfix to make panels more robust
+ */
+
+.ng-accordion-content:before,
+.ng-accordion-content:after {
+    content: "";
+    display: table;
+}
+
+.ng-accordion-content:after { clear: both; }
+
+/*
+ * Remove margin from the last-child
+ */
+
+ .ng-accordion-content > :last-child { margin-bottom: 0; }
+
+
+// Hooks
+// ========================================================================
+
+@include hook-accordion-misc();
+
+// @mixin hook-accordion(){}
+// @mixin hook-accordion-title(){}
+// @mixin hook-accordion-content(){}
+// @mixin hook-accordion-misc(){}

@@ -1,0 +1,327 @@
+// Name:            Icon
+// Description:     Defines styles for icons
+//
+// Adapted from http://fortawesome.github.com/Font-Awesome (Version 4.2.0)
+//
+// Component:       `ng-icon-*`
+//
+// Sub-objects:     `ng-icon-hover`
+//                  `ng-icon-button`
+//
+// Modifiers:       `ng-icon-small`
+//                  `ng-icon-medium`
+//                  `ng-icon-large`
+//                  `ng-icon-justify`
+//                  `ng-icon-spin`
+//
+// Uses:            Animation
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+
+$icon-micro-font-size:                           75% !default;
+$icon-mini-font-size:                            100% !default;
+$icon-small-font-size:                           150% !default;
+$icon-medium-font-size:                          200% !default;
+$icon-large-font-size:                           250% !default;
+
+$icon-micro-vertical-align:                      -10% !default;
+$icon-mini-vertical-align:                       -10% !default;
+$icon-large-vertical-align:                      -22% !default;
+$icon-small-vertical-align:                      -10% !default;
+$icon-medium-vertical-align:                     -16% !default;
+$icon-large-vertical-align:                      -22% !default;
+
+$icon-hover-color:                               $global-muted-color !default;
+$icon-hover-hover-color:                         $global-color !default;
+
+$icon-button-width:                              40px !default;
+$icon-button-height:                             $icon-button-width !default;
+$icon-button-border-radius:                      100% !default;
+$icon-button-background:                         #fff !default;
+$icon-button-font-size:                          round(($icon-button-width * 0.5)) !default;
+$icon-button-color:                              $global-color !default;
+
+$icon-button-hover-background:                   $global-default-hover-background !default;
+$icon-button-hover-color:                        $global-color !default;
+
+$icon-button-active-background:                  $global-default-active-background !default;
+$icon-button-active-color:                       $global-color !default;
+
+/* Can't prefix with just .ng- because of other classes that interfere */
+.ng--icon-hover-color {background: $icon-hover-color;color: #fff}
+.ng--icon-hover-hover-color {background: $icon-hover-hover-color;color: #fff}
+.ng--icon-button-background {background: $icon-button-background;}
+.ng--icon-button-color {background: $icon-button-color;color: #fff}
+.ng--icon-button-hover-background {background: $icon-button-hover-background;}
+.ng--icon-button-hover-color {background: $icon-button-hover-color;color: #fff}
+.ng--icon-button-active-background {background: $icon-button-active-background;}
+.ng--icon-button-active-color {background: $icon-button-active-color;color: #fff}
+
+
+/* ========================================================================
+   Component: Icon
+ ========================================================================== */
+@import "icon-font";
+
+/* Remove `text-decoration` for anchors */
+[class*='ng-icon-'],
+[class*='ng-icon-']:hover,
+[class*='ng-icon-']:focus { text-decoration: none; }
+
+
+/* Aliases */
+.ng-icon-audio-loud {
+    @extend .ng-icon-audioloud;
+}
+.ng-icon-audio-mute {
+    @extend .ng-icon-audiomute;
+}
+.ng-icon-plus {
+    @extend .ng-icon-add;
+}
+.ng-icon-external-link-square,
+.ng-icon-external-link,
+.ng-icon-box-arrow-ne {
+    @extend .ng-icon-boxarrowne;
+}
+.ng-icon-remove,
+.ng-icon-times {
+    @extend .ng-icon-close;
+}
+.ng-icon-remove-light,
+.ng-icon-times-light,
+.ng-icon-close-light {
+    @extend .ng-icon-lightclose;
+}
+
+.ng-icon-chevron-right,
+.ng-icon-angle-right,
+.ng-icon-direction-right {
+    @extend .ng-icon-directionright;
+}
+.ng-icon-chevron-left,
+.ng-icon-angle-left,
+.ng-icon-direction-left {
+    @extend .ng-icon-directionleft;
+}
+.ng-icon-angle-down,
+.ng-icon-direction-down {
+    @extend .ng-icon-directiondown;
+}
+.ng-icon-angle-up,
+.ng-icon-direction-up {
+    @extend .ng-icon-directionup;
+}
+.ng-icon-direction-down-light {
+    @extend .ng-icon-lightdirectiondown;
+}
+.ng-icon-angle-left-light,
+.ng-icon-direction-left-light {
+    @extend .ng-icon-lightdirectionleft;
+}
+.ng-icon-angle-right-light,
+.ng-icon-direction-right-light {
+    @extend .ng-icon-lightdirectionright;
+}
+.ng-icon-angle-up-light,
+.ng-icon-direction-up-light {
+    @extend .ng-icon-lightdirectionup;
+}
+.ng-icon-search-plus,
+.ng-icon-zoom-in {
+    @extend .ng-icon-zoomin;
+}
+.ng-icon-search-minus,
+.ng-icon-zoom-out {
+    @extend .ng-icon-zoomout;
+}
+
+/* SVG icons
+ ========================================================================== */
+
+.ng-icon, .ng-icon svg {
+    width: 1em;
+    height: 1em;
+    font-size: 1em;
+    line-height: 1em;
+    max-width: 100%;
+    max-height: 100%;
+    fill: currentColor;
+}
+.ng-icon {
+    display: inline-block;
+    position: relative;
+}
+.ng-icon svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.ng-icon-algin-top svg {
+    vertical-align: top;
+}
+.ng-icon-algin-text-top svg {
+    vertical-align: text-top;
+}
+
+/* Size modifiers
+ ========================================================================== */
+
+.ng-icon-micro {
+    font-size: $icon-micro-font-size !important;
+    vertical-align: $icon-micro-vertical-align;
+}
+.ng-icon-mini {
+    font-size: $icon-mini-font-size !important;
+    vertical-align: $icon-mini-vertical-align;
+}
+
+.ng-icon-small {
+    font-size: $icon-small-font-size;
+    line-height: $icon-small-font-size;
+    vertical-align: $icon-small-vertical-align;
+}
+.ng-icon-small svg {
+    width: $icon-small-font-size;
+    height: $icon-small-font-size;
+}
+.ng-icon-medium {
+    font-size: $icon-medium-font-size;
+    line-height: $icon-medium-font-size;
+    vertical-align: $icon-medium-vertical-align;
+}
+.ng-icon-medium svg {
+    width: $icon-medium-font-size;
+    height: $icon-medium-font-size;
+}
+.ng-icon-large {
+    font-size: $icon-large-font-size;
+    line-height: $icon-large-font-size;
+    vertical-align: $icon-large-vertical-align;
+}
+.ng-icon-large svg {
+    width: $icon-large-font-size;
+    height: $icon-large-font-size;
+}
+
+
+/* Modifier: `ng-icon-justify`
+ ========================================================================== */
+
+.ng-icon-justify {
+    width: 1em;
+    text-align: center;
+}
+
+
+/* Modifier: `ng-icon-spin`
+ ========================================================================== */
+
+.ng-icon-spin {
+    display: inline-block;
+    -webkit-animation: ng-rotate 2s infinite linear;
+    animation: ng-rotate 2s infinite linear;
+}
+
+
+/* Modifier: `ng-icon-hover`
+ ========================================================================== */
+
+.ng-icon-hover {
+    color: $icon-hover-color;
+    border-bottom: none;
+    @include hook-icon-hover();
+}
+
+/*
+ * Hover
+ */
+
+.ng-icon-hover:hover {
+    color: $icon-hover-hover-color;
+    border-bottom: none;
+    @include hook-icon-hover-hover();
+}
+
+
+/* Modifier: `ng-icon-button`
+ ========================================================================== */
+
+.ng-icon-button {
+    box-sizing: border-box;
+    display: inline-block;
+    width: $icon-button-width;
+    height: $icon-button-height;
+    border-radius: $icon-button-border-radius;
+    background: $icon-button-background;
+    line-height: $icon-button-height;
+    color: $icon-button-color;
+    font-size: $icon-button-font-size;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.2);
+    & + & {
+        margin-left: 5px
+    }
+    &.ng-icon-button-large {
+        width: $icon-button-width * 2;
+        height: $icon-button-height * 2;
+        line-height: $icon-button-height * 2;
+        font-size: $icon-button-font-size * 2;
+    }
+
+    &.ng-icon-button-large svg {
+        top: 40%;
+        left: 40%;
+    }
+
+    transition: background-color 0.4s ease;
+    @include hook-icon-button();
+}
+.ng-icon-button svg {
+    top: 50%;
+    left: 50%;
+    transform: translate(-($icon-button-font-size / 2), -($icon-button-font-size / 2))
+}
+
+/*
+ * Hover
+ * 1. Apply hover style also to focus state
+ * 2. Remove default focus style
+ */
+
+.ng-icon-button:hover,
+.ng-icon-button:focus { // 1
+    background-color: $icon-button-hover-background;
+    color: $icon-button-hover-color;
+    /* 2 */
+    outline: none;
+    border: 1px solid rgba(0,0,0,0.2);
+    background: #E6E6E6;
+    @include hook-icon-button-hover();
+}
+
+/* Active */
+.ng-icon-button:active {
+    background-color: $icon-button-active-background;
+    color: $icon-button-active-color;
+    @include hook-icon-button-active();
+}
+
+
+
+// Hooks
+// ========================================================================
+
+@include hook-icon-misc();
+
+// @mixin hook-icon-hover() {}
+// @mixin hook-icon-hover-hover() {}
+// @mixin hook-icon-button() {}
+// @mixin hook-icon-button-hover() {}
+// @mixin hook-icon-button-active() {}
+// @mixin hook-icon-misc() {}

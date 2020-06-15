@@ -1,0 +1,274 @@
+/**
+Slider
+
+Polyfill and styles for an HTML 5 range input type.
+
+<span class="badge info">JAVASCRIPT</span> Requires `customcomponents/slider.js` and `customcomponents/rangeslider.js`
+
+Styleguide Controls.Slider
+*/
+
+$slider-height:                               12px !default;
+$slider-small-height:                          6px !default;
+
+$slider-handle-width:                         $slider-height * 1.5 !default;
+$slider-handle-height:                        $slider-height * 1.5 !default;
+
+$slider-margin-vertical:                      (30px - $slider-height) / 2 !default;
+$slider-background:                           $global-muted-color !default;
+$slider-box-shadow:                           inset 0 0 0 1px rgba(0,0,0,0.06) !default;
+$slider-bar-background:                       $global-primary-background !default;
+$slider-bar-font-size:                        round($global-font-size * 0.85) !default; // 12px / 14px
+$slider-bar-color:                            $global-contrast-color !default;
+
+$slider-bar-success-background:               $global-success-background !default;
+$slider-bar-warning-background:               $global-warning-background !default;
+$slider-bar-danger-background:                $global-danger-background !default;
+
+$slider-bar-text-shadow:                      $global-contrast-text-shadow !default;
+
+.ng-slider-background {background: $slider-background;color: #fff}
+.ng-slider-bar-background {background: $slider-bar-background;color: #fff}
+.ng-slider-bar-color {background: $slider-bar-color;}
+.ng-slider-bar-success-background {background: $slider-bar-success-background;color: #fff}
+.ng-slider-bar-warning-background {background: $slider-bar-warning-background;color: #fff}
+.ng-slider-bar-danger-background {background: $slider-bar-danger-background;color: #fff}
+.ng-slider-bar-text-shadow {background: $slider-bar-text-shadow;color: #fff}
+
+/**
+Configuration
+
+<table class="settings">
+<tr><td>`$slider-height`</td><td class="ng-slider-height">#{$slider-height}</td></tr>
+<tr><td>`$slider-small-height`</td><td class="ng-slider-small-height">#{$slider-small-height}</td></tr>
+<tr><td>`$slider-handle-width`</td><td class="ng-slider-handle-width">#{$slider-handle-width}</td></tr>
+<tr><td>`$slider-handle-height`</td><td class="ng-slider-handle-height">#{$slider-handle-height}</td></tr>
+<tr><td>`$slider-margin-vertical`</td><td class="ng-slider-margin-vertical">#{$slider-margin-vertical}</td></tr>
+<tr><td>`$slider-background`</td><td class="ng-slider-background">#{$slider-background}</td></tr>
+<tr><td>`$slider-box-shadow`</td><td class="ng-slider-box-shadow">#{$slider-box-shadow}</td></tr>
+<tr><td>`$slider-bar-background`</td><td class="ng-slider-bar-background">#{$slider-bar-background}</td></tr>
+<tr><td>`$slider-bar-font-size`</td><td class="ng-slider-bar-font-size">#{$slider-bar-font-size}</td></tr>
+<tr><td>`$slider-bar-color`</td><td class="ng-slider-bar-color">#{$slider-bar-color}</td></tr>
+<tr><td>`$slider-bar-success-background`</td><td class="ng-slider-bar-success-background">#{$slider-bar-success-background}</td></tr>
+<tr><td>`$slider-bar-warning-background`</td><td class="ng-slider-bar-warning-background">#{$slider-bar-warning-background}</td></tr>
+<tr><td>`$slider-bar-danger-background`</td><td class="ng-slider-bar-danger-background">#{$slider-bar-danger-background}</td></tr>
+<tr><td>`$slider-bar-text-shadow`</td><td class="ng-slider-bar-text-shadow">#{$slider-bar-text-shadow}</td></tr>
+</table>
+
+Weight: 1
+
+Styleguide Controls.Slider.Configuration
+*/
+
+/**
+JavaScript Options
+
+The Javascript hides the native widget and adds a custom widget. The widget structure
+is
+
+<pre><code class="code html hljs xml">&lt;div class="ng-slider"&gt;
+    &lt;div class="ng-slider-fill"&gt;&lt;/div&gt;
+    &lt;div class="ng-slider-handle"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+<table class="settings">
+<tr><thead><th style="width: 25%">Parameter</th><th>Default</th><th>Description</th></thead></tr>
+<tr><td>`polyfill`</td><td>`false`</td><td>If `true`, this should only be used as a polyfill and use the native widget if supported. If `false`, use the custom widget no matter what.</td></tr>
+<tr><td>`rangeClass`</td><td>`'ng-slider'`</td><td>The class to use for the container.</td></tr>
+<tr><td>`disabledClass`</td><td>`'ng-slider-disabled'`</td><td>The class to use for the container when disabled.</td></tr>
+<tr><td>`fillClass`</td><td>`'ng-slider-fill'`</td><td>The class to use for the left side of the bar.</td></tr>
+<tr><td>`handleClass`</td><td>`'ng-slider-handle'`</td><td>The class to use for the slider handle.</td></tr>
+<tr><td>`outputTarget`</td><td>`null`</td><td>Put in a jQuery selector to have the innerHTML set to the value automatically. Use `'valueBubble'` to have a hovering "bubble" over the handle inserted with the value.</td></tr>
+<tr><td>`startEvent`</td><td>`['mousedown',` `'touchstart',` `'pointerdown']`</td><td>The events to use to trigger the sliding.</td></tr>
+<tr><td>`moveEvent`</td><td>`['mousemove',` `'touchmove',` `'pointermove']`</td><td>The events to use to indicate the slider is moving.</td></tr>
+<tr><td>`endEvent`</td><td>`['mouseup',` `'touchend',` `'pointerup']`</td><td>The events to use to trigger the end of the sliding.</td></tr>
+</table>
+
+Weight: 2
+
+Styleguide Controls.Slider.JavaScript
+*/
+/**
+Usage
+
+Create an `<input type="range">` tag. Give it a `data-ng-slider` attribute to
+trigger the styling.
+
+The `min`, `max`, `step` and `value` attributes on the `<input>` tag are used to
+setup the styled slider.
+
+Markup:
+<div class="ng-panel ng-panel-divider">
+    <h3 class="ng-panel-title">Negative attributes</h3>
+    <input type="range" min="-20" max="0" data-ng-slider>
+</div>
+<div class="ng-panel ng-panel-divider">
+    <h3 class="ng-panel-title">Floating point boundaries</h3>
+    <input type="range" min="10" max="11" step="0.1" value="10.2" data-ng-slider>
+</div>
+
+Weight: 3
+
+Styleguide Controls.Slider.Usage
+*/
+
+
+.ng-slider,
+.ng-slider-fill {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: $slider-height;
+    margin-bottom: $slider-margin-vertical;
+    background: $slider-background;
+    display: block;
+    width: 100%;
+    box-shadow: $slider-box-shadow;
+    border-radius: $global-border-radius;
+}
+
+.ng-slider {
+    position: relative;
+    margin-top: $slider-margin-vertical;
+}
+
+.ng-slider-disabled {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+    opacity: 0.4;
+}
+
+.ng-slider-fill {
+    background: $slider-bar-background;
+    position: absolute;
+    top: 0;
+}
+
+.ng-slider-handle {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    cursor: default;
+    background: white;
+    border: 1px solid $global-border;
+    cursor: pointer;
+    display: inline-block;
+    width: $slider-handle-width;
+    height: $slider-handle-height;
+    position: absolute;
+    top: -1 * ($slider-handle-height - $slider-height) / 2;
+    border-radius: $global-border-radius;
+
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        height: $slider-height - 2;
+        width: 1px;
+        background: $global-border;
+        left: ($slider-handle-width / 2) - 3;
+        top: ($slider-handle-height - $slider-height) / 2;
+    }
+    &:after {
+        content: "";
+        display: block;
+        height: $slider-height - 2;
+        width: 1px;
+        background: $global-border;
+        position: absolute;
+        left: ($slider-handle-width / 2);
+        top: ($slider-handle-height - $slider-height) / 2;
+    }
+    &:active {
+        background: $global-default-active-background;
+    }
+}
+
+/**
+Displaying the value
+
+Add an `outputTarget` configuration to have the value of the slider automatically
+updated.
+
+There are special `outputTarget` values: `valueBubble` and `valueBubbleTemp`.
+
+<table class="configuration">
+    <thead>
+        <tr><th>outputTarget</th><th>Results</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>CSS Selector</td>
+            <td>The value is inserted into the HTML of the selector</td></tr>
+        <tr><td>`'valueBubble'`</td>
+            <td>A value bubble is shown above the handle. The bubble moves with
+                the handle and updates with the value.</td></tr>
+        <tr><td>`'valueBubbleTemp'`</td>
+            <td>Same as `valueBubble`, but the bubble only appears when the handle
+                is being moved.</td></tr>
+    </tbody>
+</table>
+
+Markup:
+<div class="ng-panel ng-panel-divider">
+    <h3 class="ng-panel-title">Negative attributes</h3>
+    <input type="range" min="-20" max="20" data-ng-slider="{outputTarget:'#example1'}">
+    <div id="example1"></div>
+</div>
+<div class="ng-panel ng-panel-divider">
+    <h3 class="ng-panel-title">Floating point boundaries</h3>
+    <input type="range" min="0" max="10" step="0.1" value="5.2" data-ng-slider="{outputTarget:'valueBubble'}">
+</div>
+<div class="ng-panel ng-panel-divider">
+    <h3 class="ng-panel-title">Floating point boundaries</h3>
+    <input type="range" min="0" max="10" step="0.1" value="5.2" data-ng-slider="{outputTarget:'valueBubbleTemp'}">
+</div>
+
+Weight: 4
+
+Styleguide Controls.Slider.Display-Value
+*/
+
+.ng-slider-value-bubble {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #fff;
+    border: 1px solid $global-border;
+    display: block;
+    padding: 5px;
+    position: absolute;
+    bottom: 50%;
+    margin-bottom: 25px;
+    width: 50px;
+    margin-left: -25px;
+    text-align: center;
+    border-radius: $global-border-radius;
+
+    &:before,
+    &:after {
+        border-width: 11px;
+        border-style: solid;
+        border-color: transparent;
+        content: "";
+        display: block;
+        margin: auto;
+        width: 0;
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+    &:before {
+        border-top-color: $global-border;
+        border-bottom-width: 0;
+        bottom: -11px;
+    }
+    &:after {
+        border-top-color: #fff;
+        border-bottom-width: 0;
+        bottom: -10px;
+    }
+}
+
+.ng-showonclick {
+    display: none;
+}
+
+input[type="range"]:focus + .ng-slider .ng-slider-handle {
+    box-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
+}

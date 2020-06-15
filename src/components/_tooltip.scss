@@ -1,0 +1,209 @@
+// Name:            Tooltip
+// Description:     Defines styles for tooltips
+//
+// Component:       `ng-tooltip`
+//
+// Modifiers        `ng-tooltip-top`
+//                  `ng-tooltip-top-left`
+//                  `ng-tooltip-top-right`
+//                  `ng-tooltip-bottom`
+//                  `ng-tooltip-bottom-left`
+//                  `ng-tooltip-bottom-right`
+//                  `ng-tooltip-left`
+//                  `ng-tooltip-right`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$tooltip-z-index:                               ($global-z-index + 30);
+$tooltip-min-width:                             200px;
+$tooltip-padding-vertical:                      15px;
+$tooltip-padding-horizontal:                    20px;
+$tooltip-background:                            #fff;
+$tooltip-triangle-background:                   #696969;
+$tooltip-triangle-size:                         10px;
+
+$tooltip-color:                                 rgba(0,0,0,0.7);
+$tooltip-border-color:                          #999999;
+$tooltip-font-size:                             round($global-font-size * 0.85);
+$tooltip-line-height:                           round($tooltip-font-size * 1.5);
+
+$tooltip-offset-horizontal:                     10px;
+$tooltip-text-shadow:                           rgba(0,0,0,0);
+$tooltip-box-shadow:                            -2px 2px 10px 0 rgba(153,153,153,0.5);
+
+/**
+Tooltips
+
+To apply this component, add the `data-ng-tooltip` attribute to a an element which has a title attribute.
+
+<a class="ng-link" title="Whatever you do, don't click here." data-ng-tooltip>
+    Click Here
+</a>
+
+Weight: 6
+
+Styleguide Callouts.Tooltips
+*/
+
+/* ========================================================================
+   Component: Tooltip
+ ========================================================================== */
+
+/*
+ * 1. Hide by default
+ * 2. Set fixed position
+ * 3. Set dimensions
+ * 4. Set style
+ */
+
+.ng-tooltip {
+    /* 1 */
+    display: none;
+    /* 2 */
+    position: absolute;
+    z-index: $tooltip-z-index;
+    /* 3 */
+    box-sizing: border-box;
+    width: auto;
+    min-width: $tooltip-min-width;
+    padding: $tooltip-padding-vertical $tooltip-padding-horizontal;
+    /* 4 */
+    background: $tooltip-background;
+    color: $tooltip-color;
+    font-size: $tooltip-font-size;
+    line-height: $tooltip-line-height;
+    text-align: center;
+    border: 1px solid $tooltip-border-color;
+    text-shadow: 0 1px 0 $tooltip-text-shadow;
+    -webkit-box-shadow: $tooltip-box-shadow;
+    box-shadow: $tooltip-box-shadow;
+    pointer-events: none;
+    @include hook-tooltip();
+}
+
+
+/* Triangle
+ ========================================================================== */
+
+/*
+ * 1. Dashed is less antialised than solid
+ */
+
+.ng-tooltip:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-width: $tooltip-triangle-size;
+    /* 1 */
+}
+
+/* Direction modifiers
+ ========================================================================== */
+
+/*
+ * Top
+ */
+
+.ng-tooltip-top:before {
+  border-color: $tooltip-triangle-background transparent transparent transparent;
+  bottom: $tooltip-triangle-size * -2;
+  border-width: $tooltip-triangle-size;
+}
+
+.ng-tooltip-top:after {
+  border-color: $tooltip-background transparent transparent transparent;
+  bottom: $tooltip-triangle-size * -2 + 1px;
+  border-width: $tooltip-triangle-size;
+}
+
+/*
+ * Bottom
+ */
+
+.ng-tooltip-bottom:before {
+  border-color: transparent transparent $tooltip-triangle-background transparent;
+  top: $tooltip-triangle-size * -2 - 1px;
+  border-width: $tooltip-triangle-size;
+}
+
+.ng-tooltip-bottom:after {
+  border-color: transparent transparent $tooltip-background transparent;
+  top: $tooltip-triangle-size * -2;
+  border-width: $tooltip-triangle-size;
+}
+
+/*
+ * Top/Bottom center
+ */
+
+.ng-tooltip-top:before,
+.ng-tooltip-bottom:before,
+.ng-tooltip-top:after,
+.ng-tooltip-bottom:after {
+    left: 50%;
+    margin-left: -$tooltip-triangle-size;
+}
+
+/*
+ * Top/Bottom left
+ */
+
+// .ng-tooltip-top-left:after,
+// .ng-tooltip-bottom-left:after { left: $tooltip-offset-horizontal; }
+
+/*
+ * Top/Bottom right
+ */
+
+// .ng-tooltip-top-right:after,
+// .ng-tooltip-bottom-right:after { right: $tooltip-offset-horizontal; }
+
+/*
+ * Left
+ */
+
+.ng-tooltip-left:before {
+  border-color: transparent transparent transparent $tooltip-triangle-background;
+  border-width: $tooltip-triangle-size + 1px;
+  left: 100%;
+  top: calc(50% - 10px - 1px);
+}
+
+.ng-tooltip-left:after {
+  border-color: transparent transparent transparent $tooltip-background;
+  border-width: $tooltip-triangle-size;
+  left: 100%;
+  top: calc(50% - 10px);
+}
+
+/*
+ * Right
+ */
+
+.ng-tooltip-right:before {
+  border-color: transparent $tooltip-triangle-background transparent transparent;
+  border-width: $tooltip-triangle-size + 1px;
+  right: 100%;
+  top: calc(50% - 10px - 1px);
+}
+
+.ng-tooltip-right:after {
+  border-color: transparent $tooltip-background transparent transparent;
+  border-width: $tooltip-triangle-size;
+  right: 100%;
+  top: calc(50% - 10px);
+}
+
+// Hooks
+// ========================================================================
+
+@include hook-tooltip-misc();
+
+// @mixin hook-tooltip() {}
+// @mixin hook-tooltip-misc() {}

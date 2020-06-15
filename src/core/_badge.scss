@@ -1,0 +1,128 @@
+// Name:            Badge
+// Description:     Defines styles for badges
+//
+// Component:       `ng-badge`
+//
+// Modifiers:       `ng-badge-notification`
+//                  `ng-badge-success`
+//                  `ng-badge-danger`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$badge-background:                              $global-primary-background;
+$badge-padding-horizontal:                      5px;
+$badge-font-size:                               round($global-font-size * 0.71); // 10px
+$badge-font-weight:                             $base-body-bold-weight;
+$badge-line-height:                             round($badge-font-size * 1.4); // 14px
+$badge-color:                                   $global-contrast-color;
+$badge-text-transform:                          none;
+$badge-hover-color:                             $global-contrast-color;
+
+$badge-notification-font-size:                  round($global-font-size * 0.85); // 12px
+$badge-notification-line-height:                round($badge-notification-font-size * 1.5); // 18px
+
+$badge-success-background:                      $global-success-background;
+$badge-warning-background:                      $global-warning-background;
+$badge-danger-background:                       $global-danger-background;
+
+$badge-border:                                  rgba(0,0,0,0.2);
+$badge-border-bottom:                           rgba(0,0,0,0.3);
+$badge-text-shadow:                             $global-contrast-text-shadow;
+
+.ng-badge-background {background: $badge-background;color: #fff}
+.ng-badge-color {background: $badge-color}
+.ng-badge-success-background {background: $badge-success-background;color: #fff}
+.ng-badge-warning-background {background: $badge-warning-background;color: #fff}
+.ng-badge-danger-background {background: $badge-danger-background;color: #fff}
+.ng-badge-border {background: $badge-border;color: #fff}
+.ng-badge-border-bottom {background: $badge-border-bottom;color: #fff}
+.ng-badge-text-shadow {background: $badge-text-shadow;color: #fff}
+
+
+/* ========================================================================
+   Component: Badge
+ ========================================================================== */
+
+.ng-badge {
+    display: inline-block;
+    padding: 0 $badge-padding-horizontal;
+    background: $badge-background;
+    font-size: $badge-font-size;
+    font-weight: $badge-font-weight;
+    line-height: $badge-line-height;
+    color: $badge-color;
+    text-align: center;
+    vertical-align: middle;
+    text-transform: $badge-text-transform;
+    border: 1px solid $badge-border;
+    border-bottom-color: $badge-border-bottom;
+    background-origin: border-box; // 1
+    border-radius: 2px;
+    text-shadow: 0 -1px 0 $badge-text-shadow;
+    @include hook-badge();
+}
+
+/*
+ * Keep color when badge is a link
+ */
+
+a.ng-badge:hover { color: $badge-hover-color; }
+
+
+/* Modifier: `uk-badge-notification`;
+ ========================================================================== */
+
+.ng-badge-notification {
+    box-sizing: border-box;
+    min-width: $badge-notification-line-height;
+    border-radius: 500px;
+    font-size: $badge-notification-font-size;
+    line-height: $badge-notification-line-height;
+}
+
+
+/* Color modifier
+ ========================================================================== */
+
+/*
+ * Modifier: `ng-badge-success`
+ */
+
+.ng-badge-success {
+    background-color: $badge-success-background;
+    @include hook-badge-success();
+}
+
+/*
+ * Modifier: `ng-badge-warning`
+ */
+
+.ng-badge-warning {
+    background-color: $badge-warning-background;
+    @include hook-badge-warning();
+}
+
+/*
+ * Modifier: `ng-badge-danger`
+ */
+
+.ng-badge-danger {
+    background-color: $badge-danger-background;
+    @include hook-badge-danger();
+}
+
+
+// Hooks
+// ========================================================================
+
+@include hook-badge-misc();
+
+// @mixin hook-badge(){}
+// @mixin hook-badge-success(){}
+// @mixin hook-badge-warning(){}
+// @mixin hook-badge-danger(){}
+// @mixin hook-badge-misc(){}

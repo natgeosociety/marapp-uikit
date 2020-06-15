@@ -1,0 +1,273 @@
+// Name:            Datepicker
+// Description:     Defines styles for a datepicker
+//
+// Component:       `ng-datepicker`
+//
+// Modifiers:       `ng-datepicker-nav`
+//                  `ng-datepicker-previous`
+//                  `ng-datepicker-next`
+//                  `ng-datepicker-heading`
+//                  `ng-datepicker-table`
+//                  `ng-datepicker-table-muted`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+
+$datepicker-z-index:                            1050 !default;
+$datepicker-animation:                          ng-fade !default;
+
+$datepicker-nav-height:                         20px !default;
+$datepicker-nav-margin-bottom:                  $global-margin !default;
+$datepicker-nav-color:                          $global-color !default;
+$datepicker-nav-hover-color:                    $global-color !default;
+$datepicker-previous-icon:                      "\f055" !default;
+$datepicker-next-icon:                          "\f056" !default;
+
+$datepicker-table-width:                        26px !default;
+$datepicker-table-height:                       24px !default;
+$datepicker-table-color:                        $global-color !default;
+
+$datepicker-table-hover-background:             $global-default-hover-background !default;
+$datepicker-table-hover-color:                  $global-color !default;
+$datepicker-table-onclick-background:           $global-default-active-background !default;
+$datepicker-table-onclick-color:                $global-color !default;
+
+$datepicker-table-active-background:            $global-primary-background !default;
+$datepicker-table-active-color:                 $global-contrast-color !default;
+
+$datepicker-table-muted-color:                  $global-muted-color !default;
+
+$datepicker-hover-border:                       rgba(0,0,0,0.16) !default;
+$datepicker-hover-text-shadow:                  $global-text-shadow !default;
+
+$datepicker-contrast-text-shadow:               $global-contrast-text-shadow !default;
+
+.ng-datepicker-nav-color {background: $datepicker-nav-color;color: #fff}
+.ng-datepicker-nav-hover-color {background: $datepicker-nav-hover-color;color: #fff}
+.ng-datepicker-table-color {background: $datepicker-table-color;color: #fff}
+.ng-datepicker-table-hover-background {background: $datepicker-table-hover-background}
+.ng-datepicker-table-hover-color {background: $datepicker-table-hover-color;color: #fff}
+.ng-datepicker-table-onclick-background {background: $datepicker-table-onclick-background}
+.ng-datepicker-table-onclick-color {background: $datepicker-table-onclick-color;color: #fff}
+.ng-datepicker-table-active-background {background: $datepicker-table-active-background;color: #fff}
+.ng-datepicker-table-active-color {background: $datepicker-table-active-color}
+.ng-datepicker-table-muted-color {background: $datepicker-table-muted-color}
+.ng-datepicker-hover-border {background: $datepicker-hover-border}
+.ng-datepicker-hover-text-shadow {background: $datepicker-hover-text-shadow}
+.ng-datepicker-contrast-text-shadow {background: $datepicker-contrast-text-shadow}
+
+/* ========================================================================
+   Component: Datepicker
+ ========================================================================== */
+
+/*
+ * 1. Highest z-index
+ * 2. Reset dropdown width
+ * 3. Set animation
+ * 4. Needed for scale animation
+ */
+
+.ng-datepicker {
+    /* 1 */
+    z-index: $datepicker-z-index;
+    /* 2 */
+    width: auto;
+    /* 3 */
+    -webkit-animation: $datepicker-animation 0.2s ease-in-out;
+    animation: $datepicker-animation 0.2s ease-in-out;
+    /* 4 */
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+
+/* Sub-object: `ng-datepicker-nav`
+========================================================================== */
+
+.ng-datepicker-nav {
+    margin-bottom: $datepicker-nav-margin-bottom;
+    text-align: center;
+    line-height: $datepicker-nav-height;
+    @include hook-datepicker-nav();
+}
+
+/*
+ * Micro clearfix
+ */
+
+.ng-datepicker-nav:before,
+.ng-datepicker-nav:after {
+    content: " ";
+    display: table;
+}
+
+.ng-datepicker-nav:after { clear: both; }
+
+/*
+ * Previous and next navigation
+ */
+
+.ng-datepicker-nav a {
+    color: $datepicker-nav-color;
+    text-decoration: none;
+    @include hook-datepicker-nav-item();
+}
+
+.ng-datepicker-nav a:hover { color: $datepicker-nav-hover-color; }
+
+.ng-datepicker-previous { float: left; }
+.ng-datepicker-next { float: right; }
+
+.ng-datepicker-previous:after,
+.ng-datepicker-next:after {
+    width: $datepicker-nav-height;
+    font-family: $icon-font-family;
+}
+
+.ng-datepicker-previous:after { content: $datepicker-previous-icon; }
+.ng-datepicker-next:after { content: $datepicker-next-icon; }
+
+
+/* Sub-object: `ng-datepicker-heading`
+========================================================================== */
+
+.ng-datepicker-heading {}
+
+
+/* Sub-object: `ng-datepicker-table`
+========================================================================== */
+
+/* Block element behavior */
+.ng-datepicker-table { width: 100%; }
+
+.ng-datepicker-table th,
+.ng-datepicker-table td { padding: 2px; }
+
+.ng-datepicker-table th { font-size: 12px; }
+
+/*
+ * Item
+ */
+
+.ng-datepicker-table a {
+    display: block;
+    width: $datepicker-table-width;
+    line-height: $datepicker-table-height;
+    text-align: center;
+    color: $datepicker-table-color;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: $global-border-radius;
+    @include hook-datepicker-table-item();
+}
+
+/*
+ * Sub-object: `ng-datepicker-table-muted`
+ */
+
+a.ng-datepicker-table-muted { color: $datepicker-table-muted-color; }
+
+/*
+ * Hover
+ * 1. Apply hover style also to focus state
+ * 2. Remove default focus style
+ */
+
+.ng-datepicker-table a:hover,
+.ng-datepicker-table a:focus { // 1
+    background-color: $datepicker-table-hover-background;
+    color: $datepicker-table-hover-color;
+    /* 2 */
+    outline: none;
+    border-color: $datepicker-hover-border;
+    text-shadow: 0 1px 0 $datepicker-hover-text-shadow;
+    @include hook-datepicker-table-item-hover();
+}
+
+/* OnClick */
+.ng-datepicker-table a:active {
+    background-color: $datepicker-table-onclick-background;
+    color: $datepicker-table-onclick-color;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+    text-shadow: 0 -1px 0 $datepicker-contrast-text-shadow;
+    @include hook-datepicker-table-item-onclick();
+}
+
+/*
+ * Active
+ */
+
+.ng-datepicker-table a.ng-active {
+    background: $datepicker-table-active-background;
+    color: $datepicker-table-active-color;
+    @include hook-datepicker-table-item-active();
+}
+
+.ng-datepicker-previous:after, .ng-datepicker-next:after {
+    font-family: $icon-font-family;
+}
+
+
+
+.ng-datepicker-simple {
+    .ui-datepicker {
+        width: 100% !important;
+    }
+    .ui-widget.ui-widget-content, .ui-widget-content {
+        border: 0 !important;
+    }
+    .ui-datepicker .ui-widget-header {
+        border: 0;
+        background-color: #FFF;
+    }
+    .ui-datepicker-next, .ui-datepicker-prev {
+        border: 0;
+    }
+    .ui-datepicker.ui-widget-content td {
+        background-color: #FFF;
+    }
+    .ui-datepicker.ui-widget-content td a {
+        border: 0 !important;
+        text-align: center;
+    }
+    .ui-datepicker.ui-widget-content .ui-state-default {
+        background-color: #FFF;
+    }
+    .ui-datepicker.ui-widget-content .ui-state-highlight {
+        background-color: #FC0;
+        color: #333;
+    }
+    .ui-datepicker.ui-widget-content .ui-state-highlight a {
+        background-color: #FFF !important;
+        border: none !important;
+    }
+    .ui-datepicker.ui-widget-content .ui-datepicker-today {
+        border: 1px solid #ffcc00 !important;
+    }
+    .ui-datepicker.ui-widget-content .ui-datepicker-today a {
+        background-color: #FFF !important;
+    }
+    .ui-datepicker.ui-widget-content a {
+        color: #454545 !important;
+    }
+}
+
+
+
+
+// Hooks
+// ========================================================================
+
+@include hook-datepicker-misc();
+
+// @mixin hook-datepicker-nav(){}
+// @mixin hook-datepicker-nav-item(){}
+// @mixin hook-datepicker-table-item(){}
+// @mixin hook-datepicker-table-item-hover(){}
+// @mixin hook-datepicker-table-item-onclick(){}
+// @mixin hook-datepicker-table-item-active(){}
+// @mixin hook-datepicker-misc(){}

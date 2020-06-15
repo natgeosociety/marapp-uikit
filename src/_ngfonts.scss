@@ -1,0 +1,133 @@
+/**
+Fonts
+
+These are the fonts we use
+
+Styleguide Typography.Fonts
+*/
+
+// Variables
+// ========================================================================
+
+$font-weight-thin:                            100 !default;
+$font-weight-light:                           300 !default;
+$font-weight-normal:                          400 !default;
+$font-weight-medium:                          500 !default;
+$font-weight-semibold:                        600 !default;
+$font-weight-bold:                            700 !default;
+$font-weight-black:                           900 !default;
+
+
+.ng-edit-thin {
+    font-family: $base-body-font-family;
+    font-weight: $font-weight-thin;
+    font-style: normal;
+}
+.ng-edit-thin-italic {
+    font-family: $base-body-font-family;
+    font-weight: $font-weight-thin;
+    font-style: italic;
+}
+
+.ng-edit-light {
+    font-family: $base-body-font-family;
+    font-weight: $font-weight-light;
+    font-style: normal;
+}
+.ng-edit-light-italic {
+    font-family: $base-body-font-family;
+    font-weight: $font-weight-light;
+    font-style: italic;
+}
+
+.ng-edit-regular {
+    font-family: $base-body-font-family;
+    font-weight: $font-weight-normal;
+    font-style: normal;
+}
+.ng-edit-regular-italic {
+    font-family: $base-body-font-family;
+    font-weight: $font-weight-normal;
+    font-style: italic;
+}
+
+
+.ng-edit-medium {
+    font-family: $base-body-font-family;
+    font-weight: $font-weight-medium;
+    font-style: normal;
+}
+.ng-edit-medium-italic {
+    font-family: $base-body-font-family;
+    font-weight: $font-weight-medium;
+    font-style: italic;
+}
+
+
+.ng-edit-bold {
+    font-family: $base-body-font-family;
+    font-weight: $font-weight-bold;
+    font-style: normal;
+}
+.ng-edit-bold-italic {
+    font-family: $base-body-font-family;
+    font-weight: $font-weight-bold;
+    font-style: italic;
+}
+
+.ng-brand-thin {
+    font-family: $base-heading-font-family;
+    font-weight: $font-weight-thin;
+    font-style: normal;
+}
+.ng-brand-thin-italic {
+    font-family: $base-heading-font-family;
+    font-weight: $font-weight-thin;
+    font-style: italic;
+}
+
+
+.ng-brand-light {
+    font-family: $base-heading-font-family;
+    font-weight: $font-weight-light;
+    font-style: normal;
+}
+.ng-brand-light-italic {
+    font-family: $base-heading-font-family;
+    font-weight: $font-weight-light;
+    font-style: italic;
+}
+
+
+.ng-brand-regular {
+    font-family: $base-heading-font-family;
+    font-weight: $font-weight-normal;
+    font-style: normal;
+}
+.ng-brand-regular-italic {
+    font-family: $base-heading-font-family;
+    font-weight: $font-weight-normal;
+    font-style: italic;
+}
+
+.ng-brand-medium {
+    font-family: $base-heading-font-family;
+    font-weight: $font-weight-medium;
+    font-style: normal;
+}
+.ng-brand-medium-italic {
+    font-family: $base-heading-font-family;
+    font-weight: $font-weight-medium;
+    font-style: italic;
+}
+
+.ng-brand-bold {
+    font-family: $base-heading-font-family;
+    font-weight: $font-weight-bold;
+    font-style: normal;
+}
+.ng-brand-bold-italic {
+    font-family: $base-heading-font-family;
+    font-weight: $font-weight-bold;
+    font-style: italic;
+}

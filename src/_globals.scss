@@ -1,0 +1,349 @@
+/**
+Introduction
+
+Weight: -10
+
+Styleguide Introduction
+*/
+/**
+Layout
+
+Weight: -9
+
+Styleguide Layout
+*/
+/**
+Typography
+
+Weight: -8
+
+Styleguide Typography
+*/
+/**
+Controls
+
+Weight: -7
+
+Styleguide Controls
+*/
+/**
+Media
+
+Weight: -6
+
+Styleguide Media
+*/
+/**
+Callouts
+
+Weight: -5
+
+Styleguide Callouts
+*/
+/**
+Navigation
+
+Weight: -4
+
+Styleguide Navigation
+*/
+/**
+Containers
+
+Weight: -3
+
+Styleguide Containers
+*/
+/**
+Components
+
+Weight: -2
+
+Styleguide Components
+*/
+/**
+JavaScript
+
+Weight: -1
+
+Styleguide JavaScript
+*/
+/**
+Page Layouts
+
+Weight: 0
+
+Styleguide Page-Layouts
+*/
+
+/**
+Configuration
+
+Styleguide Introduction.Configuration
+*/
+
+//
+// Breakpoints
+//
+
+$breakpoint-xlarge:                             2220px !default;
+
+$breakpoint-large:                              960px !default;
+$breakpoint-large-max:                          $breakpoint-xlarge - 1 !default;
+
+$breakpoint-medium:                             768px !default;
+$breakpoint-medium-max:                         $breakpoint-large - 1 !default;
+
+$breakpoint-small:                              480px !default;
+$breakpoint-small-max:                          $breakpoint-medium - 1 !default;
+
+$breakpoint-mini-max:                           $breakpoint-small - 1 !default;
+
+$utility-container-max-width:                   1080px !default;
+//
+// Text
+//
+
+$global-color:                                  $theme-color !default;
+.ng-color { background: $global-color; color: #fff}
+
+$global-muted-color:                            $theme-muted-color !default;
+$global-text-shadow:                            $theme-text-shadow !default;
+
+.ng-muted-color { background: $global-muted-color; color: #fff}
+.ng-text-shadow { background: $global-text-shadow}
+
+$global-link-color:                             $theme-link-color !default;
+$global-link-hover-color:                       $theme-link-hover-color !default;
+.ng-link-color { background: $global-link-color; color: #fff}
+.ng-link-hover-color { background: $global-link-hover-color; color: #fff}
+
+$global-contrast-color:                         $theme-contrast-color !default;
+$global-contrast-text-shadow:                   $theme-contrast-text-shadow !default;
+.ng-contrast-color { background: $global-contrast-color}
+.ng-contrast-text-shadow { background: $global-contrast-text-shadow}
+
+$global-font-size:                              14px !default;
+$global-line-height:                            20px !default;
+
+//
+// Backgrounds & Borders
+//
+
+$global-background:                             $theme-background !default;
+$global-border:                                 $theme-border !default;
+.ng-background { background: $global-background}
+.ng-border { background: $global-border}
+
+$global-border-radius:                          4px !default;
+
+$global-default-background:                     $theme-default-background !default;
+$global-default-muted-background:               $theme-default-muted-background !default;
+.ng-default-background { background: $global-default-background}
+.ng-default-muted-background { background: $global-default-muted-background}
+
+$global-default-hover-background:               $theme-default-hover-background !default;
+$global-default-active-background:              $theme-default-active-background !default;
+.ng-default-hover-background { background: $global-default-hover-background}
+.ng-default-active-background { background: $global-default-active-background}
+
+$global-primary-background:                     $theme-primary-background !default;
+.ng-primary-background { background: $global-primary-background; color: #fff}
+
+$global-success-background:                     $theme-success-background !default;
+.ng-success-background { background: $global-success-background; color: #fff}
+
+$global-warning-background:                     $theme-warning-background !default;
+.ng-warning-background { background: $global-warning-background; color: #fff}
+
+$global-danger-background:                      $theme-danger-background !default;
+.ng-danger-background { background: $global-danger-background; color: #fff}
+
+$global-primary-muted-background:               $theme-primary-muted-background !default;
+$global-primary-color:                          $theme-primary-color !default;
+$global-primary-border:                         $theme-primary-border !default;
+$global-success-muted-background:               $theme-success-muted-background !default;
+$global-success-color:                          $theme-success-color !default;
+$global-success-border:                         $theme-success-border !default;
+$global-warning-muted-background:               $theme-warning-muted-background !default;
+$global-warning-color:                          $theme-warning-color !default;
+$global-warning-border:                         $theme-warning-border !default;
+$global-danger-muted-background:                $theme-danger-muted-background !default;
+$global-danger-color:                           $theme-danger-color !default;
+$global-danger-border:                          $theme-danger-border !default;
+
+.ng-primary-muted-background {background: $global-primary-muted-background}
+.ng-primary-color {background: $global-primary-color; color: #fff}
+.ng-primary-border {background: $global-primary-border; color: #fff}
+.ng-success-muted-background {background: $global-success-muted-background}
+.ng-success-color {background: $global-success-color; color: #fff}
+.ng-success-border {background: $global-success-border; color: #fff}
+.ng-warning-muted-background {background: $global-warning-muted-background}
+.ng-warning-color {background: $global-warning-color; color: #fff}
+.ng-warning-border {background: $global-warning-border; color: #fff}
+.ng-danger-muted-background {background: $global-danger-muted-background}
+.ng-danger-color {background: $global-danger-color; color: #fff}
+.ng-danger-border {background: $global-danger-border; color: #fff}
+
+//
+// Spacings
+//
+
+$global-margin:                                 15px !default;
+$global-large-margin:                           15px !default;
+$global-grid-gutter:                            25px !default;
+$global-grid-large-gutter:                      25px !default;
+
+//
+// Controls
+//
+
+$global-height:                                 30px !default;
+$global-mini-height:                            20px !default;
+$global-small-height:                           25px !default;
+$global-large-height:                           40px !default;
+
+//
+// Z-index
+//
+
+$global-z-index:                                1000 !default;
+
+/**
+Global variables
+
+These SCSS variables are used to set the values in many other components for consistency.
+
+Styleguide Introduction.Configuration.Globals
+*/
+/**
+Text Variables
+
+<table class="settings">
+<tr><td id="global-color">`$global-color`</td>
+    <td class="ng-color">#{$global-color}</td></tr>
+<tr><td id="global-muted-color">`$global-muted-color`</td>
+    <td class="ng-muted-color">#{$global-muted-color}</td></tr>
+<tr><td id="global-text-shadow">`$global-text-shadow`</td>
+    <td class="ng-text-shadow">#{$global-text-shadow}</td></tr>
+
+<tr><td id="global-link-color">`$global-link-color`</td>
+    <td class="ng-link-color">#{$global-link-color}</td></tr>
+<tr><td id="global-link-hover-color">`$global-link-hover-color`</td>
+    <td class="ng-link-hover-color">#{$global-link-hover-color}</td></tr>
+
+<tr><td id="global-contrast-color">`$global-contrast-color`</td>
+    <td class="ng-contrast-color">#{$global-contrast-color}</td></tr>
+<tr><td id="global-contrast-text-shadow">`$global-contrast-text-shadow`</td>
+    <td class="ng-contrast-text-shadow">#{$global-contrast-text-shadow}</td></tr>
+
+<tr><td id="global-font-size">`$global-font-size`</td>
+    <td>#{$global-font-size}</td></tr>
+<tr><td id="global-line-height">`$global-line-height`</td>
+    <td>#{$global-line-height}</td></tr>
+</table>
+
+Styleguide Introduction.Configuration.Globals.Text
+*/
+/**
+Background and Border Variables
+
+<table class="settings">
+<tr><td id="global-background">`$global-background`</td>
+    <td class="ng-background">#{$global-background}</td></tr>
+<tr><td id="global-border">`$global-border`</td>
+    <td class="ng-border">#{$global-border}</td></tr>
+
+<tr><td id="global-border-radius">`$global-border-radius`</td>
+    <td>#{$global-border-radius}</td></tr>
+
+<tr><td id="global-default-background">`$global-default-background`</td>
+    <td class="ng-default-background">#{$global-default-background}</td></tr>
+<tr><td id="global-default-muted-background">`$global-default-muted-background`</td>
+    <td class="ng-default-muted-background">#{$global-default-muted-background}</td></tr>
+<tr><td id="global-default-hover-background">`$global-default-hover-background`</td>
+    <td class="ng-default-hover-background">#{$global-default-hover-background}</td></tr>
+<tr><td id="global-default-active-background">`$global-default-active-background`</td>
+    <td class="ng-default-active-background">#{$global-default-active-background}</td></tr>
+
+<tr><td>`$global-primary-muted-background`</td>
+    <td class="ng-primary-muted-background">#{$global-primary-muted-background}</td></tr>
+<tr><td id="global-primary-background">`$global-primary-background`</td>
+    <td class="ng-primary-background">#{$global-primary-background}</td></tr>
+<tr><td>`$global-primary-color`</td>
+    <td class="ng-primary-color">#{$global-primary-color}</td></tr>
+<tr><td>`$global-primary-border`</td>
+    <td class="ng-primary-border">#{$global-primary-border}</td></tr>
+
+<tr><td>`$global-success-muted-background`</td>
+    <td class="ng-success-muted-background">#{$global-success-muted-background}</td></tr>
+<tr><td id="global-success-background">`$global-success-background`</td>
+    <td class="ng-success-background">#{$global-success-background}</td></tr>
+<tr><td>`$global-success-color`</td>
+    <td class="ng-success-color">#{$global-success-color}</td></tr>
+<tr><td>`$global-success-border`</td>
+    <td class="ng-success-border">#{$global-success-border}</td></tr>
+
+<tr><td>`$global-warning-muted-background`</td>
+    <td class="ng-warning-muted-background">#{$global-warning-muted-background}</td></tr>
+<tr><td id="global-warning-background">`$global-warning-background`</td>
+    <td class="ng-warning-background">#{$global-warning-background}</td></tr>
+<tr><td>`$global-warning-color`</td>
+    <td class="ng-warning-color">#{$global-warning-color}</td></tr>
+<tr><td>`$global-warning-border`</td>
+    <td class="ng-warning-border">#{$global-warning-border}</td></tr>
+
+<tr><td>`$global-danger-muted-background`</td>
+    <td class="ng-danger-muted-background">#{$global-danger-muted-background}</td></tr>
+<tr><td id="global-danger-background">`$global-danger-background`</td>
+    <td class="ng-danger-background">#{$global-danger-background}</td></tr>
+<tr><td>`$global-danger-color`</td>
+    <td class="ng-danger-color">#{$global-danger-color}</td></tr>
+<tr><td>`$global-danger-border`</td>
+    <td class="ng-danger-border">#{$global-danger-border}</td></tr>
+</table>
+
+Styleguide Introduction.Configuration.Globals.background-and-border
+*/
+/**
+Spacing Variables
+
+<table class="settings">
+<tr><td id="global-margin">`$global-margin`</td>
+    <td>#{$global-margin}</td></tr>
+<tr><td id="global-large-margin">`$global-large-margin`</td>
+    <td>#{$global-large-margin}</td></tr>
+<tr><td id="global-grid-gutter">`$global-grid-gutter`</td>
+    <td>#{$global-grid-gutter}</td></tr>
+<tr><td id="global-grid-large-gutter">`$global-grid-large-gutter`</td>
+    <td>#{$global-grid-large-gutter}</td></tr>
+</table>
+
+Styleguide Introduction.Configuration.Globals.Spacing
+*/
+/**
+Controls Variables
+
+<table class="settings">
+<tr><td id="global-height">`$global-height`</td>
+    <td>#{$global-height}</td></tr>
+<tr><td id="global-mini-height">`$global-mini-height`</td>
+    <td>#{$global-mini-height}</td></tr>
+<tr><td id="global-small-height">`$global-small-height`</td>
+    <td>#{$global-small-height}</td></tr>
+<tr><td id="global-large-height">`$global-large-height`</td>
+    <td>#{$global-large-height}</td></tr>
+</table>
+
+Styleguide Introduction.Configuration.Globals.Controls
+*/
+/**
+Z-Index Variables
+
+<table class="settings">
+<tr><td id="global-z-index">`$global-z-index`</td>
+    <td>#{$global-z-index}</td></tr>
+</table>
+
+Styleguide Introduction.Configuration.Globals.z-index
+*/

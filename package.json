@@ -1,0 +1,53 @@
+{
+  "name": "marapp-ngkit",
+  "title": "NGkit",
+  "description": "NGkit is a lightweight and modular front-end framework",
+  "main": "dist/js/ngkit.js",
+  "version": "1.0.0",
+  "engines": {
+    "npm": ">=5.6.0"
+  },
+  "scripts": {
+    "build:dist": "grunt"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "sh pre-commit.sh"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "src"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "countup.js": "1.8.5",
+    "jquery": "2.2.1",
+    "lazysizes": "2.0.0"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.4",
+    "grunt-concurrent": "^2.3.1",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-compress": "^1.6.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-uglify": "^3.3.0",
+    "grunt-contrib-watch": "^1.0.1",
+    "grunt-kss": "^5.0.1",
+    "grunt-kss-node": "1.0.4",
+    "grunt-sass": "^2.1.0",
+    "grunt-webfont": "^1.6.0",
+    "husky": "^3.0.9",
+    "load-grunt-config": "^0.19.2",
+    "load-grunt-tasks": "^3.5.2",
+    "node-sass": "4.9.0",
+    "readable-stream": "2.1.4",
+    "swag": "0.7.0",
+    "wrench": "1.5.9"
+  },
+  "keywords": []
+}

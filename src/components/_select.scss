@@ -1,0 +1,185 @@
+.ng-select {
+  width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+
+  .ng-select-clear {
+    position: absolute;
+    right: 10px;
+    z-index: 10;
+    background: #fff;
+  }
+
+  .ng-icon-directiondown {
+    margin-left: auto;
+  }
+
+  .ng-select-display-values, .ng-select-search-input {
+    border: 1px solid #ddd;
+    margin-top: 0;
+    padding: 18px 15px;
+    line-height: 24px;
+  }
+
+  .ng-select-search-input {
+    width: calc(100% - 40px);
+    border: none;
+    top: 1px;
+    left: 2px;
+    outline: none;
+    color: #000;
+    position: absolute;
+  }
+
+  .ng-disabled, .ng-disabled:hover {
+    background: none;
+    color: #999;
+    text-decoration: none;
+    cursor: text;
+  }
+
+  .ng-focus, .ng-focus:hover {
+    border-color: #fc0 !important; // override focus
+    outline: 0;
+    background: #fff;
+    color: #000;
+  }
+}
+
+.ng-select-list {
+  display: none;
+  position: absolute;
+  z-index: 1020;
+  box-sizing: border-box;
+  padding: 0 50px;
+  background: #fff;
+  color: #000;
+  vertical-align: top;
+  border: 1px solid #cbcbcb;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  overflow-y: scroll;
+  height: 35vh;
+  margin-top: -1px;
+
+  .ng-nav {
+    margin: 0 -50px;
+    padding-left: 0 !important;
+
+    .ng-nav-active {
+      position: relative;
+      background: #f5f5f5;
+    }
+
+    .ng-nav-item {
+      &:hover {
+        background: #f5f5f5;
+      }
+    }
+
+    .ng-nav-active:before {
+      content: "";
+      background: #fc0;
+      width: 3px;
+      top: 0;
+      bottom: 0;
+      position: absolute;
+    }
+  }
+
+  &.ng-multiselect-menu {
+    padding: 20px 15px 15px;
+    height: inherit;
+    position: absolute;
+    overflow: inherit;
+    top: calc(35vh + 60px);
+  }
+
+  .ng-text-bold {
+    font-weight: 700;
+  }
+}
+
+.ng-open > .ng-select-list {
+  display: block;
+  animation: ng-fade 0.2s ease-in-out;
+  transform-origin: 0 0;
+}
+
+@media (max-width: 480px) {
+  .ng-select-list {
+    padding: 20px 0 15px 0;
+
+    .ng-nav {
+      margin: 0 !important;
+    }
+
+    &.ng-multiselect-menu {
+      text-align: center;
+
+      .ng-button.ng-button-link {
+        margin-top: 0;
+        min-width: 0;
+        line-height: 12px;
+        padding: 0;
+      }
+    }
+  }
+}
+
+
+/* Dark theme for forms
+ ========================================================================== */
+
+
+.ng-select {
+  .ng-form-dark &, &.ng-form-dark {
+    background: $form-background--dark;
+    color: $form-color--dark;
+
+    .ng-select-display-values, .ng-select-search-input {
+      border: 1px solid $form-border--dark;
+    }
+
+    .ng-focus, .ng-focus:hover {
+      border-color: $form-focus-border--dark !important; // override focus
+      background: $form-focus-background--dark;
+      color: $form-focus-color--dark;
+    }
+
+    .ng-select-clear {
+      background: $form-background--dark;
+      color: $form-color--dark;
+    }
+
+    .ng-select-link {
+      background: $form-background--dark;
+      color: $form-color--dark;
+    }
+
+    .ng-select-list {
+      background: $form-background--dark;
+      border: 1px solid $form-border--dark;
+      color: $form-focus-color--dark;
+
+      .ng-nav {
+        .ng-nav-active {
+          background: $dkgray;
+          color: $form-focus-color--dark;
+        }
+
+        .ng-nav-item {
+          &:hover {
+            background: $dkgray;
+            color: $form-focus-color--dark;
+          }
+        }
+
+        .ng-nav-active:before {
+          background: $ng-gold;
+        }
+      }
+    }
+  }
+}

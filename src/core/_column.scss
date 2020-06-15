@@ -1,0 +1,125 @@
+// Name:            Column
+// Description:     Provides a responsive, fluid and nestable columns for text and inline elements
+//
+// Component:       `ng-column`
+//
+// Modifiers:       `ng-column-small`
+//                  `ng-column-medium-*`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$column-gutter:                                   25px;
+
+
+/* ========================================================================
+   Component: Column
+ ========================================================================== */
+
+[class*='ng-column-'] {
+    -webkit-column-gap: $column-gutter;
+    -moz-column-gap: $column-gutter;
+    column-gap: $column-gutter;
+    @include hook-column();
+}
+
+
+/* Width modifiers
+ ========================================================================== */
+
+@for $i from 2 through 6 {
+    .ng-column-1-#{$i} {
+        -webkit-column-count: $i;
+        -moz-column-count: $i;
+        column-count: $i;
+    }
+
+    /* Phone landscape and bigger */
+    @media (min-width: $breakpoint-small) {
+        .ng-column-small-1-#{$i} {
+            -webkit-column-count: $i;
+            -moz-column-count: $i;
+            column-count: $i;
+        }
+    }
+
+    /* Tablet and bigger */
+    @media (min-width: $breakpoint-medium) {
+        .ng-column-medium-1-#{$i} {
+            -webkit-column-count: $i;
+            -moz-column-count: $i;
+            column-count: $i;
+        }
+    }
+
+    /* Desktop and bigger */
+    @media (min-width: $breakpoint-large) {
+        .ng-column-large-1-#{$i} {
+            -webkit-column-count: $i;
+            -moz-column-count: $i;
+            column-count: $i;
+        }
+    }
+
+    /* Large screen and bigger */
+    @media (min-width: $breakpoint-xlarge) {
+        .ng-column-xlarge-1-#{$i} {
+            -webkit-column-count: $i;
+            -moz-column-count: $i;
+            column-count: $i;
+        }
+    }
+}
+
+.ng-column-centered {
+    margin: 0 auto;
+}
+
+// Deprecated CSS class (still used by existing CMS pages)
+.ng-width-smart-3-4 {
+    margin: 0 auto;
+    width: 75%;
+}
+
+@media (max-width: $breakpoint-large) {
+    .ng-width-smart-3-4 {
+        width: 83.333%;
+    }
+
+    .ng-column-centered {
+        &.ng-width-medium-1-6 { width: 50%; }
+        &.ng-width-medium-1-4 { width: 50%; }
+        &.ng-width-medium-1-3 { width: 50%; }
+        &.ng-width-medium-1-2 { width: 75%; }
+        &.ng-width-medium-2-3 { width: 75%; }
+        &.ng-width-medium-3-4 { width: 83.333%; }
+        &.ng-width-medium-5-6 { width: 83.333%; }
+    }
+}
+
+@media (max-width: $breakpoint-small-max) {
+    .ng-width-smart-3-4 {
+        width: 100%;
+    }
+
+    .ng-column-centered {
+        &.ng-width-medium-1-6 { width: 100%; }
+        &.ng-width-medium-1-4 { width: 100%; }
+        &.ng-width-medium-1-3 { width: 100%; }
+        &.ng-width-medium-1-2 { width: 100%; }
+        &.ng-width-medium-2-3 { width: 100%; }
+        &.ng-width-medium-3-4 { width: 100%; }
+        &.ng-width-medium-5-6 { width: 100%; }
+    }
+}
+
+// Hooks
+// ========================================================================
+
+@include hook-column-misc();
+
+// @mixin hook-column() {}
+// @mixin hook-column-misc() {}

@@ -1,0 +1,195 @@
+// Name:            Form advanced
+// Description:     Custom appearance of radio and checkbox buttons
+//
+// Component:       `ng-form`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$form-advanced-size:                           20px !default;
+$form-advanced-border:                         #aaa !default;
+$form-advanced-border-width:                   1px !default;
+$form-advanced-margin-top:                     -4px !default;
+$form-advanced-color:                          transparent !default;
+
+$form-advanced-checked-color:                  #000 !default;
+
+$form-advanced-radio-size:                     13px !default;
+
+$form-advanced-checkbox-icon:                  "\F020" !default;
+$form-advanced-checkbox-indeterminate-icon:    "\f068" !default;
+$form-advanced-checkbox-font-size:             14px !default;
+
+$form-advanced-disabled-border:                #ddd !default;
+$form-advanced-disabled-color:                 #aaa !default;
+
+
+/* ========================================================================
+   Component: Form advanced
+   Note: Only works in Webkit at the moment
+ ========================================================================== */
+
+/*
+ * 1. Style
+ * 2. Makes box more robust so it clips the child element
+ * 3. Vertical alignment
+ * 4. Remove default style
+ * 5. Fix black background on iOS
+ */
+
+
+.ng-form input[type="radio"], input[type="radio"].ng-radio-input,
+.ng-form input[type="checkbox"], input[type="checkbox"].ng-checkbox-input {
+    /* 1 */
+    display: inline-block;
+    height: $form-advanced-size;
+    width: $form-advanced-size;
+    border: $form-advanced-border-width solid $form-advanced-border;
+    /* 2 */
+    overflow: hidden;
+    /* 3 */
+    margin-top: $form-advanced-margin-top;
+    vertical-align: middle;
+    /* 4 */
+    -webkit-appearance: none;
+    outline: 0;
+    /* 5 */
+    background: $form-advanced-color;
+    @include hook-form-advanced();
+}
+
+/* Radio */
+.ng-form input[type="radio"], input[type="radio"].ng-radio-input { border-radius: 50%; }
+
+/*
+ * Checked
+ */
+
+.ng-form input[type=checkbox]:checked:before, input[type="checkbox"].ng-checkbox-input:checked:before,
+.ng-form input[type=radio]:checked:before, input[type="radio"].ng-radio-input:checked:before {
+    display: block;
+    @include hook-form-advanced-checked();
+}
+
+/* Radio */
+.ng-form input[type=radio]:checked:before, input[type="radio"].ng-radio-input:checked:before {
+    content: '';
+    width: $form-advanced-radio-size;
+    height: $form-advanced-radio-size;
+    margin: (($form-advanced-size - (2 * $form-advanced-border-width) - $form-advanced-radio-size) / 2) auto 0;
+    border-radius: 50%;
+    background: $form-advanced-checked-color;
+    margin-top: 2px;
+    @include hook-form-advanced-radio();
+}
+
+/* Checkbox */
+.ng-form input[type=checkbox]:checked:before, input[type="checkbox"].ng-checkbox-input:checked:before,
+.ng-form input[type=checkbox]:indeterminate:before, input[type="checkbox"].ng-checkbox-input:indeterminate:before {
+    content: $form-advanced-checkbox-icon;
+    font-size: $form-advanced-checkbox-font-size;
+    -webkit-font-smoothing: antialiased;
+    text-align: center;
+    line-height: $form-advanced-size - (2 * $form-advanced-border-width);
+    color: $form-advanced-checked-color;
+    font-family: $icon-font-family;
+    @include hook-form-advanced-checkbox();
+}
+
+.ng-form input[type=checkbox]:indeterminate:before, input[type="checkbox"].ng-checkbox-input:indeterminate:before { content: $form-advanced-checkbox-indeterminate-icon; }
+
+/*
+ * Disabled
+ */
+
+.ng-form input[type=radio]:disabled, input[type="radio"].ng-radio-input:disabled,
+.ng-form input[type=checkbox]:disabled, input[type="checkbox"].ng-checkbox-input:disabled {
+    border-color: $form-advanced-disabled-border;
+    @include hook-form-advanced-disabled();
+}
+
+.ng-form input[type=radio]:disabled:checked:before, input[type="radio"].ng-radio-input:disabled:checked:before { background-color: $form-advanced-disabled-color; }
+.ng-form input[type=checkbox]:disabled:checked:before, input[type="checkbox"].ng-checkbox-input:disabled:checked:before { color: $form-advanced-disabled-color; }
+.ng-form input[type=checkbox]:disabled:indeterminate:before, input[type="checkbox"].ng-checkbox-input:disabled:indeterminate:before { color: $form-advanced-disabled-color; }
+
+.ng-form input[type="radio"], input[type="radio"].ng-radio-input {
+    width: 19px;
+    height: 19px;
+}
+.ng-form input[type="radio"] + label, input[type="radio"].ng-radio-input + label {
+    padding-left: 10px
+}
+
+input[type="checkbox"].ng-checkbox-input + label {
+  padding-left: 10px;
+}
+
+label {
+    input[type="checkbox"].ng-checkbox-input, input[type="radio"].ng-radio-input {
+        margin-right: 10px;
+    }
+}
+
+.ng-form .radio {
+  margin-bottom: 10px;
+}
+
+
+/* Dark theme for forms
+ ========================================================================== */
+
+.ng-form-dark {
+    input[type="radio"], input[type="radio"].ng-radio-input,
+    input[type="checkbox"], input[type="checkbox"].ng-checkbox-input {
+        border-color:  $form-border--dark;
+        background: $form-background--dark;
+    }
+
+    // radio checked
+    input[type=radio], input[type="radio"].ng-radio-input {
+        &:checked {
+            &:before {
+                background: $form-color--dark;
+            }
+        }
+    // radio disabled
+        &:disabled {
+            border-color: $form-disabled-border--dark;
+            background: $form-disabled-background--dark;
+            &:checked:before {
+              background-color: $form-disabled-color--dark;
+            }
+        }
+    }
+
+    // checkbox checked
+    input[type=checkbox], input[type="checkbox"].ng-checkbox-input {
+        &:checked {
+            &:before {
+                color: $form-focus-color--dark;
+            }
+        }
+    // checkbox disabled
+        &:disabled {
+            border-color: $form-disabled-border--dark;
+            &:checked {
+                color: $form-disabled-color--dark;
+            }
+        }
+    }
+}
+
+// Hooks
+// ========================================================================
+
+@include hook-form-advanced-misc();
+
+// @mixin hook-form-advanced(){}
+// @mixin hook-form-advanced-checked(){}
+// @mixin hook-form-advanced-radio(){}
+// @mixin hook-form-advanced-checkbox(){}
+// @mixin hook-form-advanced-disabled(){}
+// @mixin hook-form-advanced-misc(){}

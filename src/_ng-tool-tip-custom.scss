@@ -1,0 +1,102 @@
+/**************
+tooltip
+Sample Markup:
+    <a style="position:relative;" href="{% url item_type|add:'-globe' %}?{{ request.GET.urlencode }}" class="ng-unstyled ng-search-globe-icon" title="View on Map" >
+        <div class="ng-tooltip-custom slideIn top">View on Map</div>
+        <i class="ng-icon ng-icon-medium">{% svg 'atlas_globe' %}</i>
+    </a>
+Note the a tag is positioned relative.
+***************/
+.ng-tooltip-custom{
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    content: "";
+    display: block;
+    font: 600 16px/1.85 $base-body-font-family;
+    width: 110px;
+    text-align: center;
+    background: #000;
+    font-size: 13px;
+    color: #fff;
+    border-radius: 10px;
+    padding: 4px 8px;
+    top: -30px;
+    left: -45px;
+    -webkit-font-smoothing: antialiased;
+    -ms-transform: translateY(-20px);
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
+    transition: all .4s cubic-bezier(.77,0,.175,1);
+    -webkit-transition: all .4s cubic-bezier(.77,0,.175,1);
+}
+
+.ng-tooltip-custom,
+.ng-tooltip-custom.top{
+    top: auto;
+    bottom: 114%;
+    left: 50%;
+}
+
+.ng-tooltip-custom.top:after,
+.ng-tooltip-custom:after{
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    margin-left: -7px;
+    content: ' ';
+    height: 0px;
+    width: 0px;
+    border: 6px solid transparent;
+    border-top-color: black;
+}
+
+/* default heights, width and margin w/o Javscript */
+.ng-tooltip-custom,
+.ng-tooltip-custom.top{
+    width: 100px;
+    height: 24px;
+    margin-left: -56px;
+}
+
+/* on hover of element containing tooltip default*/
+*:not(.on-focus):hover > .ng-tooltip-custom,
+.on-focus input:focus + .ng-tooltip-custom{
+    visibility: visible;
+    opacity: 1;
+    -ms-transform: translate(0);
+    -webkit-transform: translate(0);
+    transform: translate(0);
+    transition: all .4s cubic-bezier(.77,0,.175,1);
+    -webkit-transition: all .4s cubic-bezier(.77,0,.175,1);
+}
+
+
+/* tool tip slide out */
+*:not(.on-focus) > .ng-tooltip-custom.slideIn,
+.on-focus > .ng-tooltip-custom{
+    display: block;
+}
+
+.on-focus > .ng-tooltip-custom.slideIn{
+    z-index: -1;
+}
+
+.on-focus > input:focus + .ng-tooltip-custom.slideIn{
+    z-index: 1;
+}
+
+/* top slideIn */
+*:not(.on-focus) > .ng-tooltip-custom.slideIn,
+*:not(.on-focus) > .ng-tooltip-custom.slideIn.top,
+.on-focus > .ng-tooltip-custom.slideIn,
+.on-focus > .ng-tooltip-custom.slideIn.top{
+    top: -500%;
+}
+
+*:not(.on-focus):hover > .ng-tooltip-custom.slideIn,
+*:not(.on-focus):hover > .ng-tooltip-custom.slideIn.top,
+.on-focus > input:focus + .ng-tooltip-custom.slideIn,
+.on-focus > input:focus + .ng-tooltip-custom.slideIn.top{
+    top: -300%;
+}

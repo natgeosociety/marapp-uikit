@@ -1,0 +1,186 @@
+// Name:            Text
+// Description:     Collection of useful text utility classes to style your content
+//
+// Component:       `ng-text-*`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$text-small-font-size:                          round($global-font-size * 0.78) !default;
+$text-small-line-height:                        round($text-small-font-size * 1.45) !default;
+$text-large-font-size:                          round($global-font-size * 1.28) !default;
+$text-large-line-height:                        round($text-large-font-size * 1.33) !default;
+$text-large-font-weight:                        $base-body-font-weight;
+
+$text-muted-color:                              $global-muted-color !default;
+$text-primary-color:                            $theme-primary-color !default;
+$text-success-color:                            $theme-success-color !default;
+$text-warning-color:                            $theme-warning-color !default;
+$text-danger-color:                             $theme-danger-color !default;
+$text-contrast-color:                           $theme-contrast-color !default;
+
+$font-weights: ('thin': $font-weight-thin, 'light': $font-weight-light, 'regular': $font-weight-normal, 'medium': $font-weight-medium,
+        'bold': $font-weight-bold, 'black': $font-weight-black);
+
+.ng-text-muted-color {background: $text-muted-color;color: #fff}
+.ng-text-primary-color {background: $text-primary-color;color: #fff}
+.ng-text-success-color {background: $text-success-color;color: #fff}
+.ng-text-warning-color {background: $text-warning-color;color: #fff}
+.ng-text-danger-color {background: $text-danger-color;color: #fff}
+
+
+
+/* ========================================================================
+   Component: Text
+ ========================================================================== */
+
+/* Size modifiers
+ ========================================================================== */
+
+.ng-text-small {
+    font-size: $text-small-font-size;
+    line-height: $text-small-line-height;
+}
+
+.ng-text-large {
+    font-size: $text-large-font-size;
+    line-height: $text-large-line-height;
+    font-weight: $text-large-font-weight;
+}
+
+
+/* Weight modifiers
+ ========================================================================== */
+
+.ng-text-light { font-weight: $base-body-light-weight; }
+.ng-text-bold { font-weight: $base-body-bold-weight; }
+
+
+@each $weight, $value in $font-weights {
+  .ng-text-weight-#{$weight}{
+    font-weight: $value!important;
+  }
+}
+
+/* Color modifiers
+ ========================================================================== */
+
+.ng-text-muted { color: $text-muted-color !important; }
+.ng-text-primary { color: $text-primary-color !important; }
+.ng-text-success { color: $text-success-color !important; }
+.ng-text-warning { color: $text-warning-color !important; }
+.ng-text-danger { color: $text-danger-color !important; }
+.ng-text-contrast { color: $text-contrast-color !important; }
+
+
+/* Alignment modifiers
+ ========================================================================== */
+
+.ng-text-left { text-align: left !important; }
+.ng-text-right { text-align: right !important; }
+.ng-text-center { text-align: center !important; }
+.ng-text-justify { text-align: justify !important; }
+
+.ng-text-top { vertical-align: top !important; }
+.ng-text-middle { vertical-align: middle !important; }
+.ng-text-bottom { vertical-align: bottom !important; }
+
+/* Only tablets portrait and smaller */
+@media (max-width: $breakpoint-medium-max) {
+
+    .ng-text-center-medium { text-align: center !important; }
+    .ng-text-left-medium { text-align: left !important; }
+
+}
+
+/* Phone landscape and smaller */
+@media (max-width: $breakpoint-small-max) {
+
+    .ng-text-center-small { text-align: center !important; }
+    .ng-text-left-small { text-align: left !important; }
+
+}
+
+
+/* Wrap modifiers
+ ========================================================================== */
+
+/*
+ * Prevent text from wrapping onto multiple lines
+ */
+
+.ng-text-nowrap { white-space: nowrap; }
+
+/*
+ * Prevent text from wrapping onto multiple lines, and truncate with an ellipsis
+ */
+
+.ng-text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/*
+ * Break strings if their length exceeds the width of their container
+ */
+
+.ng-text-break {
+    word-wrap: break-word;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+}
+
+.ng-text-normal { font-weight: $base-body-font-weight; }
+.ng-text-italic { font-style: italic; }
+h1 > small, h2 > small, h3 > small, h4 > small, h5 > small {
+    color: $text-muted-color
+}
+.ng-text-capital {text-transform: capitalize}
+.ng-text-uppercase {text-transform: uppercase; letter-spacing: .03em;}
+.ng-text-lowercase {text-transform: lowercase}
+.ng-text-transform-remove {text-transform: none !important;}
+
+// Only display content to screen readers
+//
+// See: http://a11yproject.com/posts/how-to-hide-content/
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+// Use in conjunction with .sr-only to only display content when it's focused.
+// Useful for "Skip to main content" links; see http://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1
+// Credit: HTML5 Boilerplate
+
+.sr-only-focusable {
+  &:active,
+  &:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+  }
+}
+
+
+// Hooks
+// ========================================================================
+
+@include hook-text-misc();
+
+// @mixin hook-text-misc(){}

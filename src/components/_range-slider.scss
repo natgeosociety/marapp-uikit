@@ -1,0 +1,60 @@
+.ng-range-slider {
+  height: 50px;
+  .rc-slider-handle {
+    border: 0;
+    background: $theme-primary-color;
+    box-shadow: 0 1px 3px 0 rgba(#000, 0.3);
+    height: 30px;
+    margin-left: -15px;
+    margin-top: -15px;
+    width: 30px;
+    &:hover, &:focus {
+      border: 0;
+      box-shadow: 0 6px 3px 0 rgba(#000, 0.3);
+    }
+  }
+  .rc-slider-track {
+    background: $mddkgray;
+    border-radius: 0;
+    height: 3px;
+  }
+  .rc-slider-dot {
+    border-radius: 0;
+    border: 0;
+    background: $ltgray;
+    height: 16px;
+    margin-left: 0;
+    bottom: 0;
+    top: -6px;
+    width: 1px;
+  }
+  .rc-slider-rail {
+    border-radius: 0;
+    background: $ltgray;
+    height: 3px;
+  }
+  .rc-slider-dot-active {
+    background: $mddkgray;
+  }
+
+  .rc-slider-mark {
+    top: 30px;
+  }
+
+  .rc-slider-mark-text {
+    font-size: 13px;
+    line-height: 16px;
+  }
+  &.ng-range-slider-emoji {
+    .rc-slider-handle {
+      background: transparent;
+      box-shadow: none;
+      font-size: 33px;
+      line-height: 1;
+      &:hover, &:focus {
+        border: 0;
+        box-shadow: none;
+      }
+    }
+  }
+}

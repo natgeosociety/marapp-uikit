@@ -1,0 +1,933 @@
+// Name:            Utility
+// Description:     Collection of useful utility classes to style your content
+//
+// Component:       `ng-container-*`
+//                  `ng-clearfix`
+//                  `ng-nbfc-*`
+//                  `ng-float-*`
+//                  `ng-align-*`
+//                  `ng-vertical-align-*`
+//                  `ng-height-*`
+//                  `ng-responsive-*`
+//                  `ng-margin-*`
+//                  `ng-padding-*`
+//                  `ng-border-*`
+//                  `ng-heading-*`
+//                  `ng-link-*`
+//                  `ng-scrollable-*`
+//                  `ng-overflow-*`
+//                  `ng-position-*`
+//                  `ng-display-*`
+//                  `ng-visible-*`
+//                  `ng-hidden-*`
+//                  `ng-invisible`
+//                  `ng-box-shadow`
+//
+// Used by:         Overlay
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$utility-container-max-width:                   $breakpoint-large !default;
+$utility-container-padding-horizontal:          $global-grid-gutter !default;
+
+$utility-container-large-max-width:             $breakpoint-xlarge !default;
+$utility-container-large-padding-horizontal:    $global-grid-large-gutter !default;
+
+$utility-align-horizontal:                      $global-margin !default;
+$utility-align-vertical:                        $global-margin !default;
+
+$utility-height-viewport-min-height:            600px;
+
+$utility-margin:                                $global-margin !default;
+$utility-margin-small:                          5px !default;
+$utility-margin-medium:                         20px !default;
+$utility-margin-large:                          50px !default;
+
+$utility-padding:                                $global-padding !default;
+$utility-padding-small:                          5px !default;
+$utility-padding-medium:                         20px !default;
+$utility-padding-large:                          50px !default;
+
+$utility-border-rounded:                        5px !default;
+
+$utility-heading-large-small-font-size:         36px !default;
+$utility-heading-large-small-line-height:       42px !default;
+$utility-heading-large-font-size:               round($global-font-size * 3.71) !default;
+$utility-heading-large-line-height:             round($utility-heading-large-font-size * 1.23) !default;
+
+$utility-link-muted-color:                      $global-color !default;
+$utility-link-muted-hover-color:                $global-color !default;
+
+$utility-scrollable-text-height:                300px !default;
+
+$utility-scrollable-box-height:                 250px !default;
+$utility-scrollable-box-padding:                0px !default;
+$utility-scrollable-box-border:                 $global-border !default;
+$utility-scrollable-box-border-width:           1px !default;
+
+$utility-box-shadow:                            0 1px 5px 0 rgba(0, 0, 0, 0.28);
+
+.ng-utility-link-muted-color {background: $utility-link-muted-color;color: #fff}
+.ng-utility-link-muted-hover-color {background: $utility-link-muted-hover-color;color: #fff}
+.ng-utility-scrollable-box-border {background: $utility-scrollable-box-border;color: #fff}
+
+
+/* ========================================================================
+   Component: Utility
+ ========================================================================== */
+
+@mixin responsive-padding($breakpoint, $label, $size) {
+    $map: (
+            'mini': $breakpoint-mini-max,
+            'small': $breakpoint-small-max,
+            'medium': $breakpoint-medium-max,
+            'large': $breakpoint-large-max
+    );
+
+    @media (max-width: map-get($map, $breakpoint)) {
+        .ng-padding-#{$breakpoint}-#{$label} { padding: $size; }
+        .ng-padding-#{$breakpoint}-#{$label}-top,
+        .ng-padding-#{$breakpoint}-#{$label}-vertical { padding-top: $size !important; }
+        .ng-padding-#{$breakpoint}-#{$label}-bottom,
+        .ng-padding-#{$breakpoint}-#{$label}-vertical { padding-bottom: $size !important; }
+        .ng-padding-#{$breakpoint}-#{$label}-left,
+        .ng-padding-#{$breakpoint}-#{$label}-horizontal { padding-left: $size !important; }
+        .ng-padding-#{$breakpoint}-#{$label}-right,
+        .ng-padding-#{$breakpoint}-#{$label}-horizontal { padding-right: $size !important; }
+    }
+}
+
+/* Container
+ ========================================================================== */
+
+.ng-container {
+    box-sizing: border-box;
+    max-width: $utility-container-max-width;
+    padding: 0 $utility-container-padding-horizontal;
+    @include hook-container();
+}
+.ng-container-large {
+    box-sizing: border-box;
+    max-width: 1200px;
+    padding: 0 $utility-container-padding-horizontal;
+}
+/* Only large screens */
+@media (min-width: $breakpoint-xlarge) {
+
+    .ng-container {
+        max-width: $utility-container-large-max-width;
+        padding: 0 $utility-container-large-padding-horizontal;
+    }
+    .ng-container-large {
+        max-width: 1200px;
+        padding: 0 $utility-container-large-padding-horizontal;
+    }
+
+}
+
+/*
+ * Micro clearfix
+ */
+
+.ng-container:before,
+.ng-container:after {
+    content: " ";
+    display: table;
+}
+
+.ng-container:after { clear: both; }
+
+/*
+ * Center container
+ */
+
+.ng-container-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Clearing
+ ========================================================================== */
+
+/*
+ * Micro clearfix
+* `table-cell` is used with `:before` because `table` creates a 1px gap when it becomes a flex item, only in Webkit
+ * `table` is used again with `:after` because `clear` only works with block elements.
+ * Note: `display: block` with `overflow: hidden` is currently not working in the latest Safari
+ */
+
+.ng-clearfix:before {
+    content: "";
+    display: table-cell;
+}
+
+.ng-clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/*
+ *  Create a new block formatting context
+ */
+
+.ng-nbfc { overflow: hidden; }
+
+.ng-nbfc-alt {
+    display: table-cell;
+    width: 10000px;
+}
+
+
+/* Alignment of block elements
+ ========================================================================== */
+
+/*
+ * Float blocks
+ * 1. Prevent content overflow on small devices
+ */
+
+.ng-float-left { float: left; }
+.ng-float-right { float: right; }
+
+/* 1 */
+[class*='ng-float-'] { max-width: 100%; }
+
+
+/* Alignment of images and objects
+ ========================================================================== */
+
+/*
+ * Alignment
+ */
+
+[class*='ng-align-'] {
+    display: block;
+    margin-bottom: $utility-align-vertical;
+}
+
+.ng-align-left {
+    margin-right: $utility-align-horizontal;
+    float: left;
+}
+
+.ng-align-right {
+    margin-left: $utility-align-horizontal;
+    float: right;
+}
+
+/* Tablet and bigger */
+@media (min-width: $breakpoint-medium) {
+
+    .ng-align-medium-left {
+        margin-right: $utility-align-horizontal;
+        float: left;
+    }
+
+    .ng-align-medium-right {
+        margin-left: $utility-align-horizontal;
+        float: right;
+    }
+
+}
+
+.ng-align-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Vertical alignment
+ ========================================================================== */
+
+/*
+ * Remove whitespace between child elements when using `inline-block`
+ */
+
+.ng-vertical-align { font-size: 0; }
+
+/*
+ *  The `ng-vertical-align` container needs a specific height
+ */
+
+.ng-vertical-align:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+/*
+ * Sub-object which can have any height
+ * 1. Reset whitespace hack
+ */
+
+.ng-vertical-align-middle,
+.ng-vertical-align-bottom {
+    display: inline-block;
+    max-width: 100%;
+    /* 1 */
+    font-size: 1rem;
+}
+
+.ng-vertical-align-middle { vertical-align: middle; }
+.ng-vertical-align-bottom { vertical-align: bottom; }
+
+
+/* Height
+ ========================================================================== */
+
+/*
+ * More robust if padding and border are used
+ */
+
+[class*='ng-height'] { box-sizing: border-box; }
+
+/*
+ * Useful to extend the `html` and `body` element to the full height of the page.
+ */
+
+.ng-height-1-1 { height: 100%; }
+
+/*
+ * Useful to create image teasers
+ */
+
+.ng-height-viewport {
+    height: 100vh;
+    min-height: $utility-height-viewport-min-height;
+}
+
+
+/* Responsive objects
+ * Note: Images are already responsive by default, see Base component
+ ========================================================================== */
+
+/*
+ * 1. Corrects max-width/max-height behavior if padding and border are used
+ */
+
+.ng-responsive-width,
+.ng-responsive-height { box-sizing: border-box; }
+
+/*
+ * Responsiveness: Sets a maximum width relative to the parent and auto scales the height
+ * `important` needed to override `ng-img-preserve img`
+ */
+
+.ng-responsive-width {
+    max-width: 100% !important;
+    height: auto;
+}
+
+/*
+ * Responsiveness: Sets a maxium height relative to the parent and auto scales the width
+ * Only works if the parent element has a fixed height.
+ */
+
+.ng-responsive-height {
+    max-height: 100%;
+    width: auto;
+}
+
+
+/* Margin
+ ========================================================================== */
+// Small   -> 5px
+// Default -> 10px
+// Medium  -> 20px
+// Large   -> 50px
+/********************/
+/*
+ng-[media-query]-margin-[size]-[target(s)]
+media-query: xs, sm, md, lg
+size: small, default, medium, large
+target: default, top, bottom, left, right, vertical, horizontal
+ */
+
+//Mixin for generating variations for margins and paddings (for now)
+@mixin generateVariations($main-property, $sizes, $targets) {
+    $media-queries: (
+        'Extra small': (
+            'label': '-xs',
+            'value': $breakpoint-xsmall
+        ),
+        'Small': (
+            'label': '-sm',
+            'value': $breakpoint-small
+        ),
+        'Medium': (
+            'label': '-md',
+            'value': $breakpoint-medium
+        ),
+        'Large': (
+            'label':'-lg',
+            'value': $breakpoint-large
+        )
+    );
+
+    @each $key, $size in $sizes {
+        $size-label: map-get($size, label);
+        $size-value: map-get($size, value);
+        @each $key, $target in $targets {
+            $target-label: map_get($target, label);
+            $target-properties: map_get($target, property-labels);
+            .ng-#{$main-property}#{$size-label}#{$target-label} {
+                @each $property-label in $target-properties {
+                    #{$main-property}#{$property-label}: $size-value !important;
+                }//properties
+            }//ng-[property]-[size]-[target]
+        }//targets
+    }//sizes
+
+    @each $key, $media-query in $media-queries {
+        $media-query-label: map-get($media-query, label);
+        $media-query-value: map-get($media-query, value);
+        @media (min-width: $media-query-value) {
+            @each $key, $size in $sizes {
+                $size-label: map-get($size, label);
+                $size-value: map-get($size, value);
+                @each $key, $target in $targets {
+                    $target-label: map_get($target, label);
+                    $target-properties: map_get($target, property-labels);
+                    .ng#{$media-query-label}-#{$main-property}#{$size-label}#{$target-label} {
+                        @each $property-label in $target-properties {
+                            #{$main-property}#{$property-label}: $size-value !important;
+                        }//properties
+                    }//ng-[property]-[size]-[target]
+                }//targets
+            }//sizes
+        }//media (min value)
+    }//media-queries
+}
+
+//Margin sizes
+$margin-sizes: (
+    'Small': (
+        'label': '-small',
+        'value': $utility-margin-small
+    ),
+    'Default': (
+        'label': '',
+        'value': $utility-margin
+    ),
+    'Medium':(
+        'label': '-medium',
+        'value': $utility-margin-medium
+    ),
+    'Large': (
+        'label': '-large',
+        'value': $utility-margin-large
+    )
+);
+//Padding sizes
+$padding-sizes: (
+    'Small': (
+        'label': '-small',
+        'value': $utility-padding-small
+    ),
+    'Default': (
+        'label': '',
+        'value': $utility-padding
+    ),
+    'Medium':(
+        'label': '-medium',
+        'value': $utility-padding-medium
+    ),
+    'Large': (
+        'label': '-large',
+        'value': $utility-padding-large
+    )
+);
+//Targets for both margins and paddings
+$targets: (
+    'Default': (
+        'label': '',
+        'property-labels': (
+            ''
+        )
+    ),
+    'Top': (
+        'label': '-top',
+        'property-labels': (
+            '-top'
+        )
+    ),
+    'Right': (
+        'label': '-right',
+        'property-labels': (
+            '-right'
+        )
+    ),
+    'Bottom': (
+        'label': '-bottom',
+        'property-labels': (
+            '-bottom'
+        )
+    ),
+    'Left': (
+        'label': '-left',
+        'property-labels': (
+            '-left'
+        )
+    ),
+    'Vertical': (
+        'label': '-vertical',
+        'property-labels': (
+            '-top',
+            '-bottom'
+        )
+    ),
+    'Horizontal': (
+        'label': '-horizontal',
+        'property-labels': (
+            '-left',
+            '-right'
+        )
+    )
+);
+
+@include generateVariations('margin', $margin-sizes, $targets);
+@include generateVariations('padding', $padding-sizes, $targets);
+
+
+/***** Responsive margins and paddings removal *****/
+@mixin generateRemovalVariations($main-property, $targets) {
+    $media-queries: (
+            'Extra small': (
+                    'label': '-xs',
+                    'value': $breakpoint-xsmall
+            ),
+            'Small': (
+                    'label': '-sm',
+                    'value': $breakpoint-small
+            ),
+            'Medium': (
+                    'label': '-md',
+                    'value': $breakpoint-medium
+            ),
+            'Large': (
+                    'label':'-lg',
+                    'value': $breakpoint-large
+            )
+    );
+
+    @each $key, $target in $targets {
+        $target-label: map_get($target, label);
+        $target-properties: map_get($target, property-labels);
+        .ng-#{$main-property}#{$target-label}-remove {
+            @each $property-label in $target-properties {
+                #{$main-property}#{$property-label}: 0 !important;
+            }//properties
+        }//ng-[property]-[size]-[target]
+    }//targets
+
+    @each $key, $media-query in $media-queries {
+        $media-query-label: map-get($media-query, label);
+        $media-query-value: map-get($media-query, value);
+        @media (min-width: $media-query-value) {
+            @each $key, $target in $targets {
+                $target-label: map_get($target, label);
+                $target-properties: map_get($target, property-labels);
+                .ng#{$media-query-label}-#{$main-property}#{$target-label}-remove {
+                    @each $property-label in $target-properties {
+                        #{$main-property}#{$property-label}: 0 !important;
+                    }//properties
+                }//ng-[property]-[size]-[target]
+            }//targets
+        }//media (min value)
+    }//media-queries
+}
+
+/***** Remove margins *****/
+@include generateRemovalVariations('margin', $targets);
+@include generateRemovalVariations('padding', $targets);
+
+/* Border
+ ========================================================================== */
+
+.ng-border-circle { border-radius: 50%; }
+.ng-border-rounded { border-radius: $utility-border-rounded; }
+
+
+/* Headings
+ ========================================================================== */
+
+.ng-heading-large {
+    font-size: $utility-heading-large-small-font-size;
+    line-height: $utility-heading-large-small-line-height;
+}
+
+/* Tablet and bigger */
+@media (min-width: $breakpoint-medium) {
+
+    .ng-heading-large {
+        font-size: $utility-heading-large-font-size;
+        line-height: $utility-heading-large-line-height;
+    }
+
+}
+
+
+/* Link
+ ========================================================================== */
+
+/*
+ * Let links appear in default text color
+ */
+
+.ng-link-muted,
+.ng-link-muted a { color: $utility-link-muted-color; }
+
+.ng-link-muted:hover,
+.ng-link-muted a:hover { color: $utility-link-muted-hover-color; }
+
+/*
+ * Reset link style
+ */
+
+.ng-link-reset,
+.ng-link-reset a,
+.ng-link-reset:hover,
+.ng-link-reset a:hover,
+.ng-link-reset:focus,
+.ng-link-reset a:focus {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* Scrollable
+ ========================================================================== */
+
+/*
+ * Enable scrolling for preformatted text
+ */
+
+.ng-scrollable-text {
+    max-height: $utility-scrollable-text-height;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    resize: both;
+}
+
+/*
+ * Box with scrolling enabled
+ */
+
+.ng-scrollable-box {
+    box-sizing: border-box;
+    max-height: $utility-scrollable-box-height;
+    padding: $utility-scrollable-box-padding;
+    border: $utility-scrollable-box-border-width solid $utility-scrollable-box-border;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    resize: both;
+    border-radius: 3px;
+    @include hook-scrollable-box();
+}
+
+.ng-scrollable-box > :last-child { margin-bottom: 0; }
+
+
+/* Overflow
+ ========================================================================== */
+
+.ng-overflow-hidden { overflow: hidden; }
+
+/*
+ * Enable scrollbars if content is clipped
+ */
+
+.ng-overflow-container {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.ng-overflow-container > :last-child { margin-bottom: 0; }
+
+
+/* Position
+ ========================================================================== */
+
+.ng-position-absolute,
+[class*='ng-position-top'],
+[class*='ng-position-bottom'] { position: absolute !important; }
+
+/* Don't use `width: 100%` because it is wrong if the parent has padding. */
+.ng-position-top {
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.ng-position-bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.ng-position-top-left {
+    top: 0;
+    left: 0;
+}
+
+.ng-position-top-right {
+    top: 0;
+    right: 0;
+}
+
+.ng-position-bottom-left {
+    bottom: 0;
+    left: 0;
+}
+
+.ng-position-bottom-right {
+    bottom: 0;
+    right: 0;
+}
+
+/*
+ * Cover
+ */
+
+.ng-position-cover {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/*
+ * Relative
+ */
+
+.ng-position-relative { position: relative !important; }
+
+/*
+ * Z-index
+ */
+
+.ng-position-z-index { z-index: 1; }
+
+
+/* Display
+ ========================================================================== */
+
+/*
+ * Display
+ * 1. Required if child is a responsive image
+ */
+
+.ng-display-block { display: block !important; }
+.ng-display-inline { display: inline !important; }
+
+
+.ng-display-inline-block {
+    display: inline-block !important;
+    /* 1 */
+    max-width: 100%;
+}
+
+/*
+ * Visibility
+ * Avoids setting display to `block` so it works also with `inline-block` and `table`
+ */
+
+/* Desktop and bigger */
+@media (min-width: $breakpoint-large) {
+
+    .ng-visible-small { display: none !important; }
+    .ng-visible-medium { display: none !important; }
+    .ng-hidden-large { display: none !important; }
+
+}
+
+/* Tablets portrait */
+@media (min-width: $breakpoint-medium) and (max-width: $breakpoint-medium-max) {
+
+    .ng-visible-small { display: none !important; }
+    .ng-visible-large { display: none !important ; }
+    .ng-hidden-medium { display: none !important; }
+
+}
+
+/* Phone landscape and smaller*/
+@media (max-width: $breakpoint-small-max) {
+
+    .ng-visible-medium { display: none !important; }
+    .ng-visible-large { display: none !important; }
+    .ng-hidden-small { display: none !important; }
+
+}
+
+/* Remove from the flow and screen readers on any device */
+.ng-hidden {
+    display: none !important;
+    visibility: hidden !important;
+}
+/* Use this when you want to hide something but you still want to catch events (e.g. an input focus) */
+.ng-concealed {
+    position: absolute !important;
+    left: -10000px;
+    opacity: 0;
+}
+
+/* It's hidden, but still affects layout */
+.ng-invisible { visibility: hidden !important; }
+
+/* Show on hover */
+.ng-visible-hover:hover .ng-hidden,
+.ng-visible-hover:hover .ng-invisible {
+    display: block !important;
+    visibility: visible !important;
+}
+
+.ng-visible-hover-inline:hover .ng-hidden,
+.ng-visible-hover-inline:hover .ng-invisible {
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+
+/* Hide on touch */
+.ng-touch .ng-hidden-touch,
+.ng-notouch .ng-hidden-notouch { display: none !important; }
+
+.ng-border-add {
+    border: 1px solid $global-border !important;
+}
+.ng-border-remove {
+    border: 0 !important;
+}
+
+
+//add safari specific styles to handle vertical alignment
+//TODO: Determine if this should go in bower installed version.
+.ng-vertical-align {
+    display: -webkit-inline-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+}
+
+// TODO: Decide on some standardized sizes - PW
+@include responsive-padding('mini', '15', 15px);
+@include responsive-padding('mini', '20', 20px);
+@include responsive-padding('mini', '30', 30px);
+@include responsive-padding('mini', '40', 40px);
+
+
+/**
+Intrinsic Ratios
+
+Markup:
+<div class="ng-container-16-9">
+    <video controls="" width="600" height="350">
+        <source src="http://www.quirksmode.org/html5/videos/big_buck_bunny.mp4?test1" type="video/mp4">
+        <source src="http://www.quirksmode.org/html5/videos/big_buck_bunny.ogv?test1" type="video/ogg">
+    </video>
+</div>
+<div class="ng-container-16-9">
+    <img src="http://lorempixel.com/600/350" width="600" height="350" />
+</div>
+
+Styleguide Layout.Utilities.responsive-objects.intrinsic
+*/
+.ng-container-16-9, .ng-container-4-3 {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    & *:first-child {
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+.ng-container-16-9 {
+    padding-bottom: 56.25%;
+}
+.ng-container-4-3 {
+    padding-bottom: 75%;
+}
+
+@media (min-width: $breakpoint-large) {
+    .ng-visible-mini { display: none !important; }
+}
+@media (min-width: $breakpoint-medium) and (max-width: $breakpoint-medium-max) {
+    .ng-visible-mini { display: none !important; }
+}
+@media (min-width: $breakpoint-small) and (max-width: $breakpoint-small-max) {
+    .ng-visible-mini { display: none !important; }
+    .ng-visible-medium { display: none !important; }
+    .ng-visible-large { display: none !important; }
+    .ng-hidden-small { display: none !important; }
+}
+@media (max-width: $breakpoint-mini-max) {
+    .ng-hidden-mini { display: none !important; }
+    .ng-visible-medium { display: none !important; }
+    .ng-visible-large { display: none !important; }
+    .ng-visible-small { display: none !important; }
+}
+@media (max-width: $breakpoint-small-max) {
+    .ng-visible-medium-large { display: none !important; }
+    .ng-hidden-small-mini { display: none !important; }
+}
+@media (min-width: $breakpoint-medium) {
+    .ng-hidden-medium-large { display: none !important; }
+    .ng-visible-small-mini { display: none !important; }
+}
+
+.ng-escape {
+    margin-left: -1 * $global-margin !important;
+    margin-right: -1 * $global-margin !important;
+}
+
+.ng-transparent {
+    background: transparent;
+}
+
+/*
+ * Responsive floats
+ */
+
+@media (min-width: $breakpoint-small) {
+    .ng-float-small-left { float: left; }
+    .ng-float-small-right { float: right; }
+}
+
+@media (min-width: $breakpoint-medium) {
+    .ng-float-medium-left { float: left; }
+    .ng-float-medium-right { float: right; }
+}
+
+@media (min-width: $breakpoint-large) {
+    .ng-float-large-left { float: left; }
+    .ng-float-large-right { float: right; }
+}
+
+@media (min-width: $breakpoint-xlarge) {
+    .ng-float-xlarge-left { float: left; }
+    .ng-float-xlarge-right { float: right; }
+}
+
+// Hooks
+// ========================================================================
+
+@include hook-utility-misc();
+
+// @mixin hook-container(){}
+// @mixin hook-scrollable-box(){}
+// @mixin hook-utility-misc(){}
+
+.ng-box-shadow {
+    box-shadow: $utility-box-shadow;
+}

@@ -1,0 +1,48 @@
+// Name:            Icon with label
+// Description:     Defines styles for the user account icon, or any icon with a label to it
+//
+// Component:       `ng-icon-with-label`
+//
+// Sub-objects:     `ng-icon-image`
+//                  `ng-icon-letters`
+//                  `ng-icon-user`
+//                  `ng-icon-label`
+//
+// ========================================================================
+
+.ng-icon-with-label {
+  text-align: center;
+
+  .ng-icon-image {
+    border-radius: 100%;
+    font-size: 225%;
+    vertical-align: -10%;
+    object-fit: cover;
+  }
+
+  .ng-icon-letters {
+    background: $ultradkgray;
+    border-radius: 100%;
+    color: $white;
+    font-family: 'GeographEditWeb';
+    font-size: 12px;
+    padding: 12px 0;
+    width: 36px;
+  }
+
+  .ng-icon-user {
+    font-size: 225%;
+    line-height: 75%;
+    vertical-align: -10%;
+  }
+}
+
+.ng-icon-label {
+  display: block;
+  font-family: 'GeographWeb';
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}

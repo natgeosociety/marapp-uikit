@@ -1,0 +1,19 @@
+
+@function calculateRem($size) {
+  $value: $size / 1px;
+  $remSize: $value / 16;
+  @return #{$remSize}rem;
+}
+
+.noMenuTransitions{
+    -moz-transition: none;
+    -webkit-transition: none;
+    -o-transition: color 0 ease-in;
+    transition: none;
+}
+
+a.noBorderBottom{
+    border-bottom:none;
+}
+
+

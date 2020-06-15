@@ -1,0 +1,854 @@
+// Name:            Overlay
+// Description:     Defines styles for image overlays
+//
+// Component:       `ng-overlay`
+//
+// Sub-objects:     `ng-overlay-panel`
+//                  `ng-overlay-hover`
+//                  `ng-overlay-active`
+//                  `ng-overlay-icon`
+//
+// Modifier:        `ng-overlay-background`
+//                  `ng-overlay-image`
+//                  `ng-overlay-top`
+//                  `ng-overlay-bottom`
+//                  `ng-overlay-left`
+//                  `ng-overlay-right`
+//                  `ng-overlay-fade`
+//                  `ng-overlay-scale`
+//                  `ng-overlay-spin`
+//                  `ng-overlay-grayscale`
+//                  `ng-overlay-slide-top`
+//                  `ng-overlay-slide-bottom`
+//                  `ng-overlay-slide-left`
+//                  `ng-overlay-slide-right`
+//
+// DEPRECATED:      `ng-overlay-area`
+//                  `ng-overlay-area-content`
+//                  `ng-overlay-caption`
+//                  `ng-overlay-toggle`
+//
+// States:          `ng-hover`
+//                  `ng-active`
+//                  `ng-ignore`
+//
+// Uses:            Icon: `[class*='ng-icon-']`
+//                  `ng-border-circle`
+//
+// Markup:
+//
+// <!-- ng-overlay -->
+// <figure class="ng-overlay" href="">
+//     <img src="" alt="">
+//     <figcaption class="ng-overlay-panel"></figcaption>
+// </figure>
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$overlay-panel-padding:                         20px !default;
+$overlay-panel-color:                           $global-contrast-color !default;
+
+$overlay-panel-background:                      rgba(0,0,0,0.5) !default;
+
+$overlay-icon:                                  $icn-search !default;
+$overlay-icon-size:                             50px !default;
+$overlay-icon-color:                            $global-contrast-color !default;
+
+$overlay-fade-in-opacity:                       1 !default;
+$overlay-fade-out-opacity:                      0.7 !default;
+
+$overlay-scale-in-scale:                        1.1 !default;
+$overlay-scale-out-scale:                       1 !default;
+
+$overlay-spin-in-scale:                         1.1 !default;
+$overlay-spin-out-scale:                        1 !default;
+$overlay-spin-in-rotate:                        3deg !default;
+$overlay-spin-out-rotate:                       0deg !default;
+
+$overlay-panel-link-color:                      inherit !default;
+$overlay-panel-link-text-decoration:            underline !default;
+
+.ng-overlay-panel-color {background: $overlay-panel-color}
+.ng-overlay-panel-background {background: $overlay-panel-background;color: #fff}
+.ng-overlay-icon-color {background: $overlay-icon-color}
+.ng-overlay-panel-link-color {background: $overlay-panel-link-color}
+.ng-overlay-icon {font-family: FontAwesome}
+
+
+// DEPRECATED
+$overlay-area-background:                       rgba(0,0,0,0.3) !default;
+
+$overlay-area-icon:                             $icn-search !default;
+$overlay-area-icon-video:                       $icn-video !default;
+$overlay-area-icon-size:                        50px !default;
+$overlay-area-icon-color:                       $global-contrast-color !default;
+
+$overlay-area-content-font-size:                1rem !default;
+$overlay-area-content-padding-horizontal:       15px !default;
+$overlay-area-content-color:                    #fff !default;
+$overlay-area-content-link-color:               inherit !default;
+
+$overlay-caption-background:                    rgba(0,0,0,0.5) !default;
+$overlay-caption-padding:                       10px !default;
+$overlay-caption-color:                         $global-contrast-color !default;
+
+
+/* ========================================================================
+   Component: Overlay
+ ========================================================================== */
+
+/*
+ * 1. Container width fits its content
+ * 2. Create position context
+ * 3. Set max-width for responsive images to prevent `inline-block` consequences
+ * 4. Remove the gap between the container and its child element
+ * 5. Needed for transitions and to fixed wrong scaling calculation for images in Chrome
+ * 6. Fixed `overflow: hidden` to be ignored with border-radius and CSS transforms in Webkit
+ * 7. Reset margin
+ */
+
+.ng-overlay {
+    /* 1 */
+    display: inline-block;
+    /* 2 */
+    position: relative;
+    /* 3 */
+    max-width: 100%;
+    /* 4 */
+    vertical-align: middle;
+    /* 5 */
+    overflow: hidden;
+    /* 6 */
+    -webkit-transform: translateZ(0);
+    /* 7 */
+    margin: 0;
+}
+
+/* 6 for Safari */
+.ng-overlay.ng-border-circle { -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%); }
+
+/*
+ * Remove margin from content
+ */
+
+.ng-overlay > :first-child { margin-bottom: 0; }
+
+
+/* Sub-object `ng-overlay-panel`
+ ========================================================================== */
+
+/*
+ * 1. Set position
+ * 2. Set style
+ */
+
+.ng-overlay-panel {
+    /* 1 */
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* 2 */
+    padding: $overlay-panel-padding;
+    color: $overlay-panel-color;
+    @include hook-overlay-panel();
+}
+
+/*
+ * Remove margin from the last-child
+ */
+
+.ng-overlay-panel > :last-child,
+.ng-overlay-panel.ng-flex > * > :last-child { margin-bottom: 0; }
+
+/*
+ * Keep color for headings if the default heading color is changed
+ */
+
+.ng-overlay-panel h1,
+.ng-overlay-panel h2,
+.ng-overlay-panel h3,
+.ng-overlay-panel h4,
+.ng-overlay-panel h5,
+.ng-overlay-panel h6 { color: inherit; }
+
+.ng-overlay-panel a:not([class]) {
+    color: $overlay-panel-link-color;
+    text-decoration: $overlay-panel-link-text-decoration;
+}
+
+.ng-overlay-panel a[class*='ng-icon-']:not(.ng-icon-button) { color: $overlay-panel-link-color; }
+
+
+/* Sub-object `ng-overlay-hover` and `ng-overlay-active`
+ ========================================================================== */
+
+.ng-overlay-hover:not(:hover):not(.ng-hover) .ng-overlay-panel:not(.ng-ignore) { opacity: 0; }
+
+.ng-overlay-active :not(.ng-active) > .ng-overlay-panel:not(.ng-ignore) { opacity: 0; }
+
+
+/* Modifier `ng-overlay-background`
+ ========================================================================== */
+
+.ng-overlay-background {
+    background: $overlay-panel-background;
+    @include hook-overlay-background();
+}
+
+
+/* Modifier `ng-overlay-image`
+ ========================================================================== */
+
+/*
+ * Reset panel
+ */
+
+.ng-overlay-image {
+    padding: 0;
+    @include hook-overlay-image();
+}
+
+
+/* Position modifiers
+ ========================================================================== */
+
+.ng-overlay-top { bottom: auto; }
+
+.ng-overlay-bottom { top: auto; }
+
+.ng-overlay-left { right: auto; }
+
+.ng-overlay-right { left: auto; }
+
+
+/* Sub-object `ng-overlay-icon`
+ ========================================================================== */
+
+.ng-overlay-icon:before {
+    content: $overlay-icon;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: $overlay-icon-size;
+    height: $overlay-icon-size;
+    margin-top: -($overlay-icon-size / 2);
+    margin-left: -($overlay-icon-size / 2);
+    font-size: $overlay-icon-size;
+    line-height: 1;
+    font-family: $icon-font-family;
+    text-align: center;
+    color: $overlay-icon-color;
+    @include hook-overlay-icon();
+}
+
+
+/* Transitions
+ ========================================================================== */
+
+.ng-overlay-fade,
+.ng-overlay-scale,
+.ng-overlay-spin,
+.ng-overlay-grayscale,
+.ng-overlay-blur,
+[class*='ng-overlay-slide'] {
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+    transition-property: opacity transform filter;
+}
+
+.ng-overlay-active .ng-overlay-fade,
+.ng-overlay-active .ng-overlay-scale,
+.ng-overlay-active .ng-overlay-spin,
+.ng-overlay-active [class*='ng-overlay-slide'] { transition-duration: 0.8s; }
+
+/*
+ * Fade
+ */
+
+.ng-overlay-fade { opacity: $overlay-fade-out-opacity; }
+
+.ng-overlay-hover:hover .ng-overlay-fade,
+.ng-overlay-hover.ng-hover .ng-overlay-fade,
+.ng-overlay-active .ng-active > .ng-overlay-fade { opacity: $overlay-fade-in-opacity; }
+
+/*
+ * Scale
+ */
+
+.ng-overlay-scale {
+    -webkit-transform: scale($overlay-scale-out-scale);
+    transform: scale($overlay-scale-out-scale);
+}
+
+.ng-overlay-hover:hover .ng-overlay-scale,
+.ng-overlay-hover.ng-hover .ng-overlay-scale,
+.ng-overlay-active .ng-active > .ng-overlay-scale {
+    -webkit-transform: scale($overlay-scale-in-scale);
+    transform: scale($overlay-scale-in-scale);
+}
+
+/*
+ * Spin
+ */
+
+.ng-overlay-spin {
+    -webkit-transform: scale($overlay-spin-out-scale) rotate($overlay-spin-out-rotate);
+    transform: scale($overlay-spin-out-scale) rotate($overlay-spin-out-rotate);
+}
+
+.ng-overlay-hover:hover .ng-overlay-spin,
+.ng-overlay-hover.ng-hover .ng-overlay-spin,
+.ng-overlay-active .ng-active > .ng-overlay-spin {
+    -webkit-transform: scale($overlay-spin-in-scale) rotate($overlay-spin-in-rotate);
+    transform: scale($overlay-spin-in-scale) rotate($overlay-spin-in-rotate);
+}
+
+/*
+ * Grayscale
+ */
+
+.ng-overlay-grayscale {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+.ng-overlay-hover:hover .ng-overlay-grayscale,
+.ng-overlay-hover.ng-hover .ng-overlay-grayscale,
+.ng-overlay-active .ng-active > .ng-overlay-grayscale {
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+}
+
+/*
+ * Slide
+ */
+
+[class*='ng-overlay-slide'] { opacity: 0; }
+
+/* Top */
+.ng-overlay-slide-top {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+}
+
+/* Bottom */
+.ng-overlay-slide-bottom {
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+}
+
+/* Left */
+.ng-overlay-slide-left {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+
+/* Right */
+.ng-overlay-slide-right {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
+/* Hover */
+.ng-overlay-hover:hover [class*='ng-overlay-slide'],
+.ng-overlay-hover.ng-hover [class*='ng-overlay-slide'],
+.ng-overlay-active .ng-active > [class*='ng-overlay-slide'] {
+    opacity: 1;
+    -webkit-transform: translateX(0) translateY(0);
+    transform: translateX(0) translateY(0);
+}
+
+
+/* DEPRECATED
+ * Sub-object `ng-overlay-area`
+ ========================================================================== */
+
+/*
+ * 1. Set position
+ * 2. Set style
+ * 3. Fade-in transition
+ */
+
+.ng-overlay-area {
+    /* 1 */
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* 2 */
+    background: $overlay-area-background;
+    /* 3 */
+    opacity: 0;
+    -webkit-transition: opacity 0.15s linear;
+    transition: opacity 0.15s linear;
+    -webkit-transform: translate3d(0,0,0);
+    @include hook-overlay-area();
+}
+
+/*
+ * Hover
+ * 1. `ng-hover` to support touch devices
+ * 2. Use optional `ng-overlay-toggle` to trigger the overlay earlier
+ */
+
+.ng-overlay:hover .ng-overlay-area,
+.ng-overlay.ng-hover .ng-overlay-area, // 1
+.ng-overlay-toggle:hover .ng-overlay-area, // 2
+.ng-overlay-toggle.ng-hover .ng-overlay-area { opacity: 1; }
+
+/*
+ * Icon
+ */
+
+.ng-overlay-area:empty:before {
+    content: $overlay-area-icon;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: $overlay-area-icon-size;
+    height: $overlay-area-icon-size;
+    margin-top: -($overlay-area-icon-size / 2);
+    margin-left: -($overlay-area-icon-size / 2);
+    font-size: $overlay-area-icon-size;
+    line-height: 1;
+    font-family: FontAwesome;
+    text-align: center;
+    color: $overlay-area-icon-color;
+    @include hook-overlay-area-icon();
+}
+
+
+/* DEPRECATED
+ * Sub-object `ng-overlay-area-content`
+ ========================================================================== */
+
+/*
+ * Remove whitespace between child elements when using `inline-block`
+ * Needed for Firefox
+ */
+
+.ng-overlay-area:not(:empty) { font-size: 0.001px; }
+
+/*
+ * 1. Needed for vertical alignment
+ */
+
+.ng-overlay-area:not(:empty):before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+/*
+ * 1. Set vertical alignment
+ * 2. Reset whitespace hack
+ * 3. Set horizontal alignment
+ * 4. Set style
+ */
+
+.ng-overlay-area-content {
+    /* 1 */
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    vertical-align: middle;
+    /* 2 */
+    font-size: $overlay-area-content-font-size;
+    /* 3 */
+    text-align: center;
+    /* 4 */
+    padding: 0 $overlay-area-content-padding-horizontal;
+    color: $overlay-area-content-color;
+    @include hook-overlay-area-content();
+}
+
+/*
+ * Remove margin from the last-child
+ */
+
+.ng-overlay-area-content > :last-child { margin-bottom: 0; }
+
+/*
+ * Links in overlay area
+ */
+
+.ng-overlay-area-content a:not([class]),
+.ng-overlay-area-content a:not([class]):hover { color: $overlay-area-content-link-color; }
+
+
+/* DEPRECATED
+/* Sub-object `ng-overlay-caption`
+ ========================================================================== */
+
+/*
+ * 1. Set position
+ * 2. Set style
+ * 3. Fade-in transition
+ */
+
+.ng-overlay-caption {
+    /* 1 */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* 2 */
+    padding: $overlay-caption-padding;
+    background: $overlay-caption-background;
+    color: $overlay-caption-color;
+    /* 3 */
+    opacity: 0;
+    -webkit-transition: opacity 0.15s linear;
+    transition: opacity 0.15s linear;
+    -webkit-transform: translate3d(0,0,0);
+    @include hook-overlay-caption();
+}
+
+/*
+ * Hover
+ * 1. `ng-hover` to support touch devices
+ * 2. Use optional `ng-overlay-toggle` to trigger the overlay earlier
+ */
+
+.ng-overlay:hover .ng-overlay-caption,
+.ng-overlay.ng-hover .ng-overlay-caption, // 1
+.ng-overlay-toggle:hover .ng-overlay-caption, // 2
+.ng-overlay-toggle.ng-hover .ng-overlay-caption { opacity: 1; }
+
+/*
+ * CUSTOM ADDITION: Use correct color for inline-markup tags
+ */
+.ng-overlay-panel strong,
+.ng-overlay-panel em,
+.ng-overlay-panel del,
+.ng-overlay-panel ins,
+.ng-overlay-panel code,
+.ng-overlay-panel a,
+.ng-overlay-panel mark,
+.ng-overlay-panel q,
+.ng-overlay-panel abbr,
+.ng-overlay-panel dfn,
+.ng-overlay-panel small { color: inherit; }
+
+.ng-overlay-video-icon:before,
+.ng-overlay-play-icon:before {
+    content: $overlay-icon;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: $overlay-icon-size;
+    height: $overlay-icon-size;
+    margin-top: -($overlay-icon-size / 2);
+    margin-left: -($overlay-icon-size / 2);
+    font-size: $overlay-icon-size;
+    line-height: 1;
+    font-family: $icon-font-family;
+    text-align: center;
+    color: $overlay-icon-color;
+    @include hook-overlay-icon();
+}
+
+.ng-overlay-video-icon:before {
+    content: $overlay-area-icon-video;
+}
+
+.ng-overlay-play-icon:before {
+    content: $overlay-area-icon-video;
+}
+.ng-overlay-caption-top {
+    /* 1 */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* 2 */
+    padding: $overlay-caption-padding;
+    background: $overlay-caption-background;
+    color: $overlay-caption-color;
+    /* 3 */
+    opacity: 0;
+    -webkit-transition: opacity 0.15s linear;
+    transition: opacity 0.15s linear;
+    -webkit-transform: translate3d(0,0,0);
+    top: 0;
+    bottom: auto;
+}
+.ng-overlay-panel a.ng-button-primary {
+    color: $button-primary-color;
+}
+/**
+Overlay Gradient
+
+Provides a vertical gradient background to the overlay. Add one of the
+`.ng-overlay-gradient-0-*` classes depending on the amount of gradient.
+
+<table class="configuration">
+    <tr><td>`.ng-overlay-gradient-0-100`</td>
+        <td>Transparent to Black</td>
+    </tr>
+    <tr><td>`.ng-overlay-gradient-0-90`</td>
+        <td>Transparent to Black 90% solid</td>
+    </tr>
+    <tr><td>`.ng-overlay-gradient-0-80`</td>
+        <td>Transparent to Black 80% solid</td>
+    </tr>
+    <tr><td>`.ng-overlay-gradient-0-70`</td>
+        <td>Transparent to Black 70% solid</td>
+    </tr>
+    <tr><td>`.ng-overlay-gradient-0-60`</td>
+        <td>Transparent to Black 60% solid</td>
+    </tr>
+    <tr><td>`.ng-overlay-gradient-0-50`</td>
+        <td>Transparent to Black 50% solid</td>
+    </tr>
+    <tr><td>`.ng-overlay-gradient-0-40`</td>
+        <td>Transparent to Black 40% solid</td>
+    </tr>
+    <tr><td>`.ng-overlay-gradient-0-30`</td>
+        <td>Transparent to Black 30% solid</td>
+    </tr>
+    <tr><td>`.ng-overlay-gradient-0-20`</td>
+        <td>Transparent to Black 20% solid</td>
+    </tr>
+    <tr><td>`.ng-overlay-gradient-0-10`</td>
+        <td>Transparent to Black 10% solid</td>
+    </tr>
+</table>
+
+Markup:
+<div class="ng-grid">
+    <div class="ng-width-1-2">
+        <figure class="ng-overlay">
+            <img src="http://lorempixel.com/600/400" width="600" height="400" alt="">
+            <figcaption class="ng-overlay-panel ng-overlay-gradient-0-100">
+                <h3>Transparent to Black</h3>
+                <p>Lorem <a href="#">ipsum dolor</a> sit amet, consetetur sadipscing elitr.</p>
+            </figcaption>
+        </figure>
+    </div>
+    <div class="ng-width-1-2">
+        <figure class="ng-overlay">
+            <img src="http://lorempixel.com/600/400" width="600" height="400" alt="">
+            <figcaption class="ng-overlay-panel ng-overlay-gradient-0-80">
+                <h3>Transparent to 80%</h3>
+                <p>Lorem <a href="#">ipsum dolor</a> sit amet, consetetur sadipscing elitr.</p>
+            </figcaption>
+        </figure>
+    </div>
+</div>
+<div class="ng-grid">
+    <div class="ng-width-1-2">
+        <figure class="ng-overlay">
+            <img src="http://lorempixel.com/600/400" width="600" height="400" alt="">
+            <figcaption class="ng-overlay-panel ng-overlay-gradient-0-40">
+                <h3>Transparent to 40%</h3>
+                <p>Lorem <a href="#">ipsum dolor</a> sit amet, consetetur sadipscing elitr.</p>
+            </figcaption>
+        </figure>
+    </div>
+    <div class="ng-width-1-2">
+        <figure class="ng-overlay">
+            <img src="http://lorempixel.com/600/400" width="600" height="400" alt="">
+            <figcaption class="ng-overlay-panel ng-overlay-gradient-0-20">
+                <h3>Transparent to 20%</h3>
+                <p>Lorem <a href="#">ipsum dolor</a> sit amet, consetetur sadipscing elitr.</p>
+            </figcaption>
+        </figure>
+    </div>
+</div>
+
+Weight: 4
+
+Styleguide Media.Overlays.Gradient
+*/
+.ng-overlay-gradient-0-100 {
+    background: rgba(0,0,0,0.5);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
+}
+.ng-overlay-gradient-0-90 {
+    background: rgba(0,0,0,0.5);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.9) 100%);
+}
+.ng-overlay-gradient-0-80 {
+    background: rgba(0,0,0,0.5);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.8) 100%);
+}
+.ng-overlay-gradient-0-70 {
+    background: rgba(0,0,0,0.5);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.7) 100%);
+}
+.ng-overlay-gradient-0-60 {
+    background: rgba(0,0,0,0.5);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.6) 100%);
+}
+.ng-overlay-gradient-0-50 {
+    background: rgba(0,0,0,0.5);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 100%);
+}
+.ng-overlay-gradient-0-40 {
+    background: rgba(0,0,0,0.5);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.4) 100%);
+}
+.ng-overlay-gradient-0-30 {
+    background: rgba(0,0,0,0.5);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.3) 100%);
+}
+.ng-overlay-gradient-0-20 {
+    background: rgba(0,0,0,0.5);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.2) 100%);
+}
+.ng-overlay-gradient-0-10 {
+    background: rgba(0,0,0,0.5);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.1) 100%);
+}
+
+/**
+Overlay Gradient
+
+Provides a white vertical gradient background to the overlay. Add one of the
+`.ng-overlay-gradient-0-*` classes depending on the amount of gradient.
+
+<table class="configuration">
+    <tr><td>`.ng-overlay-white-gradient-0-100`</td>
+        <td>Transparent to White</td>
+    </tr>
+    <tr><td>`.ng-overlay-white-gradient-0-90`</td>
+        <td>Transparent to White 90% solid</td>
+    </tr>
+    <tr><td>`.ng-overlay-white-gradient-0-80`</td>
+        <td>Transparent to White 80% solid</td>
+    </tr>
+    <tr><td>`.ng-overlay-white-gradient-0-70`</td>
+        <td>Transparent to White 70% solid</td>
+    </tr>
+    <tr><td>`.ng-overlay-white-gradient-0-60`</td>
+        <td>Transparent to White 60% solid</td>
+    </tr>
+    <tr><td>`.ng-overlay-white-gradient-0-50`</td>
+        <td>Transparent to White 50% solid</td>
+    </tr>
+    <tr><td>`.ng-overlay-white-gradient-0-40`</td>
+        <td>Transparent to White 40% solid</td>
+    </tr>
+    <tr><td>`.ng-overlay-white-gradient-0-30`</td>
+        <td>Transparent to White 30% solid</td>
+    </tr>
+    <tr><td>`.ng-overlay-white-gradient-0-20`</td>
+        <td>Transparent to White 20% solid</td>
+    </tr>
+    <tr><td>`.ng-overlay-white-gradient-0-10`</td>
+        <td>Transparent to White 10% solid</td>
+    </tr>
+</table>
+
+Markup:
+<div class="ng-grid">
+    <div class="ng-width-1-2">
+        <figure class="ng-overlay">
+            <img src="http://lorempixel.com/600/400" width="600" height="400" alt="">
+            <figcaption class="ng-overlay-panel ng-overlay-white-gradient-0-100">
+                <h3>Transparent to Black</h3>
+                <p>Lorem <a href="#">ipsum dolor</a> sit amet, consetetur sadipscing elitr.</p>
+            </figcaption>
+        </figure>
+    </div>
+    <div class="ng-width-1-2">
+        <figure class="ng-overlay">
+            <img src="http://lorempixel.com/600/400" width="600" height="400" alt="">
+            <figcaption class="ng-overlay-panel ng-overlay-white-gradient-0-80">
+                <h3>Transparent to 80%</h3>
+                <p>Lorem <a href="#">ipsum dolor</a> sit amet, consetetur sadipscing elitr.</p>
+            </figcaption>
+        </figure>
+    </div>
+</div>
+<div class="ng-grid">
+    <div class="ng-width-1-2">
+        <figure class="ng-overlay">
+            <img src="http://lorempixel.com/600/400" width="600" height="400" alt="">
+            <figcaption class="ng-overlay-panel ng-overlay-white-gradient-0-40">
+                <h3>Transparent to 40%</h3>
+                <p>Lorem <a href="#">ipsum dolor</a> sit amet, consetetur sadipscing elitr.</p>
+            </figcaption>
+        </figure>
+    </div>
+    <div class="ng-width-1-2">
+        <figure class="ng-overlay">
+            <img src="http://lorempixel.com/600/400" width="600" height="400" alt="">
+            <figcaption class="ng-overlay-panel ng-overlay-white-gradient-0-20">
+                <h3>Transparent to 20%</h3>
+                <p>Lorem <a href="#">ipsum dolor</a> sit amet, consetetur sadipscing elitr.</p>
+            </figcaption>
+        </figure>
+    </div>
+</div>
+
+Weight: 4
+
+Styleguide Media.Overlays.Gradient
+*/
+.ng-overlay-white-gradient-0-100 {
+    background: rgba(255,255,255,0.5);
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+}
+.ng-overlay-white-gradient-0-90 {
+    background: rgba(255,255,255,0.5);
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.9) 100%);
+}
+.ng-overlay-white-gradient-0-80 {
+    background: rgba(255,255,255,0.5);
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.8) 100%);
+}
+.ng-overlay-white-gradient-0-70 {
+    background: rgba(255,255,255,0.5);
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.7) 100%);
+}
+.ng-overlay-white-gradient-0-60 {
+    background: rgba(255,255,255,0.5);
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.6) 100%);
+}
+.ng-overlay-white-gradient-0-50 {
+    background: rgba(255,255,255,0.5);
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.5) 100%);
+}
+.ng-overlay-white-gradient-0-40 {
+    background: rgba(255,255,255,0.5);
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.4) 100%);
+}
+.ng-overlay-white-gradient-0-30 {
+    background: rgba(255,255,255,0.5);
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.3) 100%);
+}
+.ng-overlay-white-gradient-0-20 {
+    background: rgba(255,255,255,0.5);
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.2) 100%);
+}
+.ng-overlay-white-gradient-0-10 {
+    background: rgba(255,255,255,0.5);
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.1) 100%);
+}
+
+// Hooks
+// ========================================================================
+
+@include hook-overlay-misc();
+
+// @mixin hook-overlay-panel() {}
+// @mixin hook-overlay-background() {}
+// @mixin hook-overlay-image() {}
+// @mixin hook-overlay-icon() {}
+// @mixin hook-overlay-misc() {}
+
+// // DEPRECATED
+// @mixin hook-overlay-area() {}
+// @mixin hook-overlay-area-icon() {}
+// @mixin hook-overlay-area-content() {}
+// @mixin hook-overlay-caption() {}

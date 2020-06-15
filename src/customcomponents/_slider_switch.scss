@@ -1,0 +1,300 @@
+/**
+Slider Switch
+
+This is a neat alternative to a checkbox
+
+<span class="badge info">JAVASCRIPT</span> Requires `customjs/slider-switch.js`
+
+Styleguide Controls.Slider-Switch
+*/
+
+$switch-background:                       $button-active-background !default;
+$switch-on-background:                    $button-success-active-background !default;
+
+$switch-height:                           $button-height !default;
+$switch-mini-height:                      $button-mini-height !default;
+$switch-small-height:                     $button-small-height !default;
+$switch-large-height:                     $button-large-height !default;
+
+$switch-line-height:                      $switch-height + 2 !default;
+$switch-mini-line-height:                 $switch-mini-height + 2 !default;
+$switch-small-line-height:                $switch-small-height + 2 !default;
+$switch-large-line-height:                $switch-large-height + 2 !default;
+
+$switch-mini-font-size:                   $button-mini-font-size !default; // 11px
+$switch-small-font-size:                  $button-small-font-size !default; // 12px
+$switch-large-font-size:                  $button-large-font-size !default; // 16px
+
+$switch-margin-horizontal:                     12px !default;
+$switch-mini-margin-horizontal:                6px !default;
+$switch-small-margin-horizontal:               10px !default;
+$switch-large-margin-horizontal:               15px !default;
+
+
+.ng-switch-background {background-color: $switch-background;color: #fff}
+.ng-switch-on-background {background-color: $switch-on-background;color: #fff}
+
+/**
+Configuration
+
+<table class="settings">
+<tr><td>`$switch-background`</td><td class="ng-switch-background">#{$switch-background}</td></tr>
+<tr><td>`$switch-on-background`</td><td class="ng-switch-on-background">#{$switch-on-background}</td></tr>
+<tr><td>`$switch-height`</td><td class="ng-switch-height">#{$switch-height}</td></tr>
+<tr><td>`$switch-mini-height`</td><td class="ng-switch-mini-height">#{$switch-mini-height}</td></tr>
+<tr><td>`$switch-small-height`</td><td class="ng-switch-small-height">#{$switch-small-height}</td></tr>
+<tr><td>`$switch-large-height`</td><td class="ng-switch-large-height">#{$switch-large-height}</td></tr>
+<tr><td>`$switch-line-height`</td><td class="ng-switch-line-height">#{$switch-line-height}</td></tr>
+<tr><td>`$switch-mini-line-height`</td><td class="ng-switch-mini-line-height">#{$switch-mini-line-height}</td></tr>
+<tr><td>`$switch-small-line-height`</td><td class="ng-switch-small-line-height">#{$switch-small-line-height}</td></tr>
+<tr><td>`$switch-large-line-height`</td><td class="ng-switch-large-line-height">#{$switch-large-line-height}</td></tr>
+<tr><td>`$switch-mini-font-size`</td><td class="ng-switch-mini-font-size">#{$switch-mini-font-size}</td></tr>
+<tr><td>`$switch-small-font-size`</td><td class="ng-switch-small-font-size">#{$switch-small-font-size}</td></tr>
+<tr><td>`$switch-large-font-size`</td><td class="ng-switch-large-font-size">#{$switch-large-font-size}</td></tr>
+<tr><td>`$switch-margin-horizontal`</td><td class="ng-switch-margin-horizontal">#{$switch-margin-horizontal}</td></tr>
+<tr><td>`$switch-mini-margin-horizontal`</td><td class="ng-switch-mini-margin-horizontal">#{$switch-mini-margin-horizontal}</td></tr>
+<tr><td>`$switch-small-margin-horizontal`</td><td class="ng-switch-small-margin-horizontal">#{$switch-small-margin-horizontal}</td></tr>
+<tr><td>`$switch-large-margin-horizontal`</td><td class="ng-switch-large-margin-horizontal">#{$switch-large-margin-horizontal}</td></tr>
+</table>
+
+Weight: 1
+
+Styleguide Controls.Slider-Switch.Configuration
+*/
+/**
+Usage
+
+The wrapper `div.ng-switch` must contain at least a
+`div.ng-switch-background` with a `div.ng-switch-button`. Without these, there is
+no slider.
+
+Labels should be wrapped in either `span.ng-switch-label-off` or `span.ng-switch-label-on`.
+The CSS assumes that **ON** is to the right.
+
+### JavaScript and initial on/off setting
+
+To enable the JavaScript, add a `data-ng-switch` attribute to the `div.ng-switch`.
+Add `.ng-on` to `div.ng-switch` to mark it as **ON**. The JavaScript will set
+synchronize this with the linked input.
+
+Markup:
+<div class="ng-switch" data-ng-switch="">
+    <input type="checkbox" value="1" id="id_check">
+    <span class="ng-switch-label-off">OFF</span>
+    <div class="ng-switch-background">
+        <div class="ng-switch-button"></div>
+    </div>
+    <span class="ng-switch-label-on">ON</span>
+</div>
+<div class="ng-switch" data-ng-switch="">
+    <input type="checkbox" value="1" checked="" id="id_check1">
+    <span class="ng-switch-label-off">OFF</span>
+    <div class="ng-switch-background">
+        <div class="ng-switch-button"></div>
+    </div>
+    <span class="ng-switch-label-on">ON</span>
+</div>
+<div class="ng-switch" data-ng-switch="{target:'#id_check2'}">
+    <span class="ng-switch-label-off">OFF</span>
+    <div class="ng-switch-background">
+        <div class="ng-switch-button"></div>
+    </div>
+    <span class="ng-switch-label-on">ON</span>
+</div>
+<label for="id_check2">I am an external checkbox</label>
+<input type="checkbox" value="1" checked="" id="id_check2">
+
+Weight: 2
+
+Styleguide Controls.Slider-Switch.Usage
+*/
+
+.ng-switch {
+    display: inline-block;
+    font-size: 1rem;
+    line-height: $switch-line-height;
+    padding: 0 $switch-margin-horizontal;
+
+    input {display: none;}
+
+    .ng-switch-label-on, .ng-switch-label-off {
+        float: left;
+        cursor: pointer;
+        color: $text-muted-color;
+    }
+    .ng-switch-label-off {
+        color: $text-success-color;
+    }
+
+    .ng-switch-background {
+        float: left;
+        position: relative;
+
+        display: inline-block;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        vertical-align: middle;
+        text-decoration: none;
+        text-align: center;
+        border: none;
+        border: 1px solid $button-border;
+        border-bottom-color: $button-border-bottom;
+        background-origin: border-box; // 1
+        background: $switch-background;
+        border-radius: $global-border-radius;
+
+        margin: 0 $switch-margin-horizontal;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+
+        cursor: pointer;
+        width: $switch-height * 2;
+        height: $switch-height;
+    }
+
+    .ng-switch-button {
+        position: absolute;
+
+        left: -1px;
+        top : -1px;
+
+        display: inline-block;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        vertical-align: middle;
+        text-decoration: none;
+        text-align: center;
+        border: none;
+        border: 1px solid $button-border;
+        border-bottom-color: $button-border-bottom;
+        background-origin: border-box; // 1
+        border-radius: $global-border-radius;
+        background: $button-background;
+        width: $switch-height;
+        height: $switch-height;
+        left: -1px;
+        transition: left .3s;
+    }
+}
+
+.ng-switch.ng-on {
+    .ng-switch-button {
+        left: $switch-height;
+    }
+    .ng-switch-label-off {
+        color: $text-muted-color;
+    }
+    .ng-switch-label-on {
+        color: $text-success-color;
+    }
+    .ng-switch-background {
+        background: $switch-on-background;
+    }
+}
+
+
+/**
+Size modifiers
+
+Add `.ng-switch-mini`, `.ng-switch-small`, or `.ng-switch-large` to the
+`.ng-switch` class to modify the size of the switch.
+
+Markup:
+<div class="ng-switch ng-on ng-switch-mini" data-ng-switch>
+    <input type="checkbox" value="1" checked="" id="id_check3">
+    <span class="ng-switch-label-off">OFF</span>
+    <div class="ng-switch-background">
+        <div class="ng-switch-button"></div>
+    </div>
+    <span class="ng-switch-label-on">ON</span>
+</div>
+<div class="ng-switch ng-on ng-switch-small" data-ng-switch>
+    <input type="checkbox" value="1" checked="" id="id_check4">
+    <span class="ng-switch-label-off">OFF</span>
+    <div class="ng-switch-background">
+        <div class="ng-switch-button"></div>
+    </div>
+    <span class="ng-switch-label-on">ON</span>
+</div>
+<div class="ng-switch ng-on ng-switch-large" data-ng-switch>
+    <input type="checkbox" value="1" checked="" id="id_check5">
+    <span class="ng-switch-label-off">OFF</span>
+    <div class="ng-switch-background">
+        <div class="ng-switch-button"></div>
+    </div>
+    <span class="ng-switch-label-on">ON</span>
+</div>
+
+Weight: 3
+
+Styleguide Controls.Slider-Switch.Size
+*/
+
+.ng-switch-mini {
+    min-height: $switch-mini-height;
+    padding: 0 $switch-mini-margin-horizontal;
+    line-height: $switch-mini-line-height;
+    font-size: $switch-mini-font-size;
+    .ng-switch-background {
+        width: $switch-mini-height * 2;
+        height: $switch-mini-height;
+        margin: 0 $switch-mini-margin-horizontal;
+    }
+    .ng-switch-button {
+        width: $switch-mini-height;
+        height: $switch-mini-height;
+    }
+}
+.ng-switch-mini.ng-on {
+    .ng-switch-button {
+        left: $switch-mini-height
+    }
+}
+
+.ng-switch-small {
+    min-height: $switch-small-height;
+    padding: 0 $switch-small-margin-horizontal;
+    line-height: $switch-small-line-height;
+    font-size: $switch-small-font-size;
+    .ng-switch-background {
+        width: $switch-small-height * 2;
+        height: $switch-small-height;
+        margin: 0 $switch-small-margin-horizontal;
+    }
+    .ng-switch-button {
+        width: $switch-small-height;
+        height: $switch-small-height;
+        &.ng-on {
+            left: $switch-small-height
+        }
+    }
+}
+.ng-switch-small.ng-on {
+    .ng-switch-button {
+        left: $switch-small-height
+    }
+}
+
+.ng-switch-large {
+    min-height: $switch-large-height;
+    padding: 0 $switch-large-margin-horizontal;
+    line-height: $switch-large-line-height;
+    font-size: $switch-large-font-size;
+    border-radius: $global-border-radius + 1;
+    .ng-switch-background {
+        width: $switch-large-height * 2;
+        height: $switch-large-height;
+        margin: 0 $switch-large-margin-horizontal;
+    }
+    .ng-switch-button {
+        width: $switch-large-height;
+        height: $switch-large-height;
+        &.ng-on {
+            left: $switch-large-height
+        }
+    }
+}
+.ng-switch-large.ng-on {
+    .ng-switch-button {
+        left: $switch-large-height
+    }
+}

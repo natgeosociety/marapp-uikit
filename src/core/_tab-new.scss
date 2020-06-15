@@ -1,0 +1,152 @@
+// Name:            Tab-New
+// Description:     Defines styles for tabs component
+//
+// Component:       `ng-tab-new`
+//
+//
+// States:          `ng-active`
+//                  `ng-disabled`
+//
+// Markup:
+//
+// <!-- ng-tab-new -->
+//
+//<div id="app">
+//    <div class="ng-tab-controls ng-width-1-1 ng-padding-bottom">
+//        <div class="ng-flex">
+//            <button aria-controls="tab1" class="ng-pane-trigger ng-display-inline-block ng-border-remove ng-padding-remove ng-article-kicker ng-margin-large-right ng-margin-bottom-remove ng-background-white">Tab 1</button>
+//            <button aria-controls="tab2" class="ng-pane-trigger ng-display-inline-block ng-border-remove ng-padding-remove ng-article-kicker ng-margin-large-right ng-margin-bottom-remove ng-background-white">Tab 2</button>
+//            <button aria-controls="tab3" class="ng-pane-trigger ng-display-inline-block ng-border-remove ng-padding-remove ng-article-kicker ng-margin-large-right ng-margin-bottom-remove ng-background-white">Tab 3</button>
+//        </div>
+//    </div>
+//    <div class="ng-margin-medium-top ng-flex ng-tab-pane-container">
+//        <div class="ng-tab-pane" id="tab1">
+//            Tab 1 content
+//        </div>
+//        <div class="ng-tab-pane ng-hidden" id="tab2">
+//            Tab 2 content
+//        </div>
+//        <div class="ng-tab-pane ng-hidden" id="tab3">
+//            Tab 3 content
+//        </div>
+//    </div>
+//</div>
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+$tab-color:                                     $global-color !default;
+$tab-background:                                $global-background !default;
+$tab-active-border:                             $theme-primary-color;
+$tab-active-color:                              $global-color !default;
+$tab-disabled-color:                            $global-muted-color !default;
+
+
+/* ========================================================================
+   Component: Tab-new
+ ========================================================================== */
+body { -ms-overflow-x: hidden; }
+
+.ng-tabs {
+    &.animated .ng-tab-panes-container {
+        -webkit-transition: all 700ms cubic-bezier(0.075, 0.820, 0.165, 1.000);
+        -moz-transition: all 700ms cubic-bezier(0.075, 0.820, 0.165, 1.000);
+        -o-transition: all 700ms cubic-bezier(0.075, 0.820, 0.165, 1.000);
+        transition: all 700ms cubic-bezier(0.075, 0.820, 0.165, 1.000); /* easeOutCirc */
+    }
+
+    .ng-tab-trigger {
+        background: transparent;
+        white-space: nowrap;
+        line-height: 1.8em;
+        color: $tab-color;
+
+        font-weight: 600;
+        font-size: .8125rem;
+        letter-spacing: .1625rem;
+        line-height: 1rem;
+        text-transform: uppercase;
+
+        border: 0;
+        display: inline-block;
+        padding: 0;
+        margin-bottom: 0;
+        margin-right: 50px;
+
+        &:first-child {
+            margin-left: 5px;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+    .ng-tab-pane {
+        width: 100%;
+        flex-shrink: 0;
+        padding: 0;
+        box-sizing: border-box;
+
+        &.ng-tab-pane-hidden {
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+        }
+    }
+
+    .ng-tab-underline {
+        width: 0px;
+        height: 3px;
+        background: $tab-active-border;
+        display: block;
+        position: absolute;
+        will-change: left, width;
+        -webkit-transition: all 350ms cubic-bezier(0.15, 0.3, 0.25, 1);
+        -moz-transition: all 350ms cubic-bezier(0.15, 0.3, 0.25, 1);
+        -o-transition: all 350ms cubic-bezier(0.15, 0.3, 0.25, 1);
+        transition: all 350ms cubic-bezier(0.15, 0.3, 0.25, 1); /* easeOutCirc */
+    }
+
+    .ng-tab-triggers-container {
+        display: inline-block;
+        position: relative;
+        white-space: nowrap;
+        overflow-x: hidden;
+        width: 90%;
+        -webkit-overflow-scrolling: hidden;
+        padding-bottom: 20px;
+        background-color: $global-background;
+        left: calc(12% - 5px);
+    }
+
+    .ng-tab-panes-container {
+        width: 100%;
+        display: flex;
+        opacity: 0;
+    }
+
+    @media (max-width: $breakpoint-small-max) {
+        .ng-tab-trigger {
+            margin-right: 25px;
+            &:last-child {
+                margin-right: 0;
+            }
+            &:first-child {
+                margin-left: 6vw;
+            }
+        }
+        .ng-tab-triggers-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: auto;
+
+            width: 100vw;
+            margin-left: -6vw;
+            position: relative;
+            left: 0px;
+            z-index: 999;
+        }
+    }
+}
