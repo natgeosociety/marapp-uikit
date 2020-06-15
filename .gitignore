@@ -35,3 +35,4 @@ Temporary Items
 # IDEs
 .idea
 **/*.swp
+/dist/
