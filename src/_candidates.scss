@@ -187,7 +187,7 @@
     top: 14px;
     left: 7px;
     color: rgba(0, 0, 0, 0.2);
-    content: "\F071";
+    content: "\f071";
     font-family: $icon-font-family;
     font-size: 18px;
     line-height: 30px;
@@ -225,7 +225,7 @@
     text-align: center;
 
     &:after {
-        content: "\F023";
+        content: "\f023";
         font-family: $icon-font-family;
         font-size: 20px;
         color: #AAA;
@@ -1642,7 +1642,7 @@
 .ng-c-partially-selected-input:before,
 .ng-form input.ng-c-partially-selected-input[type=checkbox]:checked:before,
 .ng-form input.ng-c-partially-selected-input[type=checkbox]:indeterminate:before {
-    content: "\F070";
+    content: "\f070";
     display: block;
     font-size: 14px;
     -webkit-font-smoothing: antialiased;
