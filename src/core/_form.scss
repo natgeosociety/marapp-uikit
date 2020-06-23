@@ -50,7 +50,7 @@ $form-border-width:                             1px !default;
 $form-background:                               $global-background !default;
 $form-color:                                    $global-color !default;
 
-$form-focus-border:                             #fc0 !default;
+$form-focus-border:                             $theme-primary-color !default;
 $form-focus-background:                         #fff !default;
 $form-focus-color:                              $global-color !default;
 
