@@ -2,7 +2,7 @@
   "name": "@natgeosociety/marapp-uikit",
   "title": "Marapp UIkit",
   "description": "Marapp UIkit is a lightweight and modular front-end framework",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "repository": {
     "type": "git",
     "url": "git://github.com/natgeosociety/marapp-uikit"
@@ -13,11 +13,6 @@
   "homepage": "https://github.com/natgeosociety/marapp-uikit",
   "scripts": {
     "build:dist": "grunt"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "sh pre-commit.sh"
-    }
   },
   "files": [
     "README.md",
