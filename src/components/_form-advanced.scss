@@ -189,7 +189,8 @@ label {
     }
 
     // checkbox disabled
-    &:disabled {
+    &:disabled, &:read-only {
+      background: $form-disabled-background--dark;
       border-color: $form-disabled-border--dark;
 
       &:checked {

@@ -43,70 +43,69 @@
 // Variables
 // ========================================================================
 
-$form-height:                                   $global-height !default;
-$form-padding:                                  4px 6px !default;
-$form-border:                                   $global-border !default;
-$form-border-width:                             1px !default;
-$form-background:                               $global-background !default;
-$form-color:                                    $global-color !default;
+$form-height: $global-height !default;
+$form-padding: 4px 6px !default;
+$form-border: $global-border !default;
+$form-border-width: 1px !default;
+$form-background: $global-background !default;
+$form-color: $global-color !default;
 
-$form-focus-border:                             $theme-primary-color !default;
-$form-focus-background:                         #fff !default;
-$form-focus-color:                              $global-color !default;
+$form-focus-border: $theme-primary-color !default;
+$form-focus-background: #fff !default;
+$form-focus-color: $global-color !default;
 
-$form-disabled-border:                          $global-border !default;
-$form-disabled-background:                      $global-default-muted-background !default;
-$form-disabled-color:                           $global-muted-color !default;
+$form-disabled-border: $global-border !default;
+$form-disabled-background: $global-default-muted-background !default;
+$form-disabled-color: $global-muted-color !default;
 
-$form-placeholder-color:                        $global-muted-color !default;
+$form-placeholder-color: $global-muted-color !default;
 
-$form-gutter:                                   30px !default;
+$form-gutter: 30px !default;
 
-$form-legend-border:                            $global-border !default;
-$form-legend-border-width:                      1px !default;
-$form-legend-font-size:                         round($global-font-size * 1.28) !default;
-$form-legend-line-height:                       round($form-legend-font-size * 1.66) !default;
+$form-legend-border: $global-border !default;
+$form-legend-border-width: 1px !default;
+$form-legend-font-size: round($global-font-size * 1.28) !default;
+$form-legend-line-height: round($form-legend-font-size * 1.66) !default;
 
-$form-small-height:                             $global-small-height !default;
-$form-large-height:                             60px !default;
-$form-small-padding:                            3px 3px !default;
-$form-large-padding:                            18px 16px !default;
-$form-small-font-size:                          round($global-font-size * 0.85) !default;
-$form-large-font-size:                          $global-font-size !default;
+$form-small-height: $global-small-height !default;
+$form-large-height: 60px !default;
+$form-small-padding: 3px 3px !default;
+$form-large-padding: 18px 16px !default;
+$form-small-font-size: round($global-font-size * 0.85) !default;
+$form-large-font-size: $global-font-size !default;
 
-$form-danger-border:                            #dc8d99 !default;
-$form-danger-background:                        #fff7f8 !default;
-$form-danger-color:                             #c91032 !default;
+$form-danger-border: #dc8d99 !default;
+$form-danger-background: #fff7f8 !default;
+$form-danger-color: #c91032 !default;
 
-$form-success-border:                           #8ec73b !default;
-$form-success-background:                       #fafff2 !default;
-$form-success-color:                            #539022 !default;
+$form-success-border: #8ec73b !default;
+$form-success-background: #fafff2 !default;
+$form-success-color: #539022 !default;
 
-$form-blank-border:                             $global-border !default;
-$form-blank-border-style:                       dashed !default;
+$form-blank-border: $global-border !default;
+$form-blank-border-style: dashed !default;
 
-$form-mini-width:                               40px !default;
-$form-small-width:                              130px !default;
-$form-medium-width:                             200px !default;
-$form-large-width:                              500px !default;
+$form-mini-width: 40px !default;
+$form-small-width: 130px !default;
+$form-medium-width: 200px !default;
+$form-large-width: 500px !default;
 
-$form-help-inline-margin-left:                  10px !default;
-$form-help-block-margin-top:                    5px !default;
+$form-help-inline-margin-left: 10px !default;
+$form-help-block-margin-top: 5px !default;
 
-$form-controls-condensed-margin-vertical:       5px !default;
+$form-controls-condensed-margin-vertical: 5px !default;
 
-$form-stacked-margin-bottom:                    5px !default;
-$form-stacked-font-weight:                      $base-body-bold-weight !default;
+$form-stacked-margin-bottom: 5px !default;
+$form-stacked-font-weight: $base-body-bold-weight !default;
 
-$form-horizontal-label-width:                   200px !default;
-$form-horizontal-label-margin-top:              5px !default;
-$form-horizontal-controls-margin-left:          215px !default;
-$form-horizontal-controls-text-padding-top:     5px !default;
+$form-horizontal-label-width: 200px !default;
+$form-horizontal-label-margin-top: 5px !default;
+$form-horizontal-controls-margin-left: 215px !default;
+$form-horizontal-controls-text-padding-top: 5px !default;
 
-$form-icon-width:                               $global-height !default;
-$form-icon-font-size:                           $global-font-size !default;
-$form-icon-color:                               $global-muted-color !default;
-
+$form-icon-width: $global-height !default;
+$form-icon-font-size: $global-font-size !default;
+$form-icon-color: $global-muted-color !default;
 
 
 /* Dark theme for forms
@@ -124,30 +123,100 @@ $form-disabled-background--dark: $ultradkgray;
 $form-disabled-color--dark: $mdgray;
 
 $form-danger-border--dark: #c91032;
-$form-danger-background--dark: rgba(201,16,50,0.15);
+$form-danger-background--dark: rgba(201, 16, 50, 0.15);
 $form-danger-color--dark: $ultraltgray;
 
 
+.ng-form-border {
+  background: $form-border;
+  color: #fff
+}
 
-.ng-form-border {background: $form-border; color: #fff}
-.ng-form-background {background: $form-background}
-.ng-form-color {background: $form-color; color: #fff}
-.ng-form-focus-border {background: $form-focus-border; color: #fff}
-.ng-form-focus-background {background: $form-focus-background}
-.ng-form-focus-color {background: $form-focus-color; color: #fff}
-.ng-form-disabled-border {background: $form-disabled-border; color: #fff}
-.ng-form-disabled-background {background: $form-disabled-background; color: #fff}
-.ng-form-disabled-color {background: $form-disabled-color; color: #fff}
-.ng-form-placeholder-color {background: $form-placeholder-color; color: #fff}
-.ng-form-legend-border {background: $form-legend-border; color: #fff}
-.ng-form-danger-border {background: $form-danger-border; color: #fff}
-.ng-form-danger-background {background: $form-danger-background}
-.ng-form-danger-color {background: $form-danger-color; color: #fff}
-.ng-form-success-border {background: $form-success-border; color: #fff}
-.ng-form-success-background {background: $form-success-background}
-.ng-form-success-color {background: $form-success-color; color: #fff}
-.ng-form-blank-border {background: $form-blank-border; color: #fff}
-.ng-form-icon-color {background: $form-icon-color; color: #fff}
+.ng-form-background {
+  background: $form-background
+}
+
+.ng-form-color {
+  background: $form-color;
+  color: #fff
+}
+
+.ng-form-focus-border {
+  background: $form-focus-border;
+  color: #fff
+}
+
+.ng-form-focus-background {
+  background: $form-focus-background
+}
+
+.ng-form-focus-color {
+  background: $form-focus-color;
+  color: #fff
+}
+
+.ng-form-disabled-border {
+  background: $form-disabled-border;
+  color: #fff
+}
+
+.ng-form-disabled-background {
+  background: $form-disabled-background;
+  color: #fff
+}
+
+.ng-form-disabled-color {
+  background: $form-disabled-color;
+  color: #fff
+}
+
+.ng-form-placeholder-color {
+  background: $form-placeholder-color;
+  color: #fff
+}
+
+.ng-form-legend-border {
+  background: $form-legend-border;
+  color: #fff
+}
+
+.ng-form-danger-border {
+  background: $form-danger-border;
+  color: #fff
+}
+
+.ng-form-danger-background {
+  background: $form-danger-background
+}
+
+.ng-form-danger-color {
+  background: $form-danger-color;
+  color: #fff
+}
+
+.ng-form-success-border {
+  background: $form-success-border;
+  color: #fff
+}
+
+.ng-form-success-background {
+  background: $form-success-background
+}
+
+.ng-form-success-color {
+  background: $form-success-color;
+  color: #fff
+}
+
+.ng-form-blank-border {
+  background: $form-blank-border;
+  color: #fff
+}
+
+.ng-form-icon-color {
+  background: $form-icon-color;
+  color: #fff
+}
 
 /* ========================================================================
    Component: Form
@@ -167,22 +236,24 @@ $form-danger-color--dark: $ultraltgray;
 .ng-form input,
 .ng-form select,
 .ng-form textarea, .ng-textarea {
-    /* 1 */
-    box-sizing: border-box;
-    /* 2 */
-    margin: 0;
-    /* 3 */
-    border-radius: 0;
-    /* 4 */
-    font: inherit;
-    color: inherit;
+  /* 1 */
+  box-sizing: border-box;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+  border-radius: 0;
+  /* 4 */
+  font: inherit;
+  color: inherit;
 }
 
 /*
  * Address inconsistent `text-transform` inheritance which is only inherit in Firefox
  */
 
-.ng-form select { text-transform: none; }
+.ng-form select {
+  text-transform: none;
+}
 
 /*
  * 1. Correct `font` properties not being inherited.
@@ -191,10 +262,10 @@ $form-danger-color--dark: $ultraltgray;
  */
 
 .ng-form optgroup {
-    /* 1 */
-    font: inherit;
-    /* 2 */
-    font-weight: $base-body-bold-weight;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  font-weight: $base-body-bold-weight;
 }
 
 /*
@@ -202,8 +273,8 @@ $form-danger-color--dark: $ultraltgray;
  */
 
 .ng-form input::-moz-focus-inner {
-    border: 0;
-    padding: 0;
+  border: 0;
+  padding: 0;
 }
 
 /*
@@ -211,14 +282,18 @@ $form-danger-color--dark: $ultraltgray;
  */
 
 .ng-form input[type="checkbox"],
-.ng-form input[type="radio"] { padding: 0; }
+.ng-form input[type="radio"] {
+  padding: 0;
+}
 
 /*
  * Improves consistency of cursor style for clickable elements
  */
 
 .ng-form input[type="checkbox"]:not(:disabled),
-.ng-form input[type="radio"]:not(:disabled) { cursor: pointer; }
+.ng-form input[type="radio"]:not(:disabled) {
+  cursor: pointer;
+}
 
 /*
  * Remove default style in iOS.
@@ -233,14 +308,18 @@ $form-danger-color--dark: $ultraltgray;
 .ng-form input[type="search"],
 .ng-form input[type="tel"],
 .ng-form input[type="number"],
-.ng-form input[type="datetime"] { -webkit-appearance: none; }
+.ng-form input[type="datetime"] {
+  -webkit-appearance: none;
+}
 
 /*
  * Remove inner padding and search cancel button in Chrome, Safari and Opera on OS X.
  */
 
 .ng-form input[type="search"]::-webkit-search-cancel-button,
-.ng-form input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
+.ng-form input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
 
 /*
  * Fix the cursor style for Chrome's increment/decrement buttons. For certain
@@ -249,16 +328,18 @@ $form-danger-color--dark: $ultraltgray;
  */
 
 .ng-form input[type="number"]::-webkit-inner-spin-button,
-.ng-form input[type="number"]::-webkit-outer-spin-button { height: auto; }
+.ng-form input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
 
 /*
  * Define consistent border, margin, and padding.
  */
 
 .ng-form fieldset {
-    border: none;
-    margin: 0;
-    padding: 0;
+  border: none;
+  margin: 0;
+  padding: 0;
 }
 
 /*
@@ -267,30 +348,36 @@ $form-danger-color--dark: $ultraltgray;
  */
 
 .ng-form textarea, .ng-textarea {
-    /* 1 */
-    overflow: auto;
-    /* 2 */
-    vertical-align: top;
+  /* 1 */
+  overflow: auto;
+  /* 2 */
+  vertical-align: top;
 }
 
 /*
  * Removes placeholder transparency in Firefox.
  */
 
-.ng-form ::-moz-placeholder { opacity: 1; }
+.ng-form ::-moz-placeholder {
+  opacity: 1;
+}
 
- /*
- * Removes box-shadow for invalid controls in Firefox.
- */
+/*
+* Removes box-shadow for invalid controls in Firefox.
+*/
 
-.ng-form :invalid { box-shadow: none; }
+.ng-form :invalid {
+  box-shadow: none;
+}
 
 /*
  * Vertical alignment
  */
 
 .ng-form input:not([type="radio"]):not([type="checkbox"]),
-.ng-form select { vertical-align: middle; }
+.ng-form select {
+  vertical-align: middle;
+}
 
 
 /* Style
@@ -300,7 +387,9 @@ $form-danger-color--dark: $ultraltgray;
  * Remove margin from the last-child
  */
 
-.ng-form > :last-child { margin-bottom: 0; }
+.ng-form > :last-child {
+  margin-bottom: 0;
+}
 
 /*
  * Controls
@@ -328,52 +417,76 @@ $form-danger-color--dark: $ultraltgray;
 .ng-form input[type="search"],
 .ng-form input[type="tel"],
 .ng-form input[type="color"] {
-    /* 1 */
-    height: $form-height;
-    /* 2 */
-    max-width: 100%;
-    /* 3 */
-    padding: $form-padding;
-    /* 4 */
-    border: $form-border-width solid $form-border;
-    background: $form-background;
-    color: $form-color;
-    -webkit-transition: all linear 0.2s;
-    -webkit-transition-property: border, background, color, box-shadow, padding;
-    transition: all linear 0.2s;
-    transition-property: border, background, color, box-shadow, padding;
-    box-sizing: border-box;
-    @include hook-form();
+  /* 1 */
+  height: $form-height;
+  /* 2 */
+  max-width: 100%;
+  /* 3 */
+  padding: $form-padding;
+  /* 4 */
+  border: $form-border-width solid $form-border;
+  background: $form-background;
+  color: $form-color;
+  -webkit-transition: all linear 0.2s;
+  -webkit-transition-property: border, background, color, box-shadow, padding;
+  transition: all linear 0.2s;
+  transition-property: border, background, color, box-shadow, padding;
+  box-sizing: border-box;
+  @include hook-form();
 
-    // Focus state
-    &:focus {
-        border-color: $form-focus-border;
-        outline: 0;
-        background: $form-focus-background;
-        color: $form-focus-color;
-        @include hook-form-focus();
-    }
+  // Focus state
+  &:focus {
+    border-color: $form-focus-border;
+    outline: 0;
+    background: $form-focus-background;
+    color: $form-focus-color;
+    @include hook-form-focus();
+  }
 
-    // Disabled state
-    &:disabled {
-        border-color: $form-disabled-border;
-        background-color: $form-disabled-background;
-        color: $form-disabled-color;
-        @include hook-form-disabled();
-    }
+  // Disabled state
+  &:disabled {
+    border-color: $form-disabled-border;
+    background-color: $form-disabled-background;
+    color: $form-disabled-color;
+    @include hook-form-disabled();
+  }
+}
+
+
+.ng-form select {
+  -webkit-appearance: none;
+  background: url('data:image/svg+xml;utf8,<svg width="16" height="16" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/> </svg>') no-repeat;
+  background-position: calc(100% - 20px) center;
+  background-repeat: no-repeat;
 }
 
 /*
  * Placeholder
  */
 
-.ng-form :-ms-input-placeholder { color: $form-placeholder-color !important; }
-.ng-form ::-moz-placeholder { color: $form-placeholder-color; }
-.ng-form ::-webkit-input-placeholder { color: $form-placeholder-color; }
+.ng-form :-ms-input-placeholder {
+  color: $form-placeholder-color !important;
+}
 
-.ng-form :disabled:-ms-input-placeholder { color: $form-disabled-color !important; }
-.ng-form :disabled::-moz-placeholder { color: $form-disabled-color; }
-.ng-form :disabled::-webkit-input-placeholder { color: $form-disabled-color; }
+.ng-form ::-moz-placeholder {
+  color: $form-placeholder-color;
+}
+
+.ng-form ::-webkit-input-placeholder {
+  color: $form-placeholder-color;
+}
+
+.ng-form :disabled:-ms-input-placeholder {
+  color: $form-disabled-color !important;
+}
+
+.ng-form :disabled::-moz-placeholder {
+  color: $form-disabled-color;
+}
+
+.ng-form :disabled::-webkit-input-placeholder {
+  color: $form-disabled-color;
+}
 
 /*
  * Legend
@@ -386,19 +499,19 @@ $form-danger-color--dark: $ultraltgray;
  */
 
 .ng-form legend {
-    /* 1 */
-    width: 100%;
-    /* 2 */
-    border: 0;
-    /* 3 */
-    padding: 0;
-    /* 4 */
-    padding-bottom: $form-gutter;
-    /* 5 */
-    font-size: $form-legend-font-size;
-    line-height: $form-legend-line-height;
-    font-weight: $base-body-bold-weight;
-    @include hook-form-legend();
+  /* 1 */
+  width: 100%;
+  /* 2 */
+  border: 0;
+  /* 3 */
+  padding: 0;
+  /* 4 */
+  padding-bottom: $form-gutter;
+  /* 5 */
+  font-size: $form-legend-font-size;
+  line-height: $form-legend-line-height;
+  font-weight: $base-body-bold-weight;
+  @include hook-form-legend();
 }
 
 /*
@@ -406,11 +519,11 @@ $form-danger-color--dark: $ultraltgray;
  */
 
 .ng-form legend:after {
-    content: "";
-    display: block;
-    border-bottom: $form-legend-border-width solid $form-legend-border;
-    /* 1 */
-    width: 100%;
+  content: "";
+  display: block;
+  border-bottom: $form-legend-border-width solid $form-legend-border;
+  /* 1 */
+  width: 100%;
 }
 
 
@@ -422,18 +535,18 @@ select.ng-form-small,
 textarea.ng-form-small, .ng-textarea.ng-form-small,
 input[type].ng-form-small,
 input:not([type]).ng-form-small {
-    height: $form-small-height;
-    padding: $form-small-padding;
-    font-size: $form-small-font-size;
+  height: $form-small-height;
+  padding: $form-small-padding;
+  font-size: $form-small-font-size;
 }
 
 select.ng-form-large,
 textarea.ng-form-large, .ng-textarea.ng-form-small,
 input[type].ng-form-large,
-input:not([type]).ng-form-large  {
-    height: $form-large-height;
-    padding: $form-large-padding;
-    font-size: $form-large-font-size;
+input:not([type]).ng-form-large {
+  height: $form-large-height;
+  padding: $form-large-padding;
+  font-size: $form-large-font-size;
 }
 
 
@@ -443,7 +556,9 @@ input:not([type]).ng-form-large  {
 
 .ng-form textarea, .ng-textarea,
 .ng-form select[multiple],
-.ng-form select[size] { height: auto !important; }
+.ng-form select[size] {
+  height: auto !important;
+}
 
 
 /* Validation states
@@ -455,21 +570,21 @@ input:not([type]).ng-form-large  {
  */
 
 .ng-form-danger {
-    border-color: $form-danger-border !important;
-    background: $form-danger-background !important;
-    color: $form-danger-color !important;
-    @include hook-form-danger();
+  border-color: $form-danger-border !important;
+  background: $form-danger-background !important;
+  color: $form-danger-color !important;
+  @include hook-form-danger();
 }
 
 /*
  * Success state
  */
 
-.ng-form-success  {
-    border-color: $form-success-border !important;
-    background: $form-success-background !important;
-    color: $form-success-color !important;
-    @include hook-form-success();
+.ng-form-success {
+  border-color: $form-success-border !important;
+  background: $form-success-background !important;
+  color: $form-success-color !important;
+  @include hook-form-success();
 }
 
 
@@ -482,15 +597,15 @@ input:not([type]).ng-form-large  {
  */
 
 .ng-form-blank {
-    border-color: transparent !important;
-    border-style: $form-blank-border-style !important;
-    background: none !important;
-    @include hook-form-blank();
+  border-color: transparent !important;
+  border-style: $form-blank-border-style !important;
+  background: none !important;
+  @include hook-form-blank();
 }
 
 .ng-form-blank:focus {
-    border-color: $form-blank-border !important;
-    @include hook-form-blank-focus();
+  border-color: $form-blank-border !important;
+  @include hook-form-blank-focus();
 }
 
 
@@ -502,11 +617,25 @@ input:not([type]).ng-form-large  {
  * Different widths for mini sized `input` and `select` elements
  */
 
-input.ng-form-width-mini { width: $form-mini-width; }
-select.ng-form-width-mini { width: ($form-mini-width + 25px); }
-.ng-form-width-small { width: $form-small-width; }
-.ng-form-width-medium { width: $form-medium-width; }
-.ng-form-width-large { width: $form-large-width; }
+input.ng-form-width-mini {
+  width: $form-mini-width;
+}
+
+select.ng-form-width-mini {
+  width: ($form-mini-width + 25px);
+}
+
+.ng-form-width-small {
+  width: $form-small-width;
+}
+
+.ng-form-width-medium {
+  width: $form-medium-width;
+}
+
+.ng-form-width-large {
+  width: $form-large-width;
+}
 
 
 /* Sub-objects: `ng-form-row`
@@ -520,17 +649,21 @@ select.ng-form-width-mini { width: ($form-mini-width + 25px); }
 
 .ng-form-row:before,
 .ng-form-row:after {
-    content: " ";
-    display: table;
+  content: " ";
+  display: table;
 }
 
-.ng-form-row:after { clear: both; }
+.ng-form-row:after {
+  clear: both;
+}
 
 /*
  * Vertical gutter
  */
 
-.ng-form-row + .ng-form-row { margin-top: $form-gutter; }
+.ng-form-row + .ng-form-row {
+  margin-top: $form-gutter;
+}
 
 
 /* Help text
@@ -538,11 +671,13 @@ select.ng-form-width-mini { width: ($form-mini-width + 25px); }
  ========================================================================== */
 
 .ng-form-help-inline {
-    display: inline-block;
-    margin: 0 0 0 $form-help-inline-margin-left;
+  display: inline-block;
+  margin: 0 0 0 $form-help-inline-margin-left;
 }
 
-.ng-form-help-block { margin: $form-help-block-margin-top 0 0 0; }
+.ng-form-help-block {
+  margin: $form-help-block-margin-top 0 0 0;
+}
 
 
 /* Controls content
@@ -553,14 +688,21 @@ select.ng-form-width-mini { width: ($form-mini-width + 25px); }
  * Remove margins
  */
 
-.ng-form-controls > :first-child { margin-top: 0; }
-.ng-form-controls > :last-child { margin-bottom: 0; }
+.ng-form-controls > :first-child {
+  margin-top: 0;
+}
+
+.ng-form-controls > :last-child {
+  margin-bottom: 0;
+}
 
 /*
  * Group controls and text into blocks with a small spacing between blocks
  */
 
-.ng-form-controls-condensed { margin: $form-controls-condensed-margin-vertical 0; }
+.ng-form-controls-condensed {
+  margin: $form-controls-condensed-margin-vertical 0;
+}
 
 
 /* Modifier: `ng-form-stacked`
@@ -568,10 +710,10 @@ select.ng-form-width-mini { width: ($form-mini-width + 25px); }
  ========================================================================== */
 
 .ng-form-stacked .ng-form-label {
-    display: block;
-    margin-bottom: $form-stacked-margin-bottom;
-    font-weight: $form-stacked-font-weight;
-    @include hook-form-stacked-label();
+  display: block;
+  margin-bottom: $form-stacked-margin-bottom;
+  font-weight: $form-stacked-font-weight;
+  @include hook-form-stacked-label();
 }
 
 
@@ -582,30 +724,34 @@ select.ng-form-width-mini { width: ($form-mini-width + 25px); }
 /* Tablet portrait and smaller */
 @media (max-width: $breakpoint-medium-max) {
 
-    /* Behave like `ng-form-stacked` */
-    .ng-form-horizontal .ng-form-label {
-        display: block;
-        margin-bottom: $form-stacked-margin-bottom;
-        font-weight: $form-stacked-font-weight;
-        @include hook-form-stacked-label();
-    }
+  /* Behave like `ng-form-stacked` */
+  .ng-form-horizontal .ng-form-label {
+    display: block;
+    margin-bottom: $form-stacked-margin-bottom;
+    font-weight: $form-stacked-font-weight;
+    @include hook-form-stacked-label();
+  }
 
 }
 
 /* Desktop and bigger */
 @media (min-width: $breakpoint-large) {
 
-    .ng-form-horizontal .ng-form-label {
-        width: $form-horizontal-label-width;
-        margin-top: $form-horizontal-label-margin-top;
-        float: left;
-        @include hook-form-horizontal-label();
-    }
+  .ng-form-horizontal .ng-form-label {
+    width: $form-horizontal-label-width;
+    margin-top: $form-horizontal-label-margin-top;
+    float: left;
+    @include hook-form-horizontal-label();
+  }
 
-    .ng-form-horizontal .ng-form-controls { margin-left: $form-horizontal-controls-margin-left; }
+  .ng-form-horizontal .ng-form-controls {
+    margin-left: $form-horizontal-controls-margin-left;
+  }
 
-    /* Better vertical alignment if controls are checkboxes and radio buttons with text */
-    .ng-form-horizontal .ng-form-controls-text { padding-top: $form-horizontal-controls-text-padding-top; }
+  /* Better vertical alignment if controls are checkboxes and radio buttons with text */
+  .ng-form-horizontal .ng-form-controls-text {
+    padding-top: $form-horizontal-controls-text-padding-top;
+  }
 
 }
 
@@ -620,12 +766,12 @@ select.ng-form-width-mini { width: ($form-mini-width + 25px); }
  */
 
 .ng-form-icon {
-    /* 1 */
-    display: inline-block;
-    /* 2 */
-    position: relative;
-    /* 3 */
-    max-width: 100%;
+  /* 1 */
+  display: inline-block;
+  /* 2 */
+  position: relative;
+  /* 3 */
+  max-width: 100%;
 }
 
 /*
@@ -633,83 +779,99 @@ select.ng-form-width-mini { width: ($form-mini-width + 25px); }
  */
 
 .ng-form-icon > [class*='ng-icon-'] {
-    position: absolute;
-    top: 50%;
-    width: $form-icon-width;
-    margin-top: round($form-icon-font-size / -2);
-    font-size: $form-icon-font-size;
-    color: $form-icon-color;
-    text-align: center;
-    /* 1 */
-    pointer-events: none;
+  position: absolute;
+  top: 50%;
+  width: $form-icon-width;
+  margin-top: round($form-icon-font-size / -2);
+  font-size: $form-icon-font-size;
+  color: $form-icon-color;
+  text-align: center;
+  /* 1 */
+  pointer-events: none;
 }
 
-.ng-form-icon:not(.ng-form-icon-flip) > input { padding-left: $form-icon-width !important; }
+.ng-form-icon:not(.ng-form-icon-flip) > input {
+  padding-left: $form-icon-width !important;
+}
 
 /*
  * Sub-modifier: `ng-form-icon-flip`
  */
 
-.ng-form-icon-flip > [class*='ng-icon-'] { right: 0; }
-.ng-form-icon-flip > input { padding-right: $form-icon-width !important; }
+.ng-form-icon-flip > [class*='ng-icon-'] {
+  right: 0;
+}
+
+.ng-form-icon-flip > input {
+  padding-right: $form-icon-width !important;
+}
 
 .ng-legend {
-    @extend legend;
-    margin:0
+  @extend legend;
+  margin: 0
 }
-.ng-form-row + .ng-legend { margin-top: $form-gutter; }
+
+.ng-form-row + .ng-legend {
+  margin-top: $form-gutter;
+}
 
 .ng-form-intro {
-    margin-bottom: 40px;
-    text-align: center;
+  margin-bottom: 40px;
+  text-align: center;
 }
+
 .ng-form-row + fieldset {
-    margin-top: $form-gutter;
+  margin-top: $form-gutter;
 }
+
 .ng-form fieldset + .ng-form-row {
-    margin-top: $form-gutter;
+  margin-top: $form-gutter;
 }
+
 .ng-form fieldset + fieldset {
-    margin-top: $form-gutter;
+  margin-top: $form-gutter;
 }
+
 .ng-form input[type='submit'] {
-    font-weight: $base-body-bold-weight;
+  font-weight: $base-body-bold-weight;
 }
+
 .ng-form input.ng-read-only,
 .ng-form input:not([type="button"]):not([type="submit"]):read-only {
-    border-color: $form-disabled-border;
-    background-color: $form-disabled-background;
-    color: $form-disabled-color;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    @include hook-form-disabled();
+  border-color: $form-disabled-border;
+  background-color: $form-disabled-background;
+  color: $form-disabled-color;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  @include hook-form-disabled();
 }
+
 .ng-form input[type="file"] {
-    height: auto;
+  height: auto;
 }
 
 // Base styles
 // -------------------------
 .ng-input-group {
-    position: relative; // For dropdowns
-    display: table;
-    border-collapse: separate; // prevent input groups from inheriting border styles from table cells when placed within a table
+  position: relative; // For dropdowns
+  display: table;
+  border-collapse: separate; // prevent input groups from inheriting border styles from table cells when placed within a table
 
-    input {
-        // Ensure that the input is always above the *appended* addon button for
-        // proper border colors.
-        position: relative;
-        z-index: 2;
+  input {
+    // Ensure that the input is always above the *appended* addon button for
+    // proper border colors.
+    position: relative;
+    z-index: 2;
 
-        // IE9 fubars the placeholder attribute in text inputs and the arrows on
-        // select elements in input groups. To fix it, we float the input. Details:
-        // https://github.com/twbs/bootstrap/issues/11561#issuecomment-28936855
-        float: left;
+    // IE9 fubars the placeholder attribute in text inputs and the arrows on
+    // select elements in input groups. To fix it, we float the input. Details:
+    // https://github.com/twbs/bootstrap/issues/11561#issuecomment-28936855
+    float: left;
 
-        margin-bottom: 0;
-    }
+    margin-bottom: 0;
+  }
 }
 
 // Sizing options
@@ -735,20 +897,20 @@ select.ng-form-width-mini { width: ($form-mini-width + 25px); }
 .ng-input-group-btn,
 .ng-input-group input,
 .ng-input-group label {
-    display: table-cell;
+  display: table-cell;
 }
 
 .ng-input-group label {
-    height: $form-height - $form-horizontal-label-margin-top;
-    vertical-align: middle;
-    width: $form-horizontal-label-width;
+  height: $form-height - $form-horizontal-label-margin-top;
+  vertical-align: middle;
+  width: $form-horizontal-label-width;
 }
 
 // Addon and addon wrapper for buttons
 .ng-input-group-addon,
 .ng-input-group-btn {
-    white-space: nowrap;
-    vertical-align: middle; // Match the inputs
+  white-space: nowrap;
+  vertical-align: middle; // Match the inputs
 }
 
 $input-group-addon-bg: $global-default-background;
@@ -756,33 +918,33 @@ $input-group-addon-bg: $global-default-background;
 // Text input groups
 // -------------------------
 .ng-input-group-addon {
-    padding: $form-padding;
-    font-size: $global-font-size;
-    font-weight: $base-body-font-weight;
-    line-height: 1;
-    color: $form-color;
-    text-align: center;
-    background-color: $input-group-addon-bg;
-    border: $form-border-width solid $form-border;
-    border-radius: $global-border-radius;
+  padding: $form-padding;
+  font-size: $global-font-size;
+  font-weight: $base-body-font-weight;
+  line-height: 1;
+  color: $form-color;
+  text-align: center;
+  background-color: $input-group-addon-bg;
+  border: $form-border-width solid $form-border;
+  border-radius: $global-border-radius;
 
-    // // Sizing
-    // &.input-sm {
-    //   padding: $padding-small-vertical $padding-small-horizontal;
-    //   font-size: $font-size-small;
-    //   border-radius: $border-radius-small;
-    // }
-    // &.input-lg {
-    //   padding: $padding-large-vertical $padding-large-horizontal;
-    //   font-size: $font-size-large;
-    //   border-radius: $border-radius-large;
-    // }
+  // // Sizing
+  // &.input-sm {
+  //   padding: $padding-small-vertical $padding-small-horizontal;
+  //   font-size: $font-size-small;
+  //   border-radius: $border-radius-small;
+  // }
+  // &.input-lg {
+  //   padding: $padding-large-vertical $padding-large-horizontal;
+  //   font-size: $font-size-large;
+  //   border-radius: $border-radius-large;
+  // }
 
-    // Nuke default margins from checkboxes and radios to vertically center within.
-    input[type="radio"],
-    input[type="checkbox"] {
-        margin-top: 0;
-    }
+  // Nuke default margins from checkboxes and radios to vertically center within.
+  input[type="radio"],
+  input[type="checkbox"] {
+    margin-top: 0;
+  }
 }
 
 // Reset rounded corners
@@ -793,13 +955,15 @@ $input-group-addon-bg: $global-default-background;
 .ng-input-group label + .ng-input-group-addon,
 .ng-input-group-btn:first-child > .ng-button,
 .ng-input-group-btn:last-child > .ng-button:not(:last-child):not(.dropdown-toggle) {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
+
 .ng-input-group-addon:first-child,
 label + .ng-input-group-addon {
-    border-right: 0;
+  border-right: 0;
 }
+
 .ng-input-group input:last-child,
 .ng-input-group .ng-input-group-addon + input,
 .ng-input-group-addon:last-child,
@@ -807,106 +971,115 @@ label + .ng-input-group-addon {
 .ng-input-group-btn:last-child > .ng-button-group > .ng-button,
 .ng-input-group-btn:first-child > .ng-button:not(:first-child),
 .ng-input-group-btn:first-child > .ng-button-group:not(:first-child) > .ng-button {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
+
 .ng-input-group-addon:last-child {
-    border-left: 0;
+  border-left: 0;
 }
 
 
 // Button input groups
 // -------------------------
 .ng-input-group-btn {
-    position: relative;
-    display: table;
-    border-collapse: separate;
+  position: relative;
+  display: table;
+  border-collapse: separate;
 
-    label {
-        vertical-align: middle;
-        max-width: $form-horizontal-label-width;
-        width: $form-horizontal-label-width;
-        display: table-cell;
-        white-space: unset;
-    }
+  label {
+    vertical-align: middle;
+    max-width: $form-horizontal-label-width;
+    width: $form-horizontal-label-width;
+    display: table-cell;
+    white-space: unset;
+  }
 
-    input {
-        border-right: 0 !important;
-        display: table-cell;
-    }
+  input {
+    border-right: 0 !important;
+    display: table-cell;
+  }
 
-    .btn-group {
-        display: table-cell;
-        vertical-align: top;
-        line-height: $global-font-size;
-        .ng-button {
-            padding: 0 5px;
-            margin: 0;
-            min-height: $form-height;
-            height: $form-height;
-            line-height: $form-height;
-            width: $form-height;
-            i {
-                line-height: $form-height;
-            }
-        }
-    }
+  .btn-group {
+    display: table-cell;
+    vertical-align: top;
+    line-height: $global-font-size;
 
-    //large input
-    .ng-form-large ~ .btn-group .ng-button {
-        min-height: $form-large-height;
-        height: $form-large-height;
-        line-height: $form-large-height;
-        width: $form-large-height;
-        i {
-            line-height: $form-large-height;
-            font-size: $icon-large-font-size;
-            svg {
-                width: $icon-large-font-size;
-                height: $icon-large-font-size;
-            }
-        }
-    }
+    .ng-button {
+      padding: 0 5px;
+      margin: 0;
+      min-height: $form-height;
+      height: $form-height;
+      line-height: $form-height;
+      width: $form-height;
 
-    //small input
-    .ng-form-small ~ .btn-group .ng-button {
-        min-height: $form-small-height;
-        height: $form-small-height;
-        line-height: $form-small-height;
-        width: $form-small-height;
-        i {
-            line-height: $form-small-height;
-        }
+      i {
+        line-height: $form-height;
+      }
     }
+  }
+
+  //large input
+  .ng-form-large ~ .btn-group .ng-button {
+    min-height: $form-large-height;
+    height: $form-large-height;
+    line-height: $form-large-height;
+    width: $form-large-height;
+
+    i {
+      line-height: $form-large-height;
+      font-size: $icon-large-font-size;
+
+      svg {
+        width: $icon-large-font-size;
+        height: $icon-large-font-size;
+      }
+    }
+  }
+
+  //small input
+  .ng-form-small ~ .btn-group .ng-button {
+    min-height: $form-small-height;
+    height: $form-small-height;
+    line-height: $form-small-height;
+    width: $form-small-height;
+
+    i {
+      line-height: $form-small-height;
+    }
+  }
 
 
 }
 
 .ng-form-row.checkboxselectmultiple li,
 .ng-form-row.radioselect li {
-    list-style-type: none;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 50px;
-    width: 50%;
+  list-style-type: none;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 50px;
+  width: 50%;
 }
+
 .ng-form-row.checkboxselectmultiple label,
 .ng-form-row.radioselect label {
-    text-align: center;
+  text-align: center;
 }
+
 .ng-form-row.checkboxselectmultiple input[type="checkbox"],
 .ng-form-row.radioselect input[type="radio"] {
-    padding: 4px;
-    margin: 10px 10px 10px -40px;
-    width: 26px;
-    height: 26px;
-    cursor: pointer;
+  padding: 4px;
+  margin: 10px 10px 10px -40px;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
 }
+
 @media (max-width: $breakpoint-mini-max) {
-    .ng-form-row.checkboxselectmultiple li,
-    .ng-form-row.radioselect li {
-        width: 75%;
-    }
+  .ng-form-row.checkboxselectmultiple li,
+  .ng-form-row.radioselect li {
+    width: 75%;
+  }
 }
 
 .ng-form .ng-invalid-input input[type="text"],
@@ -923,96 +1096,97 @@ label + .ng-input-group-addon {
 .ng-form .ng-invalid-input input[type="search"],
 .ng-form .ng-invalid-input input[type="tel"],
 .ng-form .ng-invalid-input input[type="color"],
-.ng-invalid-input .ng-textarea
-{
-    border-color: $form-danger-border !important;
-    background: $form-danger-background !important;
-    color: $form-danger-color !important;
+.ng-invalid-input .ng-textarea {
+  border-color: $form-danger-border !important;
+  background: $form-danger-background !important;
+  color: $form-danger-color !important;
 }
 
 .ng-form-error-block {
-    margin: 5px 0 0 0;
-    color: $form-danger-color;
+  margin: 5px 0 0 0;
+  color: $form-danger-color;
 }
 
 /* Dark theme for forms
  ========================================================================== */
 
 .ng-form-dark {
-   input[type="text"],
-   input[type="password"],
-   input[type="datetime"],
-   input[type="datetime-local"],
-   input[type="date"],
-   input[type="month"],
-   input[type="time"],
-   input[type="week"],
-   input[type="number"],
-   input[type="email"],
-   input[type="url"],
-   input[type="search"],
-   input[type="tel"],
-   input[type="color"],
-   input[type="file"],
-   textarea,
-   select,
-   .ng-textarea {
-      border-color: $form-border--dark;
-      background: $form-background--dark;
+  input[type="text"],
+  input[type="password"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="date"],
+  input[type="month"],
+  input[type="time"],
+  input[type="week"],
+  input[type="number"],
+  input[type="email"],
+  input[type="url"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="color"],
+  input[type="file"],
+  textarea,
+  select,
+  .ng-textarea {
+    border-color: $form-border--dark;
+    background: $form-background--dark;
+    color: $form-color--dark;
+
+    &:focus {
+      border-color: $form-focus-border--dark;
+      background: $form-focus-background--dark;
+      color: $form-focus-color--dark;
+    }
+
+    &:disabled {
+      border-color: $form-disabled-border--dark;
+      background: $form-disabled-background--dark;
+      color: $form-disabled-color--dark;
+    }
+  }
+
+  // error state
+  .ng-form-danger {
+    border-color: $form-danger-border--dark !important;
+    background: $form-danger-background--dark !important;
+    color: $form-danger-color--dark !important;
+  }
+
+  // invalid input
+  .ng-invalid-input input[type="text"],
+  .ng-invalid-input input[type="password"],
+  .ng-invalid-input input[type="datetime"],
+  .ng-invalid-input input[type="datetime-local"],
+  .ng-invalid-input input[type="date"],
+  .ng-invalid-input input[type="month"],
+  .ng-invalid-input input[type="time"],
+  .ng-invalid-input input[type="week"],
+  .ng-invalid-input input[type="number"],
+  .ng-invalid-input input[type="email"],
+  .ng-invalid-input input[type="url"],
+  .ng-invalid-input input[type="search"],
+  .ng-invalid-input input[type="tel"],
+  .ng-invalid-input input[type="color"],
+  .ng-invalid-input .ng-textarea,
+  .ng-invalid-input textarea {
+    border-color: $form-danger-border--dark !important;
+    background: $form-danger-background--dark !important;
+    color: $form-danger-color--dark !important;
+  }
+
+  // label
+  label {
+    color: $form-color--dark;
+  }
+
+  //search input
+  &.ng-search, .ng-search {
+    &:before {
       color: $form-color--dark;
-      &:focus {
-        border-color: $form-focus-border--dark;
-        background: $form-focus-background--dark;
-        color: $form-focus-color--dark;
-      }
-      &:disabled {
-        border-color: $form-disabled-border--dark;
-        background: $form-disabled-background--dark;
-        color: $form-disabled-color--dark;
-      }
     }
-    // error state
-    .ng-form-danger {
-        border-color: $form-danger-border--dark !important;
-        background: $form-danger-background--dark !important;
-        color: $form-danger-color--dark !important;
-    }
-    // invalid input
-    .ng-invalid-input input[type="text"],
-    .ng-invalid-input input[type="password"],
-    .ng-invalid-input input[type="datetime"],
-    .ng-invalid-input input[type="datetime-local"],
-    .ng-invalid-input input[type="date"],
-    .ng-invalid-input input[type="month"],
-    .ng-invalid-input input[type="time"],
-    .ng-invalid-input input[type="week"],
-    .ng-invalid-input input[type="number"],
-    .ng-invalid-input input[type="email"],
-    .ng-invalid-input input[type="url"],
-    .ng-invalid-input input[type="search"],
-    .ng-invalid-input input[type="tel"],
-    .ng-invalid-input input[type="color"],
-    .ng-invalid-input .ng-textarea,
-    .ng-invalid-input textarea
-    {
-        border-color: $form-danger-border--dark !important;
-        background: $form-danger-background--dark !important;
-        color: $form-danger-color--dark !important;
-    }
-
-    // label
-    label {
-        color: $form-color--dark;
-    }
-
-    //search input
-    &.ng-search, .ng-search {
-        &:before {
-            color: $form-color--dark;
-        }
-    }
+  }
 }
-
 
 
 /**
