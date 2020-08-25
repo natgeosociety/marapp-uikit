@@ -114,7 +114,7 @@ $form-border--dark: $ltgray;
 $form-background--dark: $ultradkgray;
 $form-color--dark: $ultraltgray;
 
-$form-focus-border--dark: $ltyellow;
+$form-focus-border--dark: $ltyellow !default;
 $form-focus-background--dark: $ultradkgray;
 $form-focus-color--dark: $ultraltgray;
 
@@ -425,7 +425,7 @@ $form-danger-color--dark: $ultraltgray;
   padding: $form-padding;
   /* 4 */
   border: $form-border-width solid $form-border;
-  background: $form-background;
+  background-color: $form-background;
   color: $form-color;
   -webkit-transition: all linear 0.2s;
   -webkit-transition-property: border, background, color, box-shadow, padding;
@@ -455,9 +455,13 @@ $form-danger-color--dark: $ultraltgray;
 
 .ng-form select {
   -webkit-appearance: none;
-  background: url('data:image/svg+xml;utf8,<svg width="16" height="16" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/> </svg>') no-repeat;
+  background-image: url('data:image/svg+xml;utf8,<svg width="16" height="16" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/> </svg>');
   background-position: calc(100% - 20px) center;
   background-repeat: no-repeat;
+}
+
+.ng-form-dark select {
+  background-image: url('data:image/svg+xml;utf8,<svg width="16" height="16" viewBox="0 0 16 16" class="bi bi-chevron-down" fill="white" xmlns="http://www.w3.org/2000/svg"> <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/> </svg>');
 }
 
 /*
@@ -1130,7 +1134,7 @@ label + .ng-input-group-addon {
   select,
   .ng-textarea {
     border-color: $form-border--dark;
-    background: $form-background--dark;
+    background-color: $form-background--dark;
     color: $form-color--dark;
 
     &:focus {
