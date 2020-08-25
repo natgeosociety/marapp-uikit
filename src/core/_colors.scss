@@ -3,7 +3,7 @@ $theme-muted-color:                                 #999;
 $theme-text-shadow:                                 #fff;
 $theme-link-color:                                  $theme-color;
 $theme-link-hover-color:                            $theme-muted-color;
-$theme-contrast-color:                              #fff;
+$theme-contrast-color:                              #fff!default;
 $theme-contrast-text-shadow:                        rgba(0,0,0,0.1) !default;
 $theme-background:                                  #fff !default;
 $theme-border:                                      #ddd;
@@ -333,31 +333,31 @@ $red-4:                                         #8B0304;
 .ng-background-blue-purple-3 {background: $blue-purple-3;color: #fff}
 .ng-background-gray-1 {background: $gray-1;}
 .ng-background-gray-2 {background: $gray-2;}
-.ng-background-gray-3 {background: $gray-3;color: #fff}
-.ng-background-gray-4 {background: $gray-4;color: #fff}
-.ng-background-black {background: $black;color: #fff}
-.ng-background-ultradkgray {background: $ultradkgray;color: #fff}
-.ng-background-dkgray {background: $dkgray;color: #fff}
-.ng-background-mddkgray {background: $mddkgray;color: #fff}
-.ng-background-mdgray {background: $mdgray;color:#fff}
+.ng-background-gray-3 {background: $gray-3;color: $theme-contrast-color}
+.ng-background-gray-4 {background: $gray-4;color: $theme-contrast-color}
+.ng-background-black {background: $black;color: $theme-contrast-color}
+.ng-background-ultradkgray {background: $ultradkgray;color: $theme-contrast-color}
+.ng-background-dkgray {background: $dkgray;color: $theme-contrast-color}
+.ng-background-mddkgray {background: $mddkgray;color: $theme-contrast-color}
+.ng-background-mdgray {background: $mdgray;color:$theme-contrast-color}
 .ng-background-mdltgray {background: $mdltgray;}
 .ng-background-ltgray {background: $ltgray;}
 .ng-background-ltltgray {background: $ltltgray;}
 .ng-background-ultraltgray {background: $ultraltgray}
 .ng-background-white {background: $white;}
 
-.ng-background-ng-gold {background: $ng-gold;color: #fff}
-.ng-background-yellow {background: $ng-gold;color: #fff}
-.ng-background-ltyellow {background: $ltyellow;color: #fff}
-.ng-background-gold-2 {background: $gold-2;color: #fff}
-.ng-background-gold-3 {background: $gold-3;color: #fff}
-.ng-background-orange-4 {background: $orange-4;color: #fff}
-.ng-background-orange-5 {background: $orange-5;color: #fff}
-.ng-background-orange-6 {background: $orange-6;color: #fff}
-.ng-background-red-1 {background: $red-1;color: #fff}
-.ng-background-red-2 {background: $red-2;color: #fff}
-.ng-background-red-3 {background: $red-3;color: #fff}
-.ng-background-red-4 {background: $red-4;color: #fff}
+.ng-background-ng-gold {background: $ng-gold;color: $theme-contrast-color}
+.ng-background-yellow {background: $ng-gold;color: $theme-contrast-color}
+.ng-background-ltyellow {background: $ltyellow;color: $theme-contrast-color}
+.ng-background-gold-2 {background: $gold-2;color: $theme-contrast-color}
+.ng-background-gold-3 {background: $gold-3;color: $theme-contrast-color}
+.ng-background-orange-4 {background: $orange-4;color: $theme-contrast-color}
+.ng-background-orange-5 {background: $orange-5;color: $theme-contrast-color}
+.ng-background-orange-6 {background: $orange-6;color: $theme-contrast-color}
+.ng-background-red-1 {background: $red-1;color: $theme-contrast-color}
+.ng-background-red-2 {background: $red-2;color: $theme-contrast-color}
+.ng-background-red-3 {background: $red-3;color: $theme-contrast-color}
+.ng-background-red-4 {background: $red-4;color: $theme-contrast-color}
 .ng-background-sand-1 {background: $sand-1;}
 .ng-background-sand-2 {background: $sand-2;}
 .ng-background-sand-3 {background: $sand-3;}
