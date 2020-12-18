@@ -22,7 +22,7 @@
   "license": "MIT",
   "dependencies": {
     "countup.js": "1.8.5",
-    "jquery": "2.2.1",
+    "jquery": "3.5.0",
     "lazysizes": "2.0.0"
   },
   "devDependencies": {
