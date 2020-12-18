@@ -16,6 +16,6 @@ Last update with uikit: [75743c3ab8c84f57b7ce3fe91054767ef3c34a50](https://githu
 1. Paste the svg file in `/src/icons`. The name is important because it will generate the class name based on it. Eg: `home.svg` => `.ng-icon-home`
 2. Run `yarn build:dist`
 3. Commit the changes
-4. Increment the minor version with `npm version minor`
+4. Increment the patch version with `npm version patch`
 5. Publish the new version with `npm publish`
 6. Push the new tag with `git push --tags`
