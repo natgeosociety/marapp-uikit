@@ -23,7 +23,7 @@
   "dependencies": {
     "countup.js": "1.8.5",
     "jquery": "2.2.1",
-    "lazysizes": "2.0.0"
+    "lazysizes": "5.2.1"
   },
   "devDependencies": {
     "grunt": "^1.0.4",
