@@ -17,6 +17,5 @@ Last update with uikit: [75743c3ab8c84f57b7ce3fe91054767ef3c34a50](https://githu
 2. Run `yarn build:dist`
 3. Commit the changes
 4. Increment the patch version with `npm version patch`
-5. Publish the new version with `npm publish`
-6. Push the new tag with `git push --tags`
-7. Merging the code to master will trigger the package deploy / publish
+5. Push the new tag with `git push --tags`
+6. Merge the code to master and trigger a deploy from Jenkins
