@@ -14,8 +14,7 @@ Last update with uikit: [75743c3ab8c84f57b7ce3fe91054767ef3c34a50](https://githu
 
 ### Adding a new icon
 1. Paste the svg file in `/src/icons`. The name is important because it will generate the class name based on it. Eg: `home.svg` => `.ng-icon-home`
-2. Run `yarn build:dist`
-3. Commit the changes
-4. Increment the patch version with `npm version patch`
-5. Push the new tag with `git push --tags`
-6. Merge the code to master and trigger a deploy from Jenkins
+2. Commit the changes
+3. Increment the patch version with `npm version patch`
+4. Push the new tag with `git push --tags`
+5. Merge the code to master and wait for Jenkins to publish the new package
